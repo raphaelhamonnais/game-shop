@@ -96,7 +96,7 @@ CREATE TABLE USERS (
   user_id INTEGER NOT NULL AUTO_INCREMENT,   #identité du client
   user_login VARCHAR(50) NOT NULL,                   #nom d'usager
   user_email VARCHAR(50) NOT NULL,                      #email
-  user_passwd VARCHAR(50) NOT NULL,                        #mot de passe
+  user_passwd VARCHAR(255) NOT NULL,                        #mot de passe
   user_last_name  VARCHAR(20) NOT NULL,                 #nom de client
   user_first_name VARCHAR(20) NOT NULL,                #prénom de client
   user_tel VARCHAR(15),                       # téléphone non obligatoire
@@ -160,4 +160,19 @@ CREATE TABLE ORDERS (
   CONSTRAINT fk_orders__address FOREIGN KEY (adr_id) REFERENCES ADDRESS(adr_id),
   CONSTRAINT fk_orders_shopping__bag FOREIGN KEY (shop_bag_id) REFERENCES SHOPPING_BAG(shop_bag_id),
   CONSTRAINT uq_orders_shop_bag_id UNIQUE (shop_bag_id) -- un id de panier correspond forcément à une seule commande si le panier a été acheté
+) ENGINE InnoDB CHARSET utf8;
+
+
+CREATE TABLE ROLES (
+  role_name VARCHAR(50),
+  CONSTRAINT pk_roles PRIMARY KEY (role_name)
+) ENGINE InnoDB CHARSET utf8;
+
+
+CREATE TABLE USER_ROLES (
+  user_login VARCHAR(50),
+  role_name VARCHAR(50),
+  CONSTRAINT pk_user_roles PRIMARY KEY (role_name, user_login),
+  CONSTRAINT fk_user_roles__user FOREIGN KEY (user_login) REFERENCES USERS(user_login),
+  CONSTRAINT fk_user_roles__roles FOREIGN KEY (role_name) REFERENCES ROLES(role_name)
 ) ENGINE InnoDB CHARSET utf8;
