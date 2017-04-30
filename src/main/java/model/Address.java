@@ -1,5 +1,6 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
@@ -22,7 +23,9 @@ public class Address implements Serializable {
     private String adrCountry;
     private String adrZipCode;
 
+    @JsonIgnore
     private Set<Orders> orders = new HashSet<>();
+    @JsonIgnore
     private Set<Users> users = new HashSet<>();
 
     public Address() {}
