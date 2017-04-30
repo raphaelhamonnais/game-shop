@@ -128,6 +128,22 @@
       <artifactId>jersey-container-servlet</artifactId>
       <version>${jersey-container-servlet.version}</version>
     </dependency>
+    <!--Needed so that Jersey uses jackson to automatically translate entities into JSON format-->
+    <dependency>
+      <groupId>org.glassfish.jersey.media</groupId>
+      <artifactId>jersey-media-json-jackson</artifactId>
+      <version>LATEST</version>
+    </dependency>
+
+
+    <!--HTTP-->
+    <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>4.5.3</version>
+    </dependency>
+
 
     <!-- DATABASES -->
     <dependency>
@@ -172,7 +188,26 @@
       <artifactId>junit</artifactId>
       <version>${junit.version}</version>
     </dependency>
+
+
+
+
+
+
+    <!--REST Security Tokens-->
+    <!-- https://mvnrepository.com/artifact/com.auth0/java-jwt -->
+    <dependency>
+      <groupId>com.auth0</groupId>
+      <artifactId>java-jwt</artifactId>
+      <version>3.1.0</version>
+    </dependency>
+
   </dependencies>
+
+
+
+
+
 
 
 </project>
