@@ -27,6 +27,7 @@ public class Users implements Serializable {
     private Set<Address> addresses = new HashSet<>();
     private Set<Orders> orders = new HashSet<>();
     private Set<ShoppingBag> shoppingBags = new HashSet<>();
+    private Set<Roles> roles = new HashSet<>();
 
     public Users() {}
 
@@ -154,6 +155,19 @@ public class Users implements Serializable {
 
     public void setShoppingBags(Set<ShoppingBag> shoppingBags) {
         this.shoppingBags = shoppingBags;
+    }
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "USER_ROLES", schema = "sr03_web_project",
+            joinColumns = {@JoinColumn(name = "user_login", referencedColumnName = "user_login", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "role_name", referencedColumnName = "role_name", nullable = false, updatable = false)}
+    )
+    public Set<Roles> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Roles> roles) {
+        this.roles = roles;
     }
 
     @Override
