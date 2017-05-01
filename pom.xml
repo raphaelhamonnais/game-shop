@@ -35,8 +35,12 @@
     <!--Log4j-->
     <log4j.version>2.7</log4j.version>
 
-    <!--apache commons lang-->
+    <!--apache commons-->
     <apache-commons-lang3.version>3.3.2</apache-commons-lang3.version>
+    <apache-commons-csv.version>1.4</apache-commons-csv.version>
+
+    <!--for running sql scripts-->
+    <mybatis.version>3.4.4</mybatis.version>
 
     <!--junit-->
     <junit.version>4.12</junit.version>
@@ -175,12 +179,26 @@
     </dependency>
 
     <!-- APACHE COMMONS -->
-    <dependency>
+    <dependency> <!--For equals and hashCode builders-->
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
       <version>${apache-commons-lang3.version}</version>
     </dependency>
 
+
+    <dependency> <!--For CSV parsing-->
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-csv</artifactId>
+      <version>${apache-commons-csv.version}</version>
+    </dependency>
+
+
+    <!--for running sql scripts-->
+    <dependency> <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis</artifactId>
+      <version>${mybatis.version}</version>
+    </dependency>
 
     <!-- TESTS -->
     <dependency>
