@@ -24,7 +24,7 @@ public class Game implements Serializable {
     private int gameId;
     private String gameName;
     private int gameReleaseYear;
-    private String gameImg;
+    private String gameImg = "";
     private boolean gameIsOnSale = false;
     private BigDecimal gameSaleRate = new BigDecimal(1);
     private boolean gameIsBest = false;
