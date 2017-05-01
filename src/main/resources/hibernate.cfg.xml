@@ -19,6 +19,7 @@
     <mapping class="model.ShoppingBag"/>
     <mapping class="model.ShoppingBagRow"/>
     <mapping class="model.Users"/>
-      <mapping class="model.Roles"/>
+    <mapping class="model.Roles"/>
+    <mapping class="model.Publisher"/>
   </session-factory>
 </hibernate-configuration>
