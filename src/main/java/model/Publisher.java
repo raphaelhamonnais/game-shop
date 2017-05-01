@@ -15,6 +15,12 @@ public class Publisher {
     private String publisherName;
     private Set<Game> games = new HashSet<>();
 
+    public Publisher() {}
+
+    public Publisher(String name) {
+        this.publisherName = name;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "publisher_id", nullable = false)
