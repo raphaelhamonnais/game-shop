@@ -19,9 +19,11 @@ import java.util.Set;
 @Table(name = "GAME", schema = "sr03_web_project")
 public class Game implements Serializable {
 
+    private static final String ERROR_BINDING_GAME_TO_PUBLISHER = "A Game must be bind to a publisher";
+
     private int gameId;
     private String gameName;
-    private String gameSummary;
+    private int gameReleaseYear;
     private String gameImg;
     private boolean gameIsOnSale = false;
     private BigDecimal gameSaleRate = new BigDecimal(1);
@@ -31,14 +33,8 @@ public class Game implements Serializable {
     private Date gameAddTime = new Date();
     private Set<Category> categories = new HashSet<>();
     private Set<PhysicalGame> physicalGames = new HashSet<>();
-
+    private Publisher publisher;
     public Game() {}
-
-    public Game(String gameName, String gameSummary, String gameImg) {
-        this.gameName = gameName;
-        this.gameSummary = gameSummary;
-        this.gameImg = gameImg;
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -62,17 +58,17 @@ public class Game implements Serializable {
     }
 
     @Basic
-    @Column(name = "game_summary", nullable = false, length = -1)
-    public String getGameSummary() {
-        return gameSummary;
+    @Column(name = "game_release_year")
+    public int getGameReleaseYear() {
+        return gameReleaseYear;
     }
 
-    public void setGameSummary(String gameSummary) {
-        this.gameSummary = gameSummary;
+    public void setGameReleaseYear(int gameReleaseYear) {
+        this.gameReleaseYear = gameReleaseYear;
     }
 
     @Basic
-    @Column(name = "game_img", nullable = false, length = -1)
+    @Column(name = "game_img", length = -1)
     public String getGameImg() {
         return gameImg;
     }
@@ -166,6 +162,16 @@ public class Game implements Serializable {
         this.physicalGames = physicalGames;
     }
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "game_publisher_id", nullable = false)
+    public Publisher getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -173,17 +179,19 @@ public class Game implements Serializable {
 
         Game that = (Game) o;
 
+        checkConsistency();
         EqualsBuilder eb = new EqualsBuilder();
         eb.append(gameName, that.gameName);
-        eb.append(gameSummary, that.gameSummary);
+        eb.append(publisher, that.publisher);
         return eb.isEquals();
     }
 
     @Override
     public int hashCode() {
+        checkConsistency();
         HashCodeBuilder hcb = new HashCodeBuilder();
         hcb.append(gameName);
-        hcb.append(gameSummary);
+        hcb.append(publisher);
         return hcb.toHashCode();
     }
 
@@ -198,5 +206,10 @@ public class Game implements Serializable {
         if (categories == null)
             categories = new HashSet<>();
         categories.add(category);
+    }
+
+    private void checkConsistency() {
+        if (this.publisher == null)
+            throw new ModelException(ERROR_BINDING_GAME_TO_PUBLISHER);
     }
 }
