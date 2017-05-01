@@ -37,6 +37,7 @@ public class PhysicalGameTest {
     private Users aUser;
     private ShoppingBag aShoppingBag;
     private ShoppingBagRow aShoppingBagRow;
+    private Publisher aPublisher;
 
 
     @Before
@@ -48,6 +49,7 @@ public class PhysicalGameTest {
         aShoppingBag = ModelTestingUtilities.createShoppingBag();
         aUser = ModelTestingUtilities.createUser();
         aShoppingBagRow = ModelTestingUtilities.createShoppingBagRow();
+        aPublisher = ModelTestingUtilities.createPublisher();
     }
 
     @Test
@@ -55,9 +57,11 @@ public class PhysicalGameTest {
         Session session = sf.getSession();
 
         LOGGER.info(MAPPING_RELATIONS);
+        ModelRelationsHandler.mapRelations(aGame, aPublisher);
         ModelRelationsHandler.mapRelations(aGame, aConsole, aPhysicalGame);
 
         LOGGER.info(SAVING_TO_DATABASE);
+        ModelTestingUtilities.saveToSession(session, aPublisher);
         ModelTestingUtilities.saveToSession(session, aConsole, aGame, aPhysicalGame);
 
         List resultList = session.createQuery("from PhysicalGame ").getResultList();
@@ -71,9 +75,11 @@ public class PhysicalGameTest {
         Session session = sf.getSession();
 
         LOGGER.info(MAPPING_RELATIONS);
+        ModelRelationsHandler.mapRelations(aGame, aPublisher);
         ModelRelationsHandler.mapRelations(aGame, aConsole, aPhysicalGame);
 
         LOGGER.info(SAVING_TO_DATABASE);
+        ModelTestingUtilities.saveToSession(session, aPublisher);
         ModelTestingUtilities.saveToSession(session, aConsole, aGame, aPhysicalGame);
 
         List resultList = session.createQuery("from PhysicalGame ").getResultList();
@@ -87,9 +93,11 @@ public class PhysicalGameTest {
         Session session = sf.getSession();
 
         LOGGER.info(MAPPING_RELATIONS);
+        ModelRelationsHandler.mapRelations(aGame, aPublisher);
         ModelRelationsHandler.mapRelations(aGame, aConsole, aPhysicalGame);
 
         LOGGER.info(SAVING_TO_DATABASE);
+        ModelTestingUtilities.saveToSession(session, aPublisher);
         ModelTestingUtilities.saveToSession(session, aConsole, aGame, aPhysicalGame);
 
         List resultList = session.createQuery("from PhysicalGame ").getResultList();
@@ -102,11 +110,13 @@ public class PhysicalGameTest {
         Session session = sf.getSession();
 
         LOGGER.info(MAPPING_RELATIONS);
+        ModelRelationsHandler.mapRelations(aGame, aPublisher);
         ModelRelationsHandler.mapRelations(aGame, aConsole, aPhysicalGame);
         ModelRelationsHandler.mapRelations(aUser, aShoppingBag);
         ModelRelationsHandler.mapRelations(aShoppingBagRow, aShoppingBag, aPhysicalGame);
 
         LOGGER.info(SAVING_TO_DATABASE);
+        ModelTestingUtilities.saveToSession(session, aPublisher);
         ModelTestingUtilities.saveToSession(session, aConsole, aGame, aPhysicalGame);
         ModelTestingUtilities.saveToSession(session, aUser, aShoppingBag, aShoppingBagRow);
 

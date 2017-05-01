@@ -56,9 +56,12 @@ public class SessionFactoryTestRule implements MethodRule {
                 .addAnnotatedClass(Game.class)
                 .addAnnotatedClass(Orders.class)
                 .addAnnotatedClass(PhysicalGame.class)
+                .addAnnotatedClass(Publisher.class)
+                .addAnnotatedClass(Roles.class)
                 .addAnnotatedClass(ShoppingBag.class)
                 .addAnnotatedClass(ShoppingBagRow.class)
-                .addAnnotatedClass(Users.class);
+                .addAnnotatedClass(Users.class)
+        ;
 
         configuration.setProperty("hibernate.connection.url", HIBERNATE_CONNECTION_URL);
         configuration.setProperty("hibernate.dialect", HIBERNATE_DIALECT);

@@ -29,6 +29,7 @@ public class GameTest {
     private Console aConsole;
     private Game aGame;
     private PhysicalGame aPhysicalGame;
+    private Publisher aPublisher;
 
 
     @Before
@@ -37,6 +38,7 @@ public class GameTest {
         aConsole = ModelTestingUtilities.createConsole();
         aGame = ModelTestingUtilities.createGame();
         aPhysicalGame = ModelTestingUtilities.createPhysicalGame();
+        aPublisher = ModelTestingUtilities.createPublisher();
     }
 
     @Test
@@ -44,6 +46,8 @@ public class GameTest {
         Session session = sf.getSession();
 
         LOGGER.info(SAVING_TO_DATABASE);
+        ModelRelationsHandler.mapRelations(aGame, aPublisher);
+        ModelTestingUtilities.saveToSession(session, aPublisher);
         session.save(aGame);
         session.flush();
 
@@ -59,9 +63,11 @@ public class GameTest {
         Session session = sf.getSession();
 
         LOGGER.info(MAPPING_RELATIONS);
+        ModelRelationsHandler.mapRelations(aGame, aPublisher);
         ModelRelationsHandler.mapRelations(aGame, aConsole, aPhysicalGame);
 
         LOGGER.info(SAVING_TO_DATABASE);
+        ModelTestingUtilities.saveToSession(session, aPublisher);
         ModelTestingUtilities.saveToSession(session, aConsole, aGame, aPhysicalGame);
 
         // Getting the elements back from the database

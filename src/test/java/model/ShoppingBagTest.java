@@ -37,6 +37,7 @@ public class ShoppingBagTest {
     private Console aConsole;
     private Game aGame;
     private PhysicalGame aPhysicalGame;
+    private Publisher aPublisher;
 
     @Before
     public void setUp() throws Exception {
@@ -48,6 +49,7 @@ public class ShoppingBagTest {
         aConsole = ModelTestingUtilities.createConsole();
         aGame = ModelTestingUtilities.createGame();
         aPhysicalGame = ModelTestingUtilities.createPhysicalGame();
+        aPublisher = ModelTestingUtilities.createPublisher();
     }
 
     @Test
@@ -108,11 +110,13 @@ public class ShoppingBagTest {
         Session session = sf.getSession();
 
         LOGGER.info(MAPPING_RELATIONS);
+        ModelRelationsHandler.mapRelations(aGame, aPublisher);
         ModelRelationsHandler.mapRelations(aGame, aConsole, aPhysicalGame);
         ModelRelationsHandler.mapRelations(aUser, aShoppingBag);
         ModelRelationsHandler.mapRelations(aShoppingBagRow, aShoppingBag, aPhysicalGame);
 
         LOGGER.info(SAVING_TO_DATABASE);
+        ModelTestingUtilities.saveToSession(session, aPublisher);
         ModelTestingUtilities.saveToSession(session, aConsole, aGame, aPhysicalGame);
         ModelTestingUtilities.saveToSession(session, aUser, aShoppingBag, aShoppingBagRow);
 

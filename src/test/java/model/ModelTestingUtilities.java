@@ -142,4 +142,15 @@ public class ModelTestingUtilities {
         session.flush();
 
     }
+
+    public static Publisher createPublisher() {
+        return new Publisher("Publisher's name");
+    }
+
+    public static void saveToSession(Session session, Publisher aPublisher) {
+        LOGGER.info("session.saveOrUpdate(aPublisher)");
+        session.saveOrUpdate(aPublisher);
+        LOGGER.info("session.flush()");
+        session.flush();
+    }
 }

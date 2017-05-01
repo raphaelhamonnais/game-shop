@@ -25,11 +25,13 @@ public class CategoryGameTest {
     public final SessionFactoryTestRule sf = new SessionFactoryTestRule();
     private Game aGame;
     private Category aCategory;
+    private Publisher aPublisher;
 
     @Before
     public void setUp() throws Exception {
         aGame = ModelTestingUtilities.createGame();
         aCategory = ModelTestingUtilities.createCategory();
+        aPublisher = ModelTestingUtilities.createPublisher();
     }
 
     @Test
@@ -37,9 +39,11 @@ public class CategoryGameTest {
         Session session = sf.getSession();
 
         LOGGER.info(MAPPING_RELATIONS);
+        ModelRelationsHandler.mapRelations(aGame, aPublisher);
         ModelRelationsHandler.mapRelations(aGame, aCategory);
 
         LOGGER.info(SAVING_TO_DATABASE);
+        ModelTestingUtilities.saveToSession(session, aPublisher);
         ModelTestingUtilities.saveToSession(session, aGame, aCategory);
 
         List catList = session.createQuery("from Category").list();
