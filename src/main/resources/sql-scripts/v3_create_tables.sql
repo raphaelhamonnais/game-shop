@@ -10,7 +10,7 @@
 -- game de réflexion(益智类), aventure(冒险类), action(动作类), fighting(格斗类), action_aventure(动作冒险), simulation(仿真类), stratégie(策略类), cartes(卡牌类), course(运动类), gamex de rôle(角色类), famille(家庭类), musique(音乐类), sports(体育类)
 CREATE TABLE CATEGORY (
   cat_id INTEGER AUTO_INCREMENT,       #identité du catalogue
-  cat_name VARCHAR(20) NOT NULL,     #nom du catalogue
+  cat_name VARCHAR(100) NOT NULL,     #nom du catalogue
   CONSTRAINT pk_category PRIMARY KEY (cat_id),
   CONSTRAINT uq_category_name UNIQUE (cat_name)
 ) ENGINE InnoDB CHARSET utf8;
@@ -20,7 +20,7 @@ CREATE TABLE CATEGORY (
 # list of consoles
 CREATE TABLE CONSOLE (
   console_id INTEGER AUTO_INCREMENT,
-  console_name VARCHAR(20),
+  console_name VARCHAR(100),
   CONSTRAINT pk_console PRIMARY KEY (console_id),
   CONSTRAINT uq_console_name UNIQUE (console_name)
 ) ENGINE InnoDB CHARSET utf8;
@@ -37,7 +37,7 @@ CREATE TABLE PUBLISHER (
 #liste of jeu vidéo
 CREATE TABLE GAME (
   game_id INTEGER NOT NULL AUTO_INCREMENT,      #identité du jeu vidéo
-  game_name VARCHAR(50) NOT NULL,                     #nom de jeu vidéo
+  game_name VARCHAR(255) NOT NULL,                     #nom de jeu vidéo
   game_publisher_id INTEGER NOT NULL,
   game_release_year INTEGER,
   game_img  TEXT,                           #le lien vers la photo de jeu vidéo
@@ -86,11 +86,11 @@ CREATE TABLE CATEGORY_GAME (
 # table des adresses
 CREATE TABLE ADDRESS (
   adr_id INTEGER AUTO_INCREMENT,
-  adr_name VARCHAR(50) NOT NULL,
+  adr_name VARCHAR(100) NOT NULL,
   adr_street VARCHAR(255) NOT NULL,
-  adr_city VARCHAR(30) NOT NULL,
-  adr_country VARCHAR(30) NOT NULL,
-  adr_zip_code VARCHAR(30) NOT NULL,
+  adr_city VARCHAR(100) NOT NULL,
+  adr_country VARCHAR(100) NOT NULL,
+  adr_zip_code VARCHAR(100) NOT NULL,
   CONSTRAINT pk_address PRIMARY KEY (adr_id),
   CONSTRAINT uq_address UNIQUE (adr_name, adr_street, adr_city, adr_country, adr_zip_code)
 );
@@ -101,12 +101,12 @@ CREATE TABLE ADDRESS (
 #Table des users
 CREATE TABLE USERS (
   user_id INTEGER NOT NULL AUTO_INCREMENT,   #identité du client
-  user_login VARCHAR(50) NOT NULL,                   #nom d'usager
-  user_email VARCHAR(50) NOT NULL,                      #email
+  user_login VARCHAR(100) NOT NULL,                   #nom d'usager
+  user_email VARCHAR(255) NOT NULL,                      #email
   user_passwd VARCHAR(255) NOT NULL,                        #mot de passe
-  user_last_name  VARCHAR(20) NOT NULL,                 #nom de client
-  user_first_name VARCHAR(20) NOT NULL,                #prénom de client
-  user_tel VARCHAR(15),                       # téléphone non obligatoire
+  user_last_name  VARCHAR(100) NOT NULL,                 #nom de client
+  user_first_name VARCHAR(100) NOT NULL,                #prénom de client
+  user_tel VARCHAR(100),                       # téléphone non obligatoire
   user_active BOOLEAN DEFAULT TRUE,
   CONSTRAINT pk_user PRIMARY KEY (user_id),
   CONSTRAINT uq_user_login UNIQUE (user_login),
@@ -171,14 +171,14 @@ CREATE TABLE ORDERS (
 
 
 CREATE TABLE ROLES (
-  role_name VARCHAR(50),
+  role_name VARCHAR(100),
   CONSTRAINT pk_roles PRIMARY KEY (role_name)
 ) ENGINE InnoDB CHARSET utf8;
 
 
 CREATE TABLE USER_ROLES (
-  user_login VARCHAR(50),
-  role_name VARCHAR(50),
+  user_login VARCHAR(100),
+  role_name VARCHAR(100),
   CONSTRAINT pk_user_roles PRIMARY KEY (role_name, user_login),
   CONSTRAINT fk_user_roles__user FOREIGN KEY (user_login) REFERENCES USERS(user_login),
   CONSTRAINT fk_user_roles__roles FOREIGN KEY (role_name) REFERENCES ROLES(role_name)
