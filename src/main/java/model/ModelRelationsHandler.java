@@ -53,4 +53,9 @@ public class ModelRelationsHandler {
         aShoppingBag.addShoppingBagRow(aShoppingBagRow);
         aPhysicalGame.addShoppingBagRow(aShoppingBagRow);
     }
+
+    public static void mapRelations(Game aGame, Publisher aPublisher) {
+        aGame.setPublisher(aPublisher);
+        aPublisher.addGame(aGame);
+    }
 }
