@@ -1,5 +1,8 @@
 package model;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -18,7 +21,6 @@ public class Roles {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "role_name", nullable = false, length = 50)
     public String getRoleName() {
         return roleName;
@@ -42,15 +44,17 @@ public class Roles {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Roles roles = (Roles) o;
+        Roles that = (Roles) o;
 
-        if (roleName != null ? !roleName.equals(roles.roleName) : roles.roleName != null) return false;
-
-        return true;
+        EqualsBuilder eb = new EqualsBuilder();
+        eb.append(roleName, that.roleName);
+        return eb.isEquals();
     }
 
     @Override
     public int hashCode() {
-        return roleName != null ? roleName.hashCode() : 0;
+        HashCodeBuilder hcb = new HashCodeBuilder();
+        hcb.append(roleName);
+        return hcb.toHashCode();
     }
 }
