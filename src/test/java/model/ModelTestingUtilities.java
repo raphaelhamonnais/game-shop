@@ -48,7 +48,6 @@ public class ModelTestingUtilities {
     public static Game createGame() {
         Game game = new Game();
         game.setGameName("Game name");
-        game.setGameSummary("A summary");
         game.setGameImg("An image");
         return game;
     }

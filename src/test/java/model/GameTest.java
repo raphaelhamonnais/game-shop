@@ -72,4 +72,9 @@ public class GameTest {
         assertEquals(1, physicalGames.size());
         assertTrue(physicalGames.contains(aPhysicalGame));
     }
+
+    @Test
+    public void failToBindToPublisherShouldThrowException() throws Exception {
+        // TODO
+    }
 }
