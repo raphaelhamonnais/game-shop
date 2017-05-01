@@ -26,14 +26,21 @@ CREATE TABLE CONSOLE (
 ) ENGINE InnoDB CHARSET utf8;
 
 
+CREATE TABLE PUBLISHER (
+  publisher_id INTEGER NOT NULL AUTO_INCREMENT,
+  publisher_name VARCHAR(100),
+  CONSTRAINT pk_publisher PRIMARY KEY (publisher_id),
+  CONSTRAINT uq_publisher_name UNIQUE (publisher_name)
+) ENGINE InnoDB CHARSET utf8;
 
 
 #liste of jeu vidéo
 CREATE TABLE GAME (
   game_id INTEGER NOT NULL AUTO_INCREMENT,      #identité du jeu vidéo
   game_name VARCHAR(50) NOT NULL,                     #nom de jeu vidéo
-  game_summary  TEXT NOT NULL,                                     #la introduction de jeu vidéo
-  game_img  TEXT NOT NULL,                           #le lien vers la photo de jeu vidéo
+  game_publisher_id INTEGER NOT NULL,
+  game_release_year INTEGER,
+  game_img  TEXT,                           #le lien vers la photo de jeu vidéo
   game_is_on_sale  BOOLEAN NOT NULL DEFAULT FALSE,                   #si le jeu vidéo est à vendre ou pas, taille de 1 (0 ou 1)
   game_sale_rate DECIMAL(3,2) NOT NULL DEFAULT 1.00,
   game_is_best  BOOLEAN NOT NULL DEFAULT FALSE,                      #si le jeu vidéo est le best-seller
@@ -41,8 +48,8 @@ CREATE TABLE GAME (
   game_is_hot  BOOLEAN NOT NULL DEFAULT FALSE,                       #si le jeu vidéo est le hot-vente
   game_add_time  DATETIME NOT NULL,                                  #la date de publication
   CONSTRAINT pk_game PRIMARY KEY (game_id),
-  CONSTRAINT uq_game_name_and_add_time UNIQUE (game_name, game_add_time)
-  -- CONSTRAINT uq_game_name_and_summary UNIQUE (game_name, game_summary) -- impossible car TEXT ne peut être indexé dans la contrainte d'unicité
+  CONSTRAINT fk_game_publisher FOREIGN KEY (game_publisher_id) REFERENCES PUBLISHER(publisher_id),
+  CONSTRAINT uq_game_name_and_publisher UNIQUE (game_name, game_publisher_id)
 ) ENGINE InnoDB CHARSET utf8;
 
 
