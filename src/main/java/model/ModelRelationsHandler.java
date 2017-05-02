@@ -58,4 +58,9 @@ public class ModelRelationsHandler {
         aGame.setPublisher(aPublisher);
         aPublisher.addGame(aGame);
     }
+
+    public static void mapRelations(Users aUser, Roles aRole) {
+        aUser.addRole(aRole);
+        aRole.addUser(aUser);
+    }
 }

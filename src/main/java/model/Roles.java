@@ -57,4 +57,10 @@ public class Roles {
         hcb.append(roleName);
         return hcb.toHashCode();
     }
+
+    public void addUser(Users aUser) {
+        if (users == null)
+            users = new HashSet<>();
+        users.add(aUser);
+    }
 }

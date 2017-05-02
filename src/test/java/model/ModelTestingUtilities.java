@@ -153,4 +153,8 @@ public class ModelTestingUtilities {
         LOGGER.info("session.flush()");
         session.flush();
     }
+
+    public static Roles createRole() {
+        return new Roles("rolename");
+    }
 }

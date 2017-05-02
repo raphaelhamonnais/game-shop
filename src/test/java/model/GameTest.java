@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import java.util.List;
 import java.util.Set;
@@ -25,6 +26,9 @@ public class GameTest {
 
     @Rule
     public final SessionFactoryTestRule sf = new SessionFactoryTestRule();
+
+    @Rule
+    public ExpectedException expectedEx = ExpectedException.none();
 
     private Console aConsole;
     private Game aGame;
@@ -81,6 +85,8 @@ public class GameTest {
 
     @Test
     public void failToBindToPublisherShouldThrowException() throws Exception {
-        // TODO
+        expectedEx.expect(ModelException.class);
+        expectedEx.expectMessage(Game.ERROR_BINDING_GAME_TO_PUBLISHER);
+        aPublisher.addGame(aGame);
     }
 }

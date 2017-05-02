@@ -19,7 +19,7 @@ import java.util.Set;
 @Table(name = "GAME", schema = "sr03_web_project")
 public class Game implements Serializable {
 
-    private static final String ERROR_BINDING_GAME_TO_PUBLISHER = "A Game must be bind to a publisher";
+    public static final String ERROR_BINDING_GAME_TO_PUBLISHER = "A Game must be bind to a publisher";
 
     private int gameId;
     private String gameName;

@@ -206,4 +206,10 @@ public class Users implements Serializable {
             orders = new HashSet<>();
         orders.add(anOrder);
     }
+
+    public void addRole(Roles aRole) {
+        if (roles == null)
+            roles = new HashSet<>();
+        roles.add(aRole);
+    }
 }

@@ -2,11 +2,16 @@ package model;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hibernate.Session;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
-//TODO
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 public class RolesTest {
 
     private static final Logger LOGGER = LogManager.getLogger(RolesTest.class);
@@ -14,16 +19,24 @@ public class RolesTest {
 
     @Rule
     public final SessionFactoryTestRule sf = new SessionFactoryTestRule();
-
+    private Roles aRole;
 
 
     @Before
     public void setUp() throws Exception {
-        // Creating test objects
+        aRole = ModelTestingUtilities.createRole();
     }
 
     @Test
     public void testRoleCreation() throws Exception {
+        Session session = sf.getSession();
 
+        LOGGER.info("Saving to session");
+        session.save(aRole);
+        session.flush();
+
+        List resultList = session.createQuery("from Roles ").getResultList();
+        assertEquals(1, resultList.size());
+        assertTrue(resultList.contains(aRole));
     }
 }

@@ -15,23 +15,33 @@ import static model.ModelTestingUtilities.SAVING_TO_DATABASE;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-//TODO
+
 public class PublisherTest {
 
     private static final Logger LOGGER = LogManager.getLogger(PublisherTest.class);
 
     @Rule
     public final SessionFactoryTestRule sf = new SessionFactoryTestRule();
+    private Publisher aPublisher;
+    private Game aGame;
 
 
     @Before
     public void setUp() throws Exception {
+        aPublisher = ModelTestingUtilities.createPublisher();
+        aGame = ModelTestingUtilities.createGame();
     }
 
     @Test
     public void testPublisherCreation() throws Exception {
         Session session = sf.getSession();
 
+        session.save(aPublisher);
+        session.flush();
+
+        List resultList = session.createQuery("from Publisher ").getResultList();
+        assertEquals(1, resultList.size());
+        assertTrue(resultList.contains(aPublisher));
     }
 
 
@@ -40,6 +50,19 @@ public class PublisherTest {
 
         Session session = sf.getSession();
 
+        LOGGER.info("Mapping relations");
+        ModelRelationsHandler.mapRelations(aGame, aPublisher);
+        LOGGER.info("Saving to session");
+        session.saveOrUpdate(aPublisher);
+        session.saveOrUpdate(aGame);
+        session.flush();
+
+        List resultList = session.createQuery("from Publisher ").getResultList();
+        Publisher publisher = (Publisher) resultList.iterator().next();
+        Set<Game> games = publisher.getGames();
+
+        assertEquals(1, games.size());
+        assertTrue(games.contains(aGame));
     }
 
 }
