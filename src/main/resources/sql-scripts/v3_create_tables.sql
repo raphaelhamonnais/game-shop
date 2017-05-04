@@ -88,9 +88,9 @@ CREATE TABLE ADDRESS (
   adr_id INTEGER AUTO_INCREMENT,
   adr_name VARCHAR(100) NOT NULL,
   adr_street VARCHAR(255) NOT NULL,
+  adr_zip_code VARCHAR(100) NOT NULL,
   adr_city VARCHAR(100) NOT NULL,
   adr_country VARCHAR(100) NOT NULL,
-  adr_zip_code VARCHAR(100) NOT NULL,
   CONSTRAINT pk_address PRIMARY KEY (adr_id),
   CONSTRAINT uq_address UNIQUE (adr_name, adr_street, adr_city, adr_country, adr_zip_code)
 );
