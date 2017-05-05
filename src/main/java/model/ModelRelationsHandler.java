@@ -34,7 +34,7 @@ public class ModelRelationsHandler {
         anOrder.setOrderAmount(aShoppingBag.calculateAmount());
         anOrder.setShoppingBag(aShoppingBag);
         aShoppingBag.setOrder(anOrder);
-//        anOrder.setUser(aShoppingBag.getUser());
+        aShoppingBag.setBought(true);
     }
 
     public static void mapRelations(Orders anOrder, Users aUser) {
