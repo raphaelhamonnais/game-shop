@@ -1,24 +1,17 @@
 package database;
 
 import model.*;
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.time.LocalDate;
 import java.util.*;
 
-public class GamesInjection {
+public class GamesInjection extends DataInjection {
 
     private static final Logger LOGGER = LogManager.getLogger(GamesInjection.class);
     private static final String GAMES_FULL_DATA_SET = "data-sets/games_full_data_set.csv";
@@ -35,38 +28,33 @@ public class GamesInjection {
     private static final BigDecimal START_GAME_PRICE = new BigDecimal(59.99);
 
     private static List<CSVRecord> dataSet = new ArrayList<>();
-    private static Map<String, Console> consolesMap = new HashMap<>();
-    private static Map<String, Category> categoriesMap = new HashMap<>();
-    private static Map<String, Publisher> publishersMap = new HashMap<>();
-    private static Map<String, Game> gamesMap = new HashMap<>();
+    private final boolean isTestData;
+    private Map<String, Console> consolesMap = new HashMap<>();
+    private Map<String, Category> categoriesMap = new HashMap<>();
+    private Map<String, Publisher> publishersMap = new HashMap<>();
+    private Map<String, Game> gamesMap = new HashMap<>();
 
-
-    public static void injectTestData() throws IOException {
-        String dataFilePath = GamesInjection.class.getClassLoader().getResource(GAMES_TEST_DATA_SET).getFile();
-        injectData(dataFilePath);
+    public GamesInjection(boolean isTestData) {
+        super();
+        this.isTestData = isTestData;
     }
 
-    public static void injectFullData() throws IOException {
-        String dataFilePath = GamesInjection.class.getClassLoader().getResource(GAMES_FULL_DATA_SET).getFile();
-        injectData(dataFilePath);
+
+    @Override
+    protected String getDataFilePaht() {
+        return isTestData
+                ? this.getClass().getClassLoader().getResource(GAMES_TEST_DATA_SET).getFile()
+                : this.getClass().getClassLoader().getResource(GAMES_FULL_DATA_SET).getFile();
     }
 
-    private static void injectData(String dataFilePath) throws IOException {
-        Reader in = new FileReader(dataFilePath);
-        Iterable<CSVRecord> records = parseCsvFile(in);
-        createMapsForConsolesCategoriesAndPublishers(records);
+
+    @Override
+    protected void createDataFromCsv() {
+        createMapsForConsolesCategoriesAndPublishers();
         createGamesAndMapRelations();
-        saveToSession();
     }
 
-    private static CSVParser parseCsvFile(Reader in) throws IOException {
-        return CSVFormat
-                .EXCEL
-                .withHeader()
-                .parse(in);
-    }
-
-    private static void createMapsForConsolesCategoriesAndPublishers(Iterable<CSVRecord> records) {
+    private void createMapsForConsolesCategoriesAndPublishers() {
         // creating maps of categories, consoles and publishers
         int lineNumber = 1;
         for (CSVRecord record : records) {
@@ -106,12 +94,12 @@ public class GamesInjection {
         }
     }
 
-    private static void createGamesAndMapRelations() {
+    private void createGamesAndMapRelations() {
         // Creating games, physical games and mapping relations
         int lineNumber = 1;
         for (CSVRecord record : dataSet) {
             if (lineNumber % 1000 == 0)
-                LOGGER.info("Creating physical games and mapping relations (current lineNumber = " + lineNumber + " out of " + dataSet.size() + ")");
+                LOGGER.info("Creating physical games and mapping relations (current lineNumber = " + lineNumber + ")");
 
             Category category = categoriesMap.get(record.get(CATEGORY_CSV_HEADER));
             Console console = consolesMap.get(record.get(CONSOLE_CSV_HEADER));
@@ -128,48 +116,28 @@ public class GamesInjection {
         }
     }
 
-    private static void saveToSession() {
-        SessionFactory sessionFactory = HibernateSessionFactory.getSessionFactory();
-        Session session = sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
+    @Override
+    protected void saveCreatedDataToSession(Session session) {
+        LOGGER.info("Saving Console data");
 
-        LOGGER.info("Saving data to session");
+        for (Console console : consolesMap.values())
+            session.saveOrUpdate(console);
 
-        try {
-            LOGGER.info("Saving Console data");
-            for (Console console : consolesMap.values())
-                session.saveOrUpdate(console);
+        LOGGER.info("Saving Category data");
+        for (Category category : categoriesMap.values())
+            session.saveOrUpdate(category);
 
-            LOGGER.info("Saving Category data");
-            for (Category category : categoriesMap.values())
-                session.saveOrUpdate(category);
+        LOGGER.info("Saving Publisher data");
+        for (Publisher publisher : publishersMap.values())
+            session.saveOrUpdate(publisher);
 
-            LOGGER.info("Saving Publisher data");
-            for (Publisher publisher : publishersMap.values())
-                session.saveOrUpdate(publisher);
-
-            LOGGER.info("Saving Games data");
-            for (Game game : gamesMap.values())
-                session.saveOrUpdate(game);
-
-            LOGGER.info("Commiting transactions");
-            transaction.commit();
-        }
-        catch (Exception e) {
-            LOGGER.error("Error while savind data, rolling back");
-            transaction.rollback();
-            throw e;
-        }
-        finally {
-            LOGGER.info("Closing session");
-            session.close();
-            LOGGER.info("Closing session factory");
-            sessionFactory.close();
-        }
+        LOGGER.info("Saving Games data");
+        for (Game game : gamesMap.values())
+            session.saveOrUpdate(game);
     }
 
     // decrement price by 5% for each year between release date and now
-    private static BigDecimal computePrice(int gameReleaseYear) {
+    private BigDecimal computePrice(int gameReleaseYear) {
         BigDecimal price = START_GAME_PRICE;
         int currentYear = LocalDate.now().getYear();
         int yearsDifference = currentYear - gameReleaseYear;
@@ -182,7 +150,7 @@ public class GamesInjection {
     }
 
 
-    private static boolean yearIncorrect(String year) {
+    private boolean yearIncorrect(String year) {
         if (year == null)
             return true;
 
