@@ -21,7 +21,9 @@ public class HibernateSessionFactory {
         sessionFactory = hibernateConf.buildSessionFactory();
     }
 
-
-
-
+    @Override
+    protected void finalize() throws Throwable {
+        sessionFactory.close();
+        super.finalize();
+    }
 }
