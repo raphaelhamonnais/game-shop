@@ -1,5 +1,6 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
@@ -23,9 +24,9 @@ public class ShoppingBag implements Serializable {
     private Date creationDate = new Date();
     private Date lastUpdate = new Date();
     private boolean isBought = false;
-
     private Set<ShoppingBagRow> shoppingBagRows = new HashSet<>();
     private Users user;
+    @JsonIgnore
     private Orders order;
 
     public ShoppingBag() {}

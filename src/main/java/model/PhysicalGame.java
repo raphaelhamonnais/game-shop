@@ -1,5 +1,6 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
@@ -22,9 +23,9 @@ public class PhysicalGame implements Serializable {
     private int physicalGameId;
     private int gameStock;
     private BigDecimal gamePrice;
-
     private Game game;
     private Console console;
+    @JsonIgnore
     private Set<ShoppingBagRow> shoppingBagRows = new HashSet<>();
 
     public PhysicalGame() {}

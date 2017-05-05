@@ -1,5 +1,6 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
@@ -12,6 +13,7 @@ import java.util.Set;
 public class Roles {
 
     private String roleName;
+    @JsonIgnore
     private Set<Users> users = new HashSet<>();
 
     public Roles() {}

@@ -20,7 +20,6 @@ public class Orders implements Serializable {
     private int orderId;
     private Date orderDate = new Date();
     private BigDecimal orderAmount;
-
     private ShoppingBag shoppingBag;
     private Users user;
     private Address address;

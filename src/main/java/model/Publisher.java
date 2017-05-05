@@ -1,5 +1,6 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
@@ -13,6 +14,7 @@ public class Publisher {
 
     private int publisherId;
     private String publisherName;
+    @JsonIgnore
     private Set<Game> games = new HashSet<>();
 
     public Publisher() {}

@@ -1,5 +1,6 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
@@ -17,7 +18,7 @@ public class Console implements Serializable {
 
     private int consoleId;
     private String consoleName;
-
+    @JsonIgnore
     private Set<PhysicalGame> physicalGames = new HashSet<>();
 
     public Console() {}

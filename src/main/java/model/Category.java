@@ -1,5 +1,6 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
@@ -17,6 +18,7 @@ public class Category implements Serializable {
 
     private int catId;
     private String catName;
+    @JsonIgnore
     private Set<Game> games = new HashSet<>();
 
     public Category() {}

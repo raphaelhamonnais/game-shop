@@ -1,5 +1,6 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.hibernate.annotations.Cascade;
@@ -32,6 +33,7 @@ public class Game implements Serializable {
     private boolean gameIsHot = false;
     private Date gameAddTime = new Date();
     private Set<Category> categories = new HashSet<>();
+    @JsonIgnore
     private Set<PhysicalGame> physicalGames = new HashSet<>();
     private Publisher publisher;
     public Game() {}

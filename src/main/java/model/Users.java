@@ -1,5 +1,6 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
@@ -23,9 +24,10 @@ public class Users implements Serializable {
     private String userFirstName;
     private String userTel = "";
     private boolean userActive = true;
-
     private Set<Address> addresses = new HashSet<>();
+    @JsonIgnore
     private Set<Orders> orders = new HashSet<>();
+    @JsonIgnore
     private Set<ShoppingBag> shoppingBags = new HashSet<>();
     private Set<Roles> roles = new HashSet<>();
 
