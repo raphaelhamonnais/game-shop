@@ -8,14 +8,14 @@ import org.hibernate.query.Query;
 import java.util.List;
 
 public class CategoryDao {
-    public static final String O_GET_ALL_CATEGORIES = "from Category cat" +
+    public static final String Q_GET_ALL_CATEGORIES = "from Category cat " +
             "join fetch cat.games" +
            //"join fetch cat.physicalGame" +
             "";
     public static final String P_CATEGORY_ID = "id";
-    public static final String O_GET_CATEGORY_BY_ID = "from Category cat" +
-            "join fetch cat.games" +
-           // "join fetch cat.physicalGame" +
+    public static final String Q_GET_CATEGORY_BY_ID = "from Category cat " +
+            "join fetch cat.games " +
+           // "join fetch cat.physicalGame " +
             "where cat.catId=:"+ P_CATEGORY_ID +
             "";
 
@@ -24,7 +24,7 @@ public class CategoryDao {
         List<Category> categories = null;
 
         try(Session session = sessionFactory.openSession()) {
-            Query query = session.createQuery(O_GET_ALL_CATEGORIES);
+            Query query = session.createQuery(Q_GET_ALL_CATEGORIES);
             categories = query.getResultList();
         } catch (Exception error) {
             error.printStackTrace();
@@ -38,7 +38,7 @@ public class CategoryDao {
         Category category = null;
 
         try(Session session = sessionFactory.openSession()) {
-            Query query = session.createQuery(O_GET_CATEGORY_BY_ID);
+            Query query = session.createQuery(Q_GET_CATEGORY_BY_ID);
             query.setParameter(P_CATEGORY_ID, id);
             category = (Category) query.uniqueResult();
         } catch (Exception error) {
