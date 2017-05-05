@@ -2,7 +2,7 @@ package dao;
 
 import model.Game;
 import model.HibernateSessionFactory;
-import org.hibernate.Query;
+import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -14,6 +14,30 @@ import java.util.List;
  */
 public class GameDao {
 
+    /*obtenir tous les jeu*/
+    public List<Game> getAllGame() {
+        SessionFactory sessionFactory = HibernateSessionFactory.getSessionFactory();
+        Session s = null;
+        Transaction t = null;
+        List<Game> games = null;
+        try {
+            s = sessionFactory.openSession();
+            t = s.beginTransaction();
+            String hql = "select * from game";
+            Query query = s.createNamedQuery(hql, Game.class);
+            query.setCacheable(true);
+            games = query.list();
+            t.commit();
+        }catch (Exception error) {
+            t.rollback();
+            error.printStackTrace();
+        } finally {
+            s.close();
+        }
+        return games;
+    }
+
+    /*obtenir le jeu selon l'identifiant*/
     public Game getGameById(int id) {
       SessionFactory sessionFactory = HibernateSessionFactory.getSessionFactory();
       Session s = null;
@@ -35,11 +59,12 @@ public class GameDao {
       return game;
   }
 
+  /*creer un jeu*/
   public boolean createGame(Game game) {
       SessionFactory sessionFactory = HibernateSessionFactory.getSessionFactory();
       Session s = null;
       Transaction t = null;
-      boolean flag = false;
+      boolean flag = false; /*si la creation est success, flag = TRUE*/
       try {
           s = sessionFactory.openSession();
           t = s.beginTransaction();
@@ -55,6 +80,7 @@ public class GameDao {
       return flag;
   }
 
+  /*mis a jour le jeu*/
     public boolean updateGame(Game game) {
         SessionFactory sessionFactory = HibernateSessionFactory.getSessionFactory();
         Session s = null;
@@ -75,6 +101,7 @@ public class GameDao {
         return flag;
     }
 
+    /*supprimer le jeu*/
     public boolean deleteGameById(int id) {
         SessionFactory sessionFactory = HibernateSessionFactory.getSessionFactory();
         Session s = null;
@@ -97,25 +124,5 @@ public class GameDao {
         return flag;
     }
 
-    public List<Game> getAllGame() {
-            SessionFactory sessionFactory = HibernateSessionFactory.getSessionFactory();
-            Session s = null;
-            Transaction t = null;
-           List<Game> games = null;
-            try {
-                s = sessionFactory.openSession();
-                t = s.beginTransaction();
-                String hql = "select * from game";
-                Query query = s.createNamedQuery(hql,Game.class);
-                query.setCacheable(true);
-                games = query.list();
-                t.commit();
-            }catch (Exception error) {
-                t.rollback();
-                error.printStackTrace();
-            } finally {
-                s.close();
-            }
-            return games;
-    }
+
 }

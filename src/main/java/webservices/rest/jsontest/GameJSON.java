@@ -17,8 +17,19 @@ import java.util.*;
  */
 @Path("json-test/game")
 public class GameJSON {
+
     private GameDao gameDao = new GameDao();
 
+    /*obtenir tous les jeux*/
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Game> getAllGame() {
+        List<Game> games = new ArrayList<Game>();
+        games = gameDao.getAllGame();
+        return games;
+    }
+
+    /*obtenir un jeu par l'identifiant*/
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -27,31 +38,30 @@ public class GameJSON {
         return game;
     }
 
+    /*creer un jeu*/
     @POST
     @Consumes({MediaType.APPLICATION_JSON})
     public void createGame(Game game) {
         gameDao.createGame(game);
     }
 
-    @DELETE
-    @Path("{id}")
-    public void deleteGame(@PathParam("id") int id) {
-        gameDao.deleteGameById(id);
-    }
-
+    /*mis a jour un jeu*/
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     public void updateGame(Game game) {
         gameDao.updateGame(game);
     }
 
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<Game> getAllGame() {
-        List<Game> games = new ArrayList<Game>();
-        games = gameDao.getAllGame();
-        return games;
+    /*supprimer un jeu*/
+    @DELETE
+    @Path("{id}")
+    public void deleteGame(@PathParam("id") int id) {
+        gameDao.deleteGameById(id);
     }
+
+
+
+
    /* public Game game(@Context SecurityContext sc) {
         Game game = new Game();
         Date date = new Date();
