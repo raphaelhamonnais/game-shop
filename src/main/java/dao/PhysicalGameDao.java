@@ -11,9 +11,13 @@ import java.util.List;
 public class PhysicalGameDao {
 
     public static final String Q_GET_ALL_PHYSICAL_GAMES = "from PhysicalGame pg " +
+            "join fetch pg.game " +
+            "join fetch pg.console " +
             "";
     public static final String P_PHYSICAL_GAME_ID = "id";
     public static final String Q_GET_PHYSICAL_GAME_BY_ID = "from PhysicalGame pg " +
+            "join fetch pg.game " +
+            "join fetch pg.console " +
             "where pg.physicalGameId=:"+ P_PHYSICAL_GAME_ID +
             "";
 

@@ -10,11 +10,11 @@ import java.util.List;
 
 public class CategoryDao {
     public static final String Q_GET_ALL_CATEGORIES = "from Category cat " +
-           // "join fetch cat.games" +  /*if we want to see the category for each game, we will use this line of code and we get ride of group by*/
+            "join fetch cat.games " +  /*if we want to see the category for each game, we will use this line of code and we get ride of group by*/
             "";
     public static final String P_CATEGORY_NAME = "name";
     public static final String Q_GET_CATEGORY_BY_NAME = "from Category cat " +
-            //"join fetch cat.games " +
+            "join fetch cat.games " +
             "where cat.catName=:"+ P_CATEGORY_NAME +
             "";
    /* public static final String Q_GET_GAME_FROM_CATEGORY = "from Category cat " +
