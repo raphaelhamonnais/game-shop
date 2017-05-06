@@ -1,4 +1,4 @@
-package webservices.rest.jsontest;
+package webservices.rest.resource;
 
 import model.entity.Address;
 import model.entity.Orders;

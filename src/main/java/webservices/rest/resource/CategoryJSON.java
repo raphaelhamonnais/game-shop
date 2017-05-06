@@ -1,4 +1,4 @@
-package webservices.rest.jsontest;
+package webservices.rest.resource;
 
 import model.dao.CategoryDao;
 import model.dao.CategoryDaoBis;
