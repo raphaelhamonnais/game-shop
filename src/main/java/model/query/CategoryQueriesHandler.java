@@ -13,4 +13,7 @@ public class CategoryQueriesHandler {
             "join fetch g.publisher p " +
             "join fetch g.categories c " +
             "where c.catName=:" + PARAM_CATEGORY_NAME;
+
+    public static final String DELETE_CATEGORY_BY_NAME = "delete Category c " +
+            "where c.catName=:"+ PARAM_CATEGORY_NAME;
 }

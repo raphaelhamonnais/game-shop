@@ -5,13 +5,13 @@ import model.entity.Game;
 import model.handler.HibernateTransactionHandler;
 import model.query.CategoryQueriesHandler;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import java.util.List;
+
+import static javax.ws.rs.core.Response.Status.*;
 
 @Path("categories")
 @SuppressWarnings("unchecked")
@@ -47,5 +47,22 @@ public class CategoryRest {
                 .createQuery(CategoryQueriesHandler.QUERY_GET_CATEGORY_GAMES)
                 .addParameter(CategoryQueriesHandler.PARAM_CATEGORY_NAME,name)
                 .getResultListAndClose();
+    }
+
+    @DELETE
+    @Path("{name}")
+    public Response delete(@PathParam("name") String name) {
+        new HibernateTransactionHandler()
+                .openSession()
+                .beginTransaction()
+                .createQuery(CategoryQueriesHandler.DELETE_CATEGORY_BY_NAME)
+                .addParameter(CategoryQueriesHandler.PARAM_CATEGORY_NAME,name)
+                .executeUpdate()
+                .commit()
+                .closeSession();
+        return Response
+                .status(ACCEPTED)
+                .entity("Delete of category " + name + " succesful")
+                .build();
     }
 }

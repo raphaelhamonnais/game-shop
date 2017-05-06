@@ -78,4 +78,9 @@ public class HibernateTransactionHandler {
         session.delete(o);
         return this;
     }
+
+    public HibernateTransactionHandler executeUpdate() {
+        query.executeUpdate();
+        return this;
+    }
 }
