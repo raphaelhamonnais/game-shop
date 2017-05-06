@@ -1,6 +1,6 @@
 package webservices.rest.jsontest;
 
-import dao.GameDao;
+import model.dao.GameDao;
 import model.entity.Game;
 
 import javax.ws.rs.*;

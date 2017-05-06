@@ -1,7 +1,7 @@
 package webservices.rest.jsontest;
 
-import dao.CategoryDao;
-import dao.CategoryDaoBis;
+import model.dao.CategoryDao;
+import model.dao.CategoryDaoBis;
 import model.entity.Category;
 import model.entity.Game;
 

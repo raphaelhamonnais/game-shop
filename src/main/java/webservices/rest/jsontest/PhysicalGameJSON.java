@@ -1,6 +1,6 @@
 package webservices.rest.jsontest;
 
-import dao.PhysicalGameDao;
+import model.dao.PhysicalGameDao;
 import model.entity.PhysicalGame;
 
 import javax.ws.rs.GET;

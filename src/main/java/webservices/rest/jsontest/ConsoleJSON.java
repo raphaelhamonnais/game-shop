@@ -1,6 +1,6 @@
 package webservices.rest.jsontest;
 
-import dao.ConsoleDao;
+import model.dao.ConsoleDao;
 import model.entity.Console;
 
 import javax.ws.rs.GET;

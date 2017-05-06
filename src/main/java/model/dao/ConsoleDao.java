@@ -1,4 +1,4 @@
-package dao;
+package model.dao;
 
 import model.entity.Console;
 import model.HibernateSessionFactory;
