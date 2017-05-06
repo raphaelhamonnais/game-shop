@@ -1,7 +1,7 @@
 package model.dao;
 
+import model.HibernateSessionFactoryHandler;
 import model.entity.Game;
-import model.HibernateSessionFactory;
 import org.hibernate.*;
 import org.hibernate.query.Query;
 
@@ -23,7 +23,7 @@ public class GameDao {
 
 
     public List<Game> getAllGames() {
-        SessionFactory sessionFactory = HibernateSessionFactory.getSessionFactory();
+        SessionFactory sessionFactory = HibernateSessionFactoryHandler.getSessionFactory();
 //        Transaction transaction = null; // Utiliser des noms de variable qui ont du sens => "transaction" au lieu de "t"
         // pas besoin de transaction pour un GET (= select)
         List<Game> games = null;
@@ -61,7 +61,7 @@ public class GameDao {
     }
 
     public Game getGameById(int id) {
-      SessionFactory sessionFactory = HibernateSessionFactory.getSessionFactory();
+      SessionFactory sessionFactory = HibernateSessionFactoryHandler.getSessionFactory();
 //      Transaction transaction = null;
       Game game = null;
         try (Session session = sessionFactory.openSession()) {
@@ -80,7 +80,7 @@ public class GameDao {
     }
 
     public boolean createGame(/* TODO define parameters */) {
-      SessionFactory sessionFactory = HibernateSessionFactory.getSessionFactory();
+      SessionFactory sessionFactory = HibernateSessionFactoryHandler.getSessionFactory();
       Transaction transaction = null;
       boolean flag = false; /*si la creation est success, flag = TRUE*/
       try (Session session = sessionFactory.openSession()) {
@@ -93,7 +93,7 @@ public class GameDao {
     }
 
     public boolean updateGame(/* TODO define parameters */) {
-        SessionFactory sessionFactory = HibernateSessionFactory.getSessionFactory();
+        SessionFactory sessionFactory = HibernateSessionFactoryHandler.getSessionFactory();
         Transaction transaction = null;
         boolean flag = false;
         try (Session session = sessionFactory.openSession()) {

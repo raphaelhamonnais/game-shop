@@ -3,7 +3,7 @@ package model;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class HibernateSessionFactory {
+public class HibernateSessionFactoryHandler {
 
     private static final String HIBERNATE_CFG_XML = "hibernate.cfg.xml";
 

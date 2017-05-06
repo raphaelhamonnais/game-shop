@@ -1,7 +1,7 @@
 package data.injection;
 
 import data.database.ResetDatabase;
-import model.HibernateSessionFactory;
+import model.HibernateSessionFactoryHandler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -22,7 +22,7 @@ public class DataInjector {
         new UsersAddressesAndShoppingInjection().injectData();
 
         LOGGER.info("Closing session factory");
-        HibernateSessionFactory.getSessionFactory().close();
+        HibernateSessionFactoryHandler.getSessionFactory().close();
     }
 
 }

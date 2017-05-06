@@ -1,7 +1,7 @@
 package model.dao;
 
+import model.HibernateSessionFactoryHandler;
 import model.entity.Category;
-import model.HibernateSessionFactory;
 import org.hibernate.*;
 import org.hibernate.query.Query;
 
@@ -22,7 +22,7 @@ public class CategoryDao {
             "";*/
 
     public List<Category> getAllCategories() {
-        SessionFactory sessionFactory = HibernateSessionFactory.getSessionFactory();
+        SessionFactory sessionFactory = HibernateSessionFactoryHandler.getSessionFactory();
         List<Category> categories = null;
 
         try(Session session = sessionFactory.openSession()) {
@@ -36,7 +36,7 @@ public class CategoryDao {
     }
 
     public Category getCategoryByName(String name) {
-        SessionFactory sessionFactory = HibernateSessionFactory.getSessionFactory();
+        SessionFactory sessionFactory = HibernateSessionFactoryHandler.getSessionFactory();
         Category category = null;
 
         try(Session session = sessionFactory.openSession()) {
@@ -50,7 +50,7 @@ public class CategoryDao {
     }
 
 /*    public List<Game> getGamesFromCategory() {
-        SessionFactory sessionFactory = HibernateSessionFactory.getSessionFactory();
+        SessionFactory sessionFactory = HibernateSessionFactoryHandler.getSessionFactory();
         List<Game> category_games = null;
 
         try(Session session = sessionFactory.openSession()) {

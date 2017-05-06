@@ -1,6 +1,6 @@
 package data.injection;
 
-import model.HibernateSessionFactory;
+import model.HibernateSessionFactoryHandler;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
@@ -25,7 +25,7 @@ public abstract class DataInjection {
 
 
     public DataInjection() {
-        sessionFactory = HibernateSessionFactory.getSessionFactory();
+        sessionFactory = HibernateSessionFactoryHandler.getSessionFactory();
     }
 
     protected void injectData()  throws IOException {

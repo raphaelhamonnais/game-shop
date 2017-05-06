@@ -1,7 +1,7 @@
 package model.dao;
 
+import model.HibernateSessionFactoryHandler;
 import model.entity.Console;
-import model.HibernateSessionFactory;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -20,7 +20,7 @@ public class ConsoleDao {
             "";
 
     public List<Console> getAllConsoles() {
-        SessionFactory sessionFactory = HibernateSessionFactory.getSessionFactory();
+        SessionFactory sessionFactory = HibernateSessionFactoryHandler.getSessionFactory();
         List<Console> consoles = null;
 
         try(Session session = sessionFactory.openSession()) {
@@ -34,7 +34,7 @@ public class ConsoleDao {
     }
 
     public Console getConsoleByName(String name) {
-        SessionFactory sessionFactory = HibernateSessionFactory.getSessionFactory();
+        SessionFactory sessionFactory = HibernateSessionFactoryHandler.getSessionFactory();
         Console console = null;
 
         try(Session session = sessionFactory.openSession()) {

@@ -1,7 +1,7 @@
 package model.dao;
 
+import model.HibernateSessionFactoryHandler;
 import model.entity.PhysicalGame;
-import model.HibernateSessionFactory;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -22,7 +22,7 @@ public class PhysicalGameDao {
             "";
 
     public List<PhysicalGame> getAllPhysicalGames() {
-        SessionFactory sessionFactory = HibernateSessionFactory.getSessionFactory();
+        SessionFactory sessionFactory = HibernateSessionFactoryHandler.getSessionFactory();
         List<PhysicalGame> physical_games = null;
 
         try(Session session = sessionFactory.openSession()) {
@@ -36,7 +36,7 @@ public class PhysicalGameDao {
     }
 
     public PhysicalGame getPhysicalGameById(int id) {
-        SessionFactory sessionFactory = HibernateSessionFactory.getSessionFactory();
+        SessionFactory sessionFactory = HibernateSessionFactoryHandler.getSessionFactory();
         PhysicalGame physical_game = null;
 
         try(Session session = sessionFactory.openSession()) {

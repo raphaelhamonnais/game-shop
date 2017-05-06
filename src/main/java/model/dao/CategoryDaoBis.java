@@ -1,8 +1,8 @@
 package model.dao;
 
+import model.HibernateSessionFactoryHandler;
 import model.entity.Category;
 import model.entity.Game;
-import model.HibernateSessionFactory;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -26,7 +26,7 @@ public class CategoryDaoBis {
             "";
 
     public List<Category> getAllCategories() {
-        SessionFactory sessionFactory = HibernateSessionFactory.getSessionFactory();
+        SessionFactory sessionFactory = HibernateSessionFactoryHandler.getSessionFactory();
         List<Category> categories = null;
 
         try(Session session = sessionFactory.openSession()) {
@@ -40,7 +40,7 @@ public class CategoryDaoBis {
     }
 
     public Category getCategoryByName(String name) {
-        SessionFactory sessionFactory = HibernateSessionFactory.getSessionFactory();
+        SessionFactory sessionFactory = HibernateSessionFactoryHandler.getSessionFactory();
         Category category = null;
 
         try(Session session = sessionFactory.openSession()) {
@@ -54,7 +54,7 @@ public class CategoryDaoBis {
     }
 
     public List<Game> getGames(String name) {
-        SessionFactory sessionFactory = HibernateSessionFactory.getSessionFactory();
+        SessionFactory sessionFactory = HibernateSessionFactoryHandler.getSessionFactory();
         Category category = null;
         List<Game> games = null;
 
