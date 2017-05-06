@@ -1,5 +1,7 @@
-package model;
+package model.entity;
 
+import model.ModelException;
+import model.ModelRelationsHandler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
@@ -11,8 +13,6 @@ import org.junit.rules.ExpectedException;
 import java.util.List;
 import java.util.Set;
 
-import static model.ModelTestingUtilities.MAPPING_RELATIONS;
-import static model.ModelTestingUtilities.SAVING_TO_DATABASE;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -56,10 +56,10 @@ public class ShoppingBagTest {
     public void testShoppingBagCreation() throws Exception {
         Session session = sf.getSession();
 
-        LOGGER.info(MAPPING_RELATIONS);
+        LOGGER.info(ModelTestingUtilities.MAPPING_RELATIONS);
         ModelRelationsHandler.mapRelations(aUser, aShoppingBag);
 
-        LOGGER.info(SAVING_TO_DATABASE);
+        LOGGER.info(ModelTestingUtilities.SAVING_TO_DATABASE);
         ModelTestingUtilities.saveToSession(session, aUser, aShoppingBag);
 
         // Getting the elements back from the database
@@ -73,10 +73,10 @@ public class ShoppingBagTest {
     public void testManyToOneUser() throws Exception {
         Session session = sf.getSession();
 
-        LOGGER.info(MAPPING_RELATIONS);
+        LOGGER.info(ModelTestingUtilities.MAPPING_RELATIONS);
         ModelRelationsHandler.mapRelations(aUser, aShoppingBag);
 
-        LOGGER.info(SAVING_TO_DATABASE);
+        LOGGER.info(ModelTestingUtilities.SAVING_TO_DATABASE);
         ModelTestingUtilities.saveToSession(session, aUser, aShoppingBag);
 
         // Getting the elements back from the database
@@ -90,13 +90,13 @@ public class ShoppingBagTest {
     public void testOneToOneOrder() throws Exception {
         Session session = sf.getSession();
 
-        LOGGER.info(MAPPING_RELATIONS);
+        LOGGER.info(ModelTestingUtilities.MAPPING_RELATIONS);
         ModelRelationsHandler.mapRelations(aUser, aShoppingBag);
         ModelRelationsHandler.mapRelations(anOrder, aShoppingBag);
         ModelRelationsHandler.mapRelations(anOrder, aUser);
         ModelRelationsHandler.mapRelations(anOrder, anAddress);
 
-        LOGGER.info(SAVING_TO_DATABASE);
+        LOGGER.info(ModelTestingUtilities.SAVING_TO_DATABASE);
         ModelTestingUtilities.saveToSession(session, aUser, aShoppingBag, anAddress, anOrder);
 
         // Getting the elements back from the database
@@ -109,13 +109,13 @@ public class ShoppingBagTest {
     public void testOneToManyShoppingBagRow() throws Exception {
         Session session = sf.getSession();
 
-        LOGGER.info(MAPPING_RELATIONS);
+        LOGGER.info(ModelTestingUtilities.MAPPING_RELATIONS);
         ModelRelationsHandler.mapRelations(aGame, aPublisher);
         ModelRelationsHandler.mapRelations(aGame, aConsole, aPhysicalGame);
         ModelRelationsHandler.mapRelations(aUser, aShoppingBag);
         ModelRelationsHandler.mapRelations(aShoppingBagRow, aShoppingBag, aPhysicalGame);
 
-        LOGGER.info(SAVING_TO_DATABASE);
+        LOGGER.info(ModelTestingUtilities.SAVING_TO_DATABASE);
         ModelTestingUtilities.saveToSession(session, aPublisher);
         ModelTestingUtilities.saveToSession(session, aConsole, aGame, aPhysicalGame);
         ModelTestingUtilities.saveToSession(session, aUser, aShoppingBag, aShoppingBagRow);

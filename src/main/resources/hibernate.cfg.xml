@@ -12,16 +12,16 @@
     <property name="connection.password">root</property>
     <property name="show_sql">true</property>
     <property name="format_sql">true</property>
-    <mapping class="model.Address"/>
-    <mapping class="model.Category"/>
-    <mapping class="model.Console"/>
-    <mapping class="model.Game"/>
-    <mapping class="model.Orders"/>
-    <mapping class="model.PhysicalGame"/>
-    <mapping class="model.ShoppingBag"/>
-    <mapping class="model.ShoppingBagRow"/>
-    <mapping class="model.Users"/>
-    <mapping class="model.Roles"/>
-    <mapping class="model.Publisher"/>
+    <mapping class="model.entity.Address"/>
+    <mapping class="model.entity.Category"/>
+    <mapping class="model.entity.Console"/>
+    <mapping class="model.entity.Game"/>
+    <mapping class="model.entity.Orders"/>
+    <mapping class="model.entity.PhysicalGame"/>
+    <mapping class="model.entity.ShoppingBag"/>
+    <mapping class="model.entity.ShoppingBagRow"/>
+    <mapping class="model.entity.Users"/>
+    <mapping class="model.entity.Roles"/>
+    <mapping class="model.entity.Publisher"/>
   </session-factory>
 </hibernate-configuration>

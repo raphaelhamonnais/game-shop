@@ -1,8 +1,8 @@
 package webservices.rest.jsontest;
 
-import model.Address;
-import model.Orders;
-import model.Users;
+import model.entity.Address;
+import model.entity.Orders;
+import model.entity.Users;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -11,7 +11,6 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.SecurityContext;
 import java.util.Collection;
-import java.util.Collections;
 
 
 @Path("json-test/address")

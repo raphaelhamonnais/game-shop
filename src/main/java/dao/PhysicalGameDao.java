@@ -1,6 +1,6 @@
 package dao;
 
-import model.PhysicalGame;
+import model.entity.PhysicalGame;
 import model.HibernateSessionFactory;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

@@ -1,5 +1,6 @@
-package model;
+package model.entity;
 
+import model.ModelRelationsHandler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
@@ -9,8 +10,6 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static model.ModelTestingUtilities.MAPPING_RELATIONS;
-import static model.ModelTestingUtilities.SAVING_TO_DATABASE;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -45,7 +44,7 @@ public class ConsoleTest {
     public void testConsoleCreation() throws Exception {
         Session session = sf.getSession();
 
-        LOGGER.info(SAVING_TO_DATABASE);
+        LOGGER.info(ModelTestingUtilities.SAVING_TO_DATABASE);
         session.save(aConsole);
         session.flush();
 
@@ -59,12 +58,12 @@ public class ConsoleTest {
     public void testOneToManyPhysicalGame() throws Exception {
         Session session = sf.getSession();
 
-        LOGGER.info(MAPPING_RELATIONS);
+        LOGGER.info(ModelTestingUtilities.MAPPING_RELATIONS);
         ModelRelationsHandler.mapRelations(aGame, aPublisher);
         ModelRelationsHandler.mapRelations(aGame, aConsole, aPhysicalGame);
 
 
-        LOGGER.info(SAVING_TO_DATABASE);
+        LOGGER.info(ModelTestingUtilities.SAVING_TO_DATABASE);
         ModelTestingUtilities.saveToSession(session, aPublisher);
         ModelTestingUtilities.saveToSession(session, aConsole, aGame, aPhysicalGame);
 

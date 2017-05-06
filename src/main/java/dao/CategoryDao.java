@@ -1,7 +1,6 @@
 package dao;
 
-import model.Category;
-import model.Game;
+import model.entity.Category;
 import model.HibernateSessionFactory;
 import org.hibernate.*;
 import org.hibernate.query.Query;

@@ -1,5 +1,7 @@
-package model;
+package model.entity;
 
+import model.ModelException;
+import model.ModelRelationsHandler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
@@ -11,8 +13,6 @@ import org.junit.rules.ExpectedException;
 import java.util.List;
 import java.util.Set;
 
-import static model.ModelTestingUtilities.MAPPING_RELATIONS;
-import static model.ModelTestingUtilities.SAVING_TO_DATABASE;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -49,7 +49,7 @@ public class GameTest {
     public void testGameCreation() throws Exception {
         Session session = sf.getSession();
 
-        LOGGER.info(SAVING_TO_DATABASE);
+        LOGGER.info(ModelTestingUtilities.SAVING_TO_DATABASE);
         ModelRelationsHandler.mapRelations(aGame, aPublisher);
         ModelTestingUtilities.saveToSession(session, aPublisher);
         session.save(aGame);
@@ -66,11 +66,11 @@ public class GameTest {
 
         Session session = sf.getSession();
 
-        LOGGER.info(MAPPING_RELATIONS);
+        LOGGER.info(ModelTestingUtilities.MAPPING_RELATIONS);
         ModelRelationsHandler.mapRelations(aGame, aPublisher);
         ModelRelationsHandler.mapRelations(aGame, aConsole, aPhysicalGame);
 
-        LOGGER.info(SAVING_TO_DATABASE);
+        LOGGER.info(ModelTestingUtilities.SAVING_TO_DATABASE);
         ModelTestingUtilities.saveToSession(session, aPublisher);
         ModelTestingUtilities.saveToSession(session, aConsole, aGame, aPhysicalGame);
 

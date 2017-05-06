@@ -1,7 +1,7 @@
 package webservices.rest.jsontest;
 
 import dao.GameDao;
-import model.Game;
+import model.entity.Game;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
