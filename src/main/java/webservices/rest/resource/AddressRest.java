@@ -14,7 +14,7 @@ import java.util.Collection;
 
 
 @Path("json-test/address")
-public class AddressesJSON {
+public class AddressRest {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)

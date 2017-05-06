@@ -11,7 +11,7 @@ import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 @Path("json-test/physicalGames")
-public class PhysicalGameJSON {
+public class PhysicalGameRest {
     private PhysicalGameDao physicalGameDao = new PhysicalGameDao();
 
     //get all physical games

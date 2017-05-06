@@ -10,7 +10,7 @@ import java.util.*;
 
 
 @Path("json-test/games")
-public class GameJSON {
+public class GameRest {
 
     private GameDao gameDao = new GameDao();
 

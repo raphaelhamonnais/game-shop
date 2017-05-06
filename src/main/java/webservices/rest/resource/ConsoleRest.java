@@ -11,7 +11,7 @@ import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 @Path("/json-test/consoles")
-public class ConsoleJSON {
+public class ConsoleRest {
     private ConsoleDao consoleDao = new ConsoleDao();
 
     //get all consoles
