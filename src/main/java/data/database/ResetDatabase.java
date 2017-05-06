@@ -1,4 +1,4 @@
-package database;
+package data.database;
 
 
 import org.apache.ibatis.jdbc.ScriptRunner;

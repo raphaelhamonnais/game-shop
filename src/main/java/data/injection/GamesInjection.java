@@ -1,4 +1,4 @@
-package database;
+package data.injection;
 
 import model.*;
 import model.entity.*;

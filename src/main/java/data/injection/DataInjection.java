@@ -1,4 +1,4 @@
-package database;
+package data.injection;
 
 import model.HibernateSessionFactory;
 import org.apache.commons.csv.CSVFormat;
