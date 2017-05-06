@@ -10,7 +10,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
-@Path("/json-test/physical_games")
+@Path("json-test/physicalGames")
 public class PhysicalGameJSON {
     private PhysicalGameDao physicalGameDao = new PhysicalGameDao();
 

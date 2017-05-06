@@ -10,12 +10,12 @@ import java.util.List;
 
 public class ConsoleDao {
 
-    public static final String Q_GET_ALL_CONSOLES = "from Console con group by con.consoleId " +
+    public static final String Q_GET_ALL_CONSOLES = "from Console con " +
            // "join fetch con.physicalGames " +  /*if we want to see the console for each game, we will use this line of code and we get ride of group by*/
             "";
     public static final String P_CONSOLE_NAME = "name";
     public static final String Q_GET_CONSOLE_BY_NAME = "from Console con " +
-            "join fetch con.physicalGames " +
+           // "join fetch con.physicalGames " +
             "where con.consoleName=:"+ P_CONSOLE_NAME +
             "";
 

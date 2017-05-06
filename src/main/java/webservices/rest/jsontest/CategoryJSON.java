@@ -2,6 +2,7 @@ package webservices.rest.jsontest;
 
 import dao.CategoryDao;
 import model.Category;
+import model.Game;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -29,4 +30,10 @@ public class CategoryJSON {
     public Category getCategoryByName(@PathParam("name") String name) {
         return categoryDao.getCategoryByName(name);
     }
+
+ /*   //get games from category
+    @GET
+    @Path("{name}/games")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Game> getGamesFromCategory() {return categoryDao.getGamesFromCategory();}*/
 }

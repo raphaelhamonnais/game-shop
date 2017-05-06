@@ -10,12 +10,10 @@ import java.util.List;
 
 public class PhysicalGameDao {
 
-    public static final String Q_GET_ALL_PHYSICAL_GAMES = "from PhysicalGame pg group by pg.physicalGameId " +
-           // "join fetch pg.shoppingBagRows " +
+    public static final String Q_GET_ALL_PHYSICAL_GAMES = "from PhysicalGame pg " +
             "";
     public static final String P_PHYSICAL_GAME_ID = "id";
     public static final String Q_GET_PHYSICAL_GAME_BY_ID = "from PhysicalGame pg " +
-          //  "join fetch pg.shoppingBagRows " +
             "where pg.physicalGameId=:"+ P_PHYSICAL_GAME_ID +
             "";
 

@@ -23,7 +23,9 @@ public class PhysicalGame implements Serializable {
     private int physicalGameId;
     private int gameStock;
     private BigDecimal gamePrice;
+    @JsonIgnore
     private Game game;
+    @JsonIgnore
     private Console console;
     @JsonIgnore
     private Set<ShoppingBagRow> shoppingBagRows = new HashSet<>();
