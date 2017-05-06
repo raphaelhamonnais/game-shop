@@ -13,7 +13,7 @@ import javax.ws.rs.core.SecurityContext;
 import java.util.Collection;
 
 
-@Path("json-test/address")
+@Path("addresses")
 public class AddressRest {
 
     @GET

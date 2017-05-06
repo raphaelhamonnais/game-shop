@@ -9,7 +9,7 @@ import javax.ws.rs.core.MediaType;
 import java.util.*;
 
 
-@Path("json-test/games")
+@Path("games")
 public class GameRest {
 
     private GameDao gameDao = new GameDao();

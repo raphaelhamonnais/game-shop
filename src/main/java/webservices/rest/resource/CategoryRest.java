@@ -13,7 +13,7 @@ import javax.ws.rs.core.MediaType;
 
 import java.util.List;
 
-@Path("json-test/categories")
+@Path("categories")
 public class CategoryRest {
     private CategoryDao categoryDao = new CategoryDao();
 
