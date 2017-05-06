@@ -1,4 +1,4 @@
-package model;
+package model.handler;
 
 import model.entity.*;
 

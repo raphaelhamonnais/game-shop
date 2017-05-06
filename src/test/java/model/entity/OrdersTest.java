@@ -1,7 +1,7 @@
 package model.entity;
 
 import model.ModelException;
-import model.ModelRelationsHandler;
+import model.handler.ModelRelationsHandler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;

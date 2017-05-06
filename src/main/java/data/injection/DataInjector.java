@@ -1,7 +1,7 @@
 package data.injection;
 
 import data.database.ResetDatabase;
-import model.HibernateSessionFactoryHandler;
+import model.handler.HibernateSessionFactoryHandler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

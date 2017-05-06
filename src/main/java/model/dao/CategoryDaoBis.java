@@ -1,6 +1,6 @@
 package model.dao;
 
-import model.HibernateSessionFactoryHandler;
+import model.handler.HibernateSessionFactoryHandler;
 import model.entity.Category;
 import model.entity.Game;
 import org.hibernate.Session;
