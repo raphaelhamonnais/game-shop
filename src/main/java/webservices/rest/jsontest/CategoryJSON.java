@@ -22,11 +22,11 @@ public class CategoryJSON {
         return categoryDao.getAllCategories();
     }
 
-    //get category by id
+    //get category by name
     @GET
-    @Path("{id}")
+    @Path("{name}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Category getCategoryById(@PathParam("id") int id) {
-        return categoryDao.getCategoryId(id);
+    public Category getCategoryByName(@PathParam("name") String name) {
+        return categoryDao.getCategoryByName(name);
     }
 }

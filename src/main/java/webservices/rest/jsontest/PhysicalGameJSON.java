@@ -14,14 +14,14 @@ import java.util.List;
 public class PhysicalGameJSON {
     private PhysicalGameDao physicalGameDao = new PhysicalGameDao();
 
-    //get all consoles
+    //get all physical games
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<PhysicalGame> getAllPhysicalGames() {
         return physicalGameDao.getAllPhysicalGames();
     }
 
-    //get console by id
+    //get physical game by id
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)

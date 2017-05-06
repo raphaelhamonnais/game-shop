@@ -21,11 +21,11 @@ public class ConsoleJSON {
         return consoleDao.getAllConsoles();
     }
 
-    //get console by id
+    //get console by name
     @GET
-    @Path("{id}")
+    @Path("{name}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Console getConsoleById(@PathParam("id") int id) {
-        return consoleDao.getConsoleId(id);
+    public Console getConsoleByName(@PathParam("name") String name) {
+        return consoleDao.getConsoleByName(name);
     }
 }

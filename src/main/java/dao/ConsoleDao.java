@@ -10,13 +10,13 @@ import java.util.List;
 
 public class ConsoleDao {
 
-    public static final String Q_GET_ALL_CONSOLES = "from Console con " +
-            "join fetch con.physicalGames " +
+    public static final String Q_GET_ALL_CONSOLES = "from Console con group by con.consoleId " +
+           // "join fetch con.physicalGames " +  /*if we want to see the console for each game, we will use this line of code and we get ride of group by*/
             "";
-    public static final String P_CONSOLE_ID = "id";
-    public static final String Q_GET_CONSOLE_BY_ID = "from Console con " +
+    public static final String P_CONSOLE_NAME = "name";
+    public static final String Q_GET_CONSOLE_BY_NAME = "from Console con " +
             "join fetch con.physicalGames " +
-            "where con.consoleId=:"+ P_CONSOLE_ID +
+            "where con.consoleName=:"+ P_CONSOLE_NAME +
             "";
 
     public List<Console> getAllConsoles() {
@@ -33,13 +33,13 @@ public class ConsoleDao {
         return consoles;
     }
 
-    public Console getConsoleId(int id) {
+    public Console getConsoleByName(String name) {
         SessionFactory sessionFactory = HibernateSessionFactory.getSessionFactory();
         Console console = null;
 
         try(Session session = sessionFactory.openSession()) {
-            Query query = session.createQuery(Q_GET_CONSOLE_BY_ID);
-            query.setParameter(P_CONSOLE_ID, id);
+            Query query = session.createQuery(Q_GET_CONSOLE_BY_NAME);
+            query.setParameter(P_CONSOLE_NAME, name);
             console = (Console) query.uniqueResult();
         } catch (Exception error) {
             error.printStackTrace();
