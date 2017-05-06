@@ -1,7 +1,9 @@
 package webservices.rest.resource;
 
-import model.dao.ConsoleDao;
 import model.entity.Console;
+import model.entity.PhysicalGame;
+import model.handler.HibernateTransactionHandler;
+import model.query.ConsoleQueriesHandler;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -11,21 +13,40 @@ import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 @Path("consoles")
+@SuppressWarnings("unchecked")
 public class ConsoleRest {
-    private ConsoleDao consoleDao = new ConsoleDao();
 
-    //get all consoles
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Console> getAllConsoles() {
-        return consoleDao.getAllConsoles();
+        return new HibernateTransactionHandler()
+                .openSession()
+                .createQuery(ConsoleQueriesHandler.QUERY_GET_ALL_CONSOLES)
+                .getResultListAndClose();
     }
 
-    //get console by name
     @GET
     @Path("{name}")
     @Produces(MediaType.APPLICATION_JSON)
     public Console getConsoleByName(@PathParam("name") String name) {
-        return consoleDao.getConsoleByName(name);
+        return (Console) new HibernateTransactionHandler()
+                .openSession()
+                .createQuery(ConsoleQueriesHandler.QUERY_GET_CONSOLE_BY_NAME)
+                .addParameter(ConsoleQueriesHandler.PARAM_CONSOLE_NAME, name)
+                .getUniqueResultAndClose();
     }
+
+
+    @GET
+    @Path("{name}/physical-games")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<PhysicalGame> getPhysicalGames(@PathParam("name") String name) {
+        return new HibernateTransactionHandler()
+                .openSession()
+                .createQuery(ConsoleQueriesHandler.QUERY_GET_CONSOLE_PHYSICAL_GAMES)
+                .addParameter(ConsoleQueriesHandler.PARAM_CONSOLE_NAME, name)
+                .getResultListAndClose();
+    }
+
+
 }

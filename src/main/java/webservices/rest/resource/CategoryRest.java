@@ -1,9 +1,9 @@
 package webservices.rest.resource;
 
-import model.dao.CategoryDao;
-import model.dao.CategoryDaoBis;
 import model.entity.Category;
 import model.entity.Game;
+import model.handler.HibernateTransactionHandler;
+import model.query.CategoryQueriesHandler;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -14,30 +14,38 @@ import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 @Path("categories")
+@SuppressWarnings("unchecked")
 public class CategoryRest {
-    private CategoryDao categoryDao = new CategoryDao();
 
-    //get all categories
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Category> getAllCategories() {
-        return categoryDao.getAllCategories();
+        return new HibernateTransactionHandler()
+                .openSession()
+                .createQuery(CategoryQueriesHandler.QUERY_GET_ALL_CATEGORIES)
+                .getResultListAndClose();
     }
 
-    //get category by name
     @GET
     @Path("{name}")
     @Produces(MediaType.APPLICATION_JSON)
     public Category getCategoryByName(@PathParam("name") String name) {
-        return categoryDao.getCategoryByName(name);
+        return (Category) new HibernateTransactionHandler()
+                .openSession()
+                .createQuery(CategoryQueriesHandler.QUERY_GET_CATEGORY_BY_NAME)
+                .addParameter(CategoryQueriesHandler.PARAM_CATEGORY_NAME,name)
+                .getUniqueResultAndClose();
     }
 
-    //get games from category
     @GET
     @Path("{name}/games")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Game> getGamesFromCategory(@PathParam("name") String name) {
-//        return categoryDao.getGamesFromCategory();
-        return new CategoryDaoBis().getGames(name);
+        return new HibernateTransactionHandler()
+                .openSession()
+                .createQuery(CategoryQueriesHandler.QUERY_GET_CATEGORY_GAMES)
+                .addParameter(CategoryQueriesHandler.PARAM_CATEGORY_NAME,name)
+                .getResultListAndClose();
     }
 }

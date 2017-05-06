@@ -1,7 +1,9 @@
 package webservices.rest.resource;
 
-import model.dao.GameDao;
+import model.entity.Console;
+import model.handler.HibernateTransactionHandler;
 import model.entity.Game;
+import model.query.GameQueriesHandler;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -10,37 +12,51 @@ import java.util.*;
 
 
 @Path("games")
+@SuppressWarnings("unchecked")
 public class GameRest {
 
-    private GameDao gameDao = new GameDao();
-
-    // get all games
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Game> getAllGames() {
-        return gameDao.getAllGames();
+        return new HibernateTransactionHandler()
+                .openSession()
+                .createQuery(GameQueriesHandler.QUERY_GET_ALL_GAMES)
+                .getResultListAndClose();
     }
 
-    // get game by id
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Game getGameById(@PathParam("id") int id) {
-        return gameDao.getGameById(id);
+        return (Game) new HibernateTransactionHandler()
+                .openSession()
+                .createQuery(GameQueriesHandler.QUERY_GET_GAME_BY_ID)
+                .addParameter(GameQueriesHandler.PARAM_GAME_ID, id)
+                .getUniqueResultAndClose();
     }
 
-    // create game
+
+    @GET
+    @Path("{id}/consoles")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Console> getConsoles(@PathParam("id") int id) {
+        return new HibernateTransactionHandler()
+                .openSession()
+                .createQuery(GameQueriesHandler.QUERY_GAME_CONSOLES)
+                .addParameter(GameQueriesHandler.PARAM_GAME_ID, id)
+                .getResultListAndClose();
+    }
+
     @POST
     @Consumes({MediaType.APPLICATION_FORM_URLENCODED})
-    //@Produces(//TODO to define)
+    @Produces(/*TODO to define*/)
     public void createGame(@FormParam("someFormParam") String someFormParam) {
         // TODO create game with params
     }
 
-    // update game
     @PUT
     @Consumes({MediaType.APPLICATION_FORM_URLENCODED})
-    //@Produces(//TODO to define)
+    @Produces(/*TODO to define*/)
     public void updateGame(@FormParam("someFormParam") String someFormParam) {
         // TODO update game with params
     }
