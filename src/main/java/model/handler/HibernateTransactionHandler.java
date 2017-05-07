@@ -1,12 +1,11 @@
 package model.handler;
 
 import model.ModelException;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import org.hibernate.*;
 import org.hibernate.query.Query;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 public class HibernateTransactionHandler {
 
@@ -46,9 +45,20 @@ public class HibernateTransactionHandler {
     }
 
     public HibernateTransactionHandler addParameter(String paramName, Object paramValue) {
-        if (query == null)
-            throw new ModelException("Query must be created before adding any parameter");
+        checkQueryInitialized();
         query.setParameter(paramName, paramValue);
+        return this;
+    }
+
+    public HibernateTransactionHandler setFirstResult(int start) {
+        checkQueryInitialized();
+        query.setFirstResult(start);
+        return this;
+    }
+
+    public HibernateTransactionHandler setMaxResults(int max) {
+        checkQueryInitialized();
+        query.setMaxResults(max);
         return this;
     }
 
@@ -83,4 +93,26 @@ public class HibernateTransactionHandler {
         query.executeUpdate();
         return this;
     }
+
+    public Stream<?> stream() {
+        return query.stream();
+    }
+
+    public ScrollableResults scrollForward() {
+        return query.scroll(ScrollMode.FORWARD_ONLY);
+    }
+
+
+    private void checkQueryInitialized() {
+        if (query == null)
+            throw new ModelException("Query must be created before adding any parameter");
+    }
+
+
+//    @Override
+//    protected void finalize() throws Throwable {
+//        commit();
+//        closeSession();
+//        super.finalize();
+//    }
 }

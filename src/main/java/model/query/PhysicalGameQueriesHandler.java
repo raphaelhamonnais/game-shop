@@ -13,4 +13,5 @@ public class PhysicalGameQueriesHandler {
     public static final String QUERY_GET_PHYSICAL_GAME_BY_ID = QUERY_GET_ALL_PHYSICAL_GAMES +
             "where pg.id=:"+ PARAM_PHYSICAL_GAME_ID;
 
+    public static final String QUERY_COUNT_PHYSICAL_GAMES = "select count (pg.id) from PhysicalGame pg";
 }
