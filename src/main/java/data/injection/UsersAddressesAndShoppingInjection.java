@@ -35,6 +35,7 @@ public class UsersAddressesAndShoppingInjection extends DataInjection {
 
     private Map<Integer, Users> usersMap = new HashMap<>();
     private Map<Integer, Address> addressMap = new HashMap<>();
+    private Map<Integer, Roles> rolesMap = new HashMap<>();
     private Map<Integer, Orders> ordersMap = new HashMap<>();
     private Map<Integer, ShoppingBag> shoppingBagMap = new HashMap<>();
 
@@ -56,6 +57,10 @@ public class UsersAddressesAndShoppingInjection extends DataInjection {
 
     private void createUsersAndAddresses() {
         // creating maps of categories, consoles and publishers
+        Roles customerRole = new Roles("customer");
+        Roles adminRole = new Roles("admin");
+        rolesMap.put(customerRole.hashCode(), customerRole);
+        rolesMap.put(adminRole.hashCode(), adminRole);
         LOGGER.info("Creating users and addresses");
         int lineNumber = 1;
         for (CSVRecord record : records) {
@@ -82,6 +87,7 @@ public class UsersAddressesAndShoppingInjection extends DataInjection {
                 anAddress = addressMap.get(anAddress.hashCode());
             LOGGER.info("Mapping user and address");
             ModelRelationsHandler.mapRelations(aUser, anAddress);
+            ModelRelationsHandler.mapRelations(aUser, customerRole);
 
             LOGGER.info("Saving user to HashMap");
             usersMap.put(aUser.hashCode(), aUser);
@@ -164,6 +170,10 @@ public class UsersAddressesAndShoppingInjection extends DataInjection {
         LOGGER.info("Saving addresses");
         for (Address address : addressMap.values())
             session.saveOrUpdate(address);
+
+        LOGGER.info("Saving roles");
+        for (Roles role : rolesMap.values())
+            session.saveOrUpdate(role);
 
         LOGGER.info("Saving shopping bags");
         for (ShoppingBag bag : shoppingBagMap.values())
