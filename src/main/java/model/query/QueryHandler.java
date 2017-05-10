@@ -178,6 +178,31 @@ public class QueryHandler {
                 + that.filterById();
     }
 
+
+    public static class ShoppingBag {
+        private static ShoppingBagQH that = shoppingBagQH;
+
+        public static final String ID_PARAMETER = that.getParamIdFilter();
+
+        public static final String COUNT = that.count() + that.from();
+
+        public static final String GET_ALL = that.from()
+                + that.fetchRequiredProperties()
+                + usersQH.fetchRequiredProperties()
+                + shoppingBagRowQH.fetchRequiredProperties()
+                + physicalGameQH.fetchRequiredProperties()
+                + gameQH.fetchRequiredProperties();
+
+        public static final String GET_BY_ID = that.from()
+                + that.fetchRequiredProperties()
+                + usersQH.fetchRequiredProperties()
+                + shoppingBagRowQH.fetchRequiredProperties()
+                + physicalGameQH.fetchRequiredProperties()
+                + gameQH.fetchRequiredProperties()
+                + that.filterById();
+    }
+
+
     public static class Order {
         private static OrdersQH that = ordersQH;
 

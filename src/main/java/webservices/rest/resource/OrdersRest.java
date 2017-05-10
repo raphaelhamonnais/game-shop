@@ -1,6 +1,5 @@
 package webservices.rest.resource;
 
-import model.entity.Address;
 import model.entity.Orders;
 import model.handler.HibernateTransactionHandler;
 import model.query.QueryHandler;
