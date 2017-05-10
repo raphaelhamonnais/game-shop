@@ -250,4 +250,24 @@ public class QueryHandler {
                 + gameQH.fetchRequiredProperties()
                 + that.filterById();
     }
+
+
+    public static class Roles {
+        private static RolesQH that = rolesQH;
+
+        public static final String ID_PARAMETER = that.getParamIdFilter();
+
+        public static final String COUNT = that.count() + that.from();
+
+        public static final String GET_ALL = that.from()
+                + that.fetchRequiredProperties();
+
+        public static final String GET_BY_ID = that.from()
+                + that.fetchRequiredProperties()
+                + that.filterById();
+
+        public static final String GET_USERS = usersQH.from()
+                + usersQH.fetchRequiredProperties()
+                + that.filterById();
+    }
 }
