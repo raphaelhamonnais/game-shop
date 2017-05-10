@@ -230,4 +230,24 @@ public class QueryHandler {
         public static final String DELETE_BY_ID = that.delete()
                 + that.filterById();
     }
+
+
+    public static class Publisher {
+        private static PublisherQH that = publisherQH;
+
+        public static final String ID_PARAMETER = that.getParamIdFilter();
+
+        public static final String COUNT = that.count() + that.from();
+
+        public static final String GET_ALL = that.from()
+                + that.fetchRequiredProperties();
+
+        public static final String GET_BY_ID = that.from()
+                + that.fetchRequiredProperties()
+                + that.filterById();
+
+        public static final String GET_GAMES = gameQH.from()
+                + gameQH.fetchRequiredProperties()
+                + that.filterById();
+    }
 }
