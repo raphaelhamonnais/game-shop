@@ -1,9 +1,10 @@
 package webservices.rest.resource;
 
 import model.entity.Console;
+import model.entity.Game;
 import model.entity.PhysicalGame;
 import model.handler.HibernateTransactionHandler;
-import model.query.ConsoleQueriesHandler;
+import model.query.QueryHandler;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -21,7 +22,7 @@ public class ConsoleRest {
     public List<Console> getAllConsoles() {
         return new HibernateTransactionHandler()
                 .openSession()
-                .createQuery(ConsoleQueriesHandler.QUERY_GET_ALL_CONSOLES)
+                .createQuery(QueryHandler.Console.GET_ALL)
                 .getResultListAndClose();
     }
 
@@ -31,8 +32,8 @@ public class ConsoleRest {
     public Console getConsoleByName(@PathParam("name") String name) {
         return (Console) new HibernateTransactionHandler()
                 .openSession()
-                .createQuery(ConsoleQueriesHandler.QUERY_GET_CONSOLE_BY_NAME)
-                .addParameter(ConsoleQueriesHandler.PARAM_CONSOLE_NAME, name)
+                .createQuery(QueryHandler.Console.GET_BY_ID)
+                .addParameter(QueryHandler.Console.ID_PARAMETER, name)
                 .getUniqueResultAndClose();
     }
 
@@ -43,10 +44,20 @@ public class ConsoleRest {
     public List<PhysicalGame> getPhysicalGames(@PathParam("name") String name) {
         return new HibernateTransactionHandler()
                 .openSession()
-                .createQuery(ConsoleQueriesHandler.QUERY_GET_CONSOLE_PHYSICAL_GAMES)
-                .addParameter(ConsoleQueriesHandler.PARAM_CONSOLE_NAME, name)
+                .createQuery(QueryHandler.Console.GET_PHYSICAL_GAMES)
+                .addParameter(QueryHandler.Console.ID_PARAMETER, name)
                 .getResultListAndClose();
     }
 
 
+    @GET
+    @Path("{name}/games")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Game> getGames(@PathParam("name") String name) {
+        return new HibernateTransactionHandler()
+                .openSession()
+                .createQuery(QueryHandler.Console.GET_GAMES)
+                .addParameter(QueryHandler.Console.ID_PARAMETER, name)
+                .getResultListAndClose();
+    }
 }

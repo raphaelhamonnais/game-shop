@@ -3,7 +3,7 @@ package webservices.rest.resource;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import model.entity.PhysicalGame;
 import model.handler.HibernateTransactionHandler;
-import model.query.PhysicalGameQueriesHandler;
+import model.query.QueryHandler;
 import org.hibernate.ScrollableResults;
 
 import javax.ws.rs.*;
@@ -24,7 +24,7 @@ public class PhysicalGameRest {
     private long getNbPages() {
         Long nbPhysicalGames = (Long) new HibernateTransactionHandler()
                 .openSession()
-                .createQuery(PhysicalGameQueriesHandler.QUERY_COUNT_PHYSICAL_GAMES)
+                .createQuery(QueryHandler.PhysicalGame.COUNT)
                 .getUniqueResultAndClose();
 
         Double nbPages = Math.ceil(nbPhysicalGames.doubleValue() / pageSize);
@@ -36,16 +36,27 @@ public class PhysicalGameRest {
     public List<PhysicalGame> getAllPhysicalGames() {
         return new HibernateTransactionHandler()
                 .openSession()
-                .createQuery(PhysicalGameQueriesHandler.QUERY_GET_ALL_PHYSICAL_GAMES)
+                .createQuery(QueryHandler.PhysicalGame.GET_ALL)
                 .getResultListAndClose();
     }
 
 
     @GET
-    @Path("pages")
+    @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
+    public PhysicalGame getPhysicalGameById(@PathParam("id") int id) {
+        return (PhysicalGame) new HibernateTransactionHandler()
+                .openSession()
+                .createQuery(QueryHandler.PhysicalGame.GET_BY_ID)
+                .addParameter(QueryHandler.PhysicalGame.ID_PARAMETER, id)
+                .getUniqueResultAndClose();
+    }
+
+    @GET
+    @Path("pages")
+    @Produces(MediaType.TEXT_PLAIN)
     public Response getNumberOfPages() {
-        return Response.ok("{" + nbPages + "}").type(MediaType.APPLICATION_JSON).build();
+        return Response.ok(nbPages).type(MediaType.TEXT_PLAIN).build();
     }
 
     @GET
@@ -59,13 +70,16 @@ public class PhysicalGameRest {
         else {
             List results = new HibernateTransactionHandler()
                     .openSession()
-                    .createQuery(PhysicalGameQueriesHandler.QUERY_GET_ALL_PHYSICAL_GAMES)
+                    .createQuery(QueryHandler.PhysicalGame.GET_ALL)
                     .setFirstResult((pageNumber - 1) * pageSize)
                     .setMaxResults(pageSize)
                     .getResultListAndClose();
             return Response.ok(results).type(MediaType.APPLICATION_JSON).build();
         }
     }
+
+
+
 
     @GET
     @Path("stream")
@@ -76,7 +90,7 @@ public class PhysicalGameRest {
 
         Stream<PhysicalGame> physicalGameStream = (Stream<PhysicalGame>) new HibernateTransactionHandler()
                 .openSession()
-                .createQuery(PhysicalGameQueriesHandler.QUERY_GET_ALL_PHYSICAL_GAMES)
+                .createQuery(QueryHandler.PhysicalGame.GET_ALL)
                 .stream();
 
         StreamingOutput stream = new StreamingOutput() {
@@ -107,7 +121,6 @@ public class PhysicalGameRest {
     }
 
 
-
     @GET
     @Path("scroll")
     @Produces(MediaType.APPLICATION_JSON)
@@ -115,7 +128,7 @@ public class PhysicalGameRest {
         ObjectMapper mapper = new ObjectMapper();
         ScrollableResults scrollableResults = new HibernateTransactionHandler()
                 .openSession()
-                .createQuery(PhysicalGameQueriesHandler.QUERY_GET_ALL_PHYSICAL_GAMES)
+                .createQuery(QueryHandler.PhysicalGame.GET_ALL)
                 .scrollForward();
 
         StreamingOutput stream = new StreamingOutput() {
@@ -139,17 +152,5 @@ public class PhysicalGameRest {
         };
 //        session.close();
         return Response.ok(stream).type(MediaType.APPLICATION_JSON).build();
-    }
-
-
-    @GET
-    @Path("{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public PhysicalGame getPhysicalGameById(@PathParam("id") int id) {
-        return (PhysicalGame) new HibernateTransactionHandler()
-                .openSession()
-                .createQuery(PhysicalGameQueriesHandler.QUERY_GET_PHYSICAL_GAME_BY_ID)
-                .addParameter(PhysicalGameQueriesHandler.PARAM_PHYSICAL_GAME_ID, id)
-                .getUniqueResultAndClose();
     }
 }

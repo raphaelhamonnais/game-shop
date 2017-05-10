@@ -1,21 +1,15 @@
 package webservices.rest.resource;
 
 import model.entity.Address;
-import model.entity.Orders;
-import model.entity.Users;
-import model.handler.HibernateSessionFactoryHandler;
 import model.handler.HibernateTransactionHandler;
-import model.query.AddressQueriesHandler;
+import model.query.QueryHandler;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.SecurityContext;
-import java.util.Collection;
 import java.util.List;
 
 
@@ -27,7 +21,8 @@ public class AddressRest {
     public Response address() {
         List result = new HibernateTransactionHandler()
                 .openSession()
-                .createQuery(AddressQueriesHandler.QUERY_GET_ALL_ADDRESSES)
+//                .createQuery(AddressQueriesHandler.QUERY_GET_ALL_ADDRESSES)
+                .createQuery(QueryHandler.Address.GET_ALL)
                 .getResultListAndClose();
         return Response.status(Response.Status.OK).entity(result).build();
     }
@@ -39,8 +34,10 @@ public class AddressRest {
     public Response getAddressById(@PathParam("id") int id) {
         Address result = (Address) new HibernateTransactionHandler()
                 .openSession()
-                .createQuery(AddressQueriesHandler.QUERY_GET_ADDRESS_BY_ID)
-                .addParameter(AddressQueriesHandler.PARAM_ADDRESS_NAME, id)
+//                .createQuery(AddressQueriesHandler.QUERY_GET_ADDRESS_BY_ID)
+                .createQuery(QueryHandler.Address.GET_BY_ID)
+//                .addParameter(AddressQueriesHandler.PARAM_ADDRESS_NAME, id)
+                .addParameter(QueryHandler.Address.ID_PARAMETER, id)
                 .getUniqueResultAndClose();
         return Response.status(Response.Status.OK).entity(result).build();
     }
@@ -51,8 +48,10 @@ public class AddressRest {
     public Response users(@PathParam("id") int id) {
         List result = new HibernateTransactionHandler()
                 .openSession()
-                .createQuery(AddressQueriesHandler.QUERY_GET_ADDRESS_USERS)
-                .addParameter(AddressQueriesHandler.PARAM_ADDRESS_NAME, id)
+//                .createQuery(AddressQueriesHandler.QUERY_GET_ADDRESS_USERS)
+                .createQuery(QueryHandler.Address.GET_USERS)
+//                .addParameter(AddressQueriesHandler.PARAM_ADDRESS_NAME, id)
+                .addParameter(QueryHandler.Address.ID_PARAMETER, id)
                 .getResultListAndClose();
         return Response.status(Response.Status.OK).entity(result).build();
     }
@@ -63,8 +62,10 @@ public class AddressRest {
     public Response orders(@PathParam("id") int id) {
         List result = new HibernateTransactionHandler()
                 .openSession()
-                .createQuery(AddressQueriesHandler.QUERY_GET_ADDRESS_ORDERS)
-                .addParameter(AddressQueriesHandler.PARAM_ADDRESS_NAME, id)
+//                .createQuery(AddressQueriesHandler.QUERY_GET_ADDRESS_ORDERS)
+                .createQuery(QueryHandler.Address.GET_ORDERS)
+//                .addParameter(AddressQueriesHandler.PARAM_ADDRESS_NAME, id)
+                .addParameter(QueryHandler.Address.ID_PARAMETER, id)
                 .getResultListAndClose();
         return Response.status(Response.Status.OK).entity(result).build();
     }
