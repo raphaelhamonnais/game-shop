@@ -1,7 +1,6 @@
 package webservices.rest.resource;
 
 import model.entity.Publisher;
-import model.entity.ShoppingBag;
 import model.handler.HibernateTransactionHandler;
 import model.query.QueryHandler;
 import webservices.rest.PaginationHandler;
