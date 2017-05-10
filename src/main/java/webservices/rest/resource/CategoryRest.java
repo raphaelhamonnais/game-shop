@@ -4,6 +4,8 @@ import model.entity.Category;
 import model.entity.Game;
 import model.handler.HibernateTransactionHandler;
 import model.query.QueryHandler;
+import webservices.rest.PaginationHandler;
+import webservices.rest.PaginationService;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -14,7 +16,14 @@ import java.util.List;
 
 @Path("categories")
 @SuppressWarnings("unchecked")
-public class CategoryRest {
+public class CategoryRest extends PaginationService {
+
+    @Override
+    protected PaginationHandler setPaginationHandler() {
+        return new PaginationHandler(
+                QueryHandler.Category.COUNT,
+                QueryHandler.Category.GET_ALL);
+    }
 
 
     @GET
@@ -47,21 +56,4 @@ public class CategoryRest {
                 .addParameter(QueryHandler.Category.ID_PARAMETER,name)
                 .getResultListAndClose();
     }
-
-//    @DELETE
-//    @Path("{name}")
-//    public Response delete(@PathParam("name") String name) {
-//        new HibernateTransactionHandler()
-//                .openSession()
-//                .beginTransaction()
-//                .createQuery(CategoryQueriesHandler.DELETE_CATEGORY_BY_NAME)
-//                .addParameter(CategoryQueriesHandler.PARAM_CATEGORY_NAME,name)
-//                .executeUpdate()
-//                .commit()
-//                .closeSession();
-//        return Response
-//                .status(ACCEPTED)
-//                .entity("Delete of category " + name + " succesful")
-//                .build();
-//    }
 }

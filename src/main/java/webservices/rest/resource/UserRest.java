@@ -3,6 +3,8 @@ package webservices.rest.resource;
 import model.entity.Users;
 import model.handler.HibernateTransactionHandler;
 import model.query.QueryHandler;
+import webservices.rest.PaginationHandler;
+import webservices.rest.PaginationService;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -14,7 +16,14 @@ import java.util.List;
 
 
 @Path("users")
-public class UserRest {
+public class UserRest extends PaginationService {
+
+    @Override
+    protected PaginationHandler setPaginationHandler() {
+        return new PaginationHandler(
+                QueryHandler.Users.COUNT,
+                QueryHandler.Users.GET_ALL);
+    }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)

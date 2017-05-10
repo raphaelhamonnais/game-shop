@@ -5,6 +5,8 @@ import model.entity.PhysicalGame;
 import model.handler.HibernateTransactionHandler;
 import model.query.QueryHandler;
 import org.hibernate.ScrollableResults;
+import webservices.rest.PaginationHandler;
+import webservices.rest.PaginationService;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -16,19 +18,13 @@ import java.util.stream.Stream;
 
 @Path("physical-games")
 @SuppressWarnings("unchecked")
-public class PhysicalGameRest {
+public class PhysicalGameRest extends PaginationService {
 
-    private static final int pageSize = 20;
-    private long nbPages = getNbPages();
-
-    private long getNbPages() {
-        Long nbPhysicalGames = (Long) new HibernateTransactionHandler()
-                .openSession()
-                .createQuery(QueryHandler.PhysicalGame.COUNT)
-                .getUniqueResultAndClose();
-
-        Double nbPages = Math.ceil(nbPhysicalGames.doubleValue() / pageSize);
-        return nbPages.longValue();
+    @Override
+    protected PaginationHandler setPaginationHandler() {
+        return new PaginationHandler(
+                QueryHandler.PhysicalGame.COUNT,
+                QueryHandler.PhysicalGame.GET_ALL);
     }
 
     @GET
@@ -51,35 +47,6 @@ public class PhysicalGameRest {
                 .addParameter(QueryHandler.PhysicalGame.ID_PARAMETER, id)
                 .getUniqueResultAndClose();
     }
-
-    @GET
-    @Path("pages")
-    @Produces(MediaType.TEXT_PLAIN)
-    public Response getNumberOfPages() {
-        return Response.ok(nbPages).type(MediaType.TEXT_PLAIN).build();
-    }
-
-    @GET
-    @Path("pages/{pageNumber}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getPageResults(@PathParam("pageNumber") int pageNumber) {
-
-        if (pageNumber <= 0) {
-            return Response.status(Response.Status.NOT_ACCEPTABLE).build();
-        }
-        else {
-            List results = new HibernateTransactionHandler()
-                    .openSession()
-                    .createQuery(QueryHandler.PhysicalGame.GET_ALL)
-                    .setFirstResult((pageNumber - 1) * pageSize)
-                    .setMaxResults(pageSize)
-                    .getResultListAndClose();
-            return Response.ok(results).type(MediaType.APPLICATION_JSON).build();
-        }
-    }
-
-
-
 
     @GET
     @Path("stream")

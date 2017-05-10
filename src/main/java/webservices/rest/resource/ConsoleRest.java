@@ -5,6 +5,8 @@ import model.entity.Game;
 import model.entity.PhysicalGame;
 import model.handler.HibernateTransactionHandler;
 import model.query.QueryHandler;
+import webservices.rest.PaginationHandler;
+import webservices.rest.PaginationService;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -15,7 +17,14 @@ import java.util.List;
 
 @Path("consoles")
 @SuppressWarnings("unchecked")
-public class ConsoleRest {
+public class ConsoleRest extends PaginationService {
+
+    @Override
+    protected PaginationHandler setPaginationHandler() {
+        return new PaginationHandler(
+                QueryHandler.Console.COUNT,
+                QueryHandler.Console.GET_ALL);
+    }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
