@@ -48,7 +48,7 @@ public class OrdersRest extends PaginationService {
 
     @DELETE
     @Path("{id}")
-    public Response orders(@PathParam("id") int id) {
+    public Response deleteOrder(@PathParam("id") int id) {
         new HibernateTransactionHandler()
                 .openSession()
                 .beginTransaction()
