@@ -14,15 +14,19 @@ public abstract class ModelQH {
         this.name = name;
         this.alias = alias;
         this.idField = "id";
+    }
 
+    private String appendNameAndAlias() {
+        return new StringBuilder()
+                .append(name).append(SPACE)
+                .append(alias).append(SPACE)
+                .toString();
     }
 
     public String from() {
         return new StringBuilder().append(" from ")
-                .append(name).append(SPACE)
-                .append(alias).append(SPACE)
+                .append(appendNameAndAlias())
                 .toString();
-//        return " from " + name + " " + alias + " ";
 
     }
 
@@ -35,13 +39,18 @@ public abstract class ModelQH {
                 .toString();
     }
 
+    public String delete() {
+        return new StringBuilder().append(" delete ")
+                .append(appendNameAndAlias())
+                .toString();
+    }
+
     public String filterById() {
         return new StringBuilder()
                 .append(" where ").append(alias)
                 .append(".").append(idField).append("=:")
                 .append(PARAM_ID_FILTER).append(SPACE)
                 .toString();
-//        return " where " + alias + ".id =:" + PARAM_ID_FILTER;
     }
 
     public String joinFetch(String fieldName, String aliasTo) {
@@ -49,7 +58,6 @@ public abstract class ModelQH {
                 .append(alias).append(".").append(fieldName).append(SPACE)
                 .append(aliasTo).append(SPACE)
                 .toString();
-//        return " join fetch " + aliasFrom + "." + fieldName + " " + aliasTo + " ";
     }
 
     public String getParamIdFilter() {

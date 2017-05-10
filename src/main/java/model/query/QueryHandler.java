@@ -16,6 +16,7 @@ public class QueryHandler {
     private static UsersQH usersQH = new UsersQH();
 
 
+    public static final String COUNT_ALL = " select count(*) ";
 
 
     public static class Address {
@@ -173,6 +174,35 @@ public class QueryHandler {
                 + shoppingBagRowQH.fetchRequiredProperties()
                 + physicalGameQH.fetchRequiredProperties()
                 + gameQH.fetchRequiredProperties()
+                + that.fetchRequiredProperties()
+                + that.filterById();
+    }
+
+    public static class Order {
+        private static OrdersQH that = ordersQH;
+
+        public static final String ID_PARAMETER = that.getParamIdFilter();
+
+        public static final String COUNT = that.count() + that.from();
+
+        public static final String GET_ALL = that.from()
+                + that.fetchRequiredProperties()
+                + usersQH.fetchRequiredProperties()
+                + shoppingBagQH.fetchRequiredProperties()
+                + shoppingBagRowQH.fetchRequiredProperties()
+                + physicalGameQH.fetchRequiredProperties()
+                + gameQH.fetchRequiredProperties();
+
+        public static final String GET_BY_ID = that.from()
+                + that.fetchRequiredProperties()
+                + usersQH.fetchRequiredProperties()
+                + shoppingBagQH.fetchRequiredProperties()
+                + shoppingBagRowQH.fetchRequiredProperties()
+                + physicalGameQH.fetchRequiredProperties()
+                + gameQH.fetchRequiredProperties()
+                + that.filterById();
+
+        public static final String DELETE_BY_ID = that.delete()
                 + that.filterById();
     }
 }
