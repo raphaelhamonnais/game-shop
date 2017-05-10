@@ -27,7 +27,7 @@ public class RolesRest extends PaginationService {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getRoles() {
+    public Response getAll() {
         List result = new HibernateTransactionHandler()
                 .openSession()
                 .createQuery(QueryHandler.Roles.GET_ALL)
@@ -39,7 +39,7 @@ public class RolesRest extends PaginationService {
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getRoleById(@PathParam("id") String id) {
+    public Response getById(@PathParam("id") String id) {
         Roles result = (Roles) new HibernateTransactionHandler()
                 .openSession()
                 .createQuery(QueryHandler.Roles.GET_BY_ID)

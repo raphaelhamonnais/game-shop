@@ -29,23 +29,25 @@ public class PhysicalGameRest extends PaginationService {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<PhysicalGame> getAllPhysicalGames() {
-        return new HibernateTransactionHandler()
+    public Response getAll() {
+        List result = new HibernateTransactionHandler()
                 .openSession()
                 .createQuery(QueryHandler.PhysicalGame.GET_ALL)
                 .getResultListAndClose();
+        return Response.status(Response.Status.OK).entity(result).build();
     }
 
 
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public PhysicalGame getPhysicalGameById(@PathParam("id") int id) {
-        return (PhysicalGame) new HibernateTransactionHandler()
+    public Response getById(@PathParam("id") int id) {
+        PhysicalGame result = (PhysicalGame) new HibernateTransactionHandler()
                 .openSession()
                 .createQuery(QueryHandler.PhysicalGame.GET_BY_ID)
                 .addParameter(QueryHandler.PhysicalGame.ID_PARAMETER, id)
                 .getUniqueResultAndClose();
+        return Response.status(Response.Status.OK).entity(result).build();
     }
 
     @GET

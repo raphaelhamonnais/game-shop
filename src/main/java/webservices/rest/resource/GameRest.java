@@ -9,6 +9,7 @@ import webservices.rest.PaginationService;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.List;
 
 
@@ -25,58 +26,64 @@ public class GameRest extends PaginationService {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Game> getAllGames() {
-        return new HibernateTransactionHandler()
+    public Response getAll() {
+        List result = new HibernateTransactionHandler()
                 .openSession()
                 .createQuery(QueryHandler.Game.GET_ALL)
                 .getResultListAndClose();
+        return Response.status(Response.Status.OK).entity(result).build();
     }
 
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Game getGameById(@PathParam("id") int id) {
-        return (Game) new HibernateTransactionHandler()
+    public Response getById(@PathParam("id") int id) {
+        Game result = (Game) new HibernateTransactionHandler()
                 .openSession()
                 .createQuery(QueryHandler.Game.GET_BY_ID)
                 .addParameter(QueryHandler.Game.ID_PARAMETER, id)
                 .getUniqueResultAndClose();
+        return Response.status(Response.Status.OK).entity(result).build();
     }
 
 
     @GET
     @Path("{id}/consoles")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Console> getConsoles(@PathParam("id") int id) {
-        return new HibernateTransactionHandler()
+    public Response getConsoles(@PathParam("id") int id) {
+        List result = new HibernateTransactionHandler()
                 .openSession()
                 .createQuery(QueryHandler.Game.GET_CONSOLES)
                 .addParameter(QueryHandler.Game.ID_PARAMETER, id)
                 .getResultListAndClose();
+        return Response.status(Response.Status.OK).entity(result).build();
     }
 
     @GET
     @Path("{id}/physical-games")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Console> getPhysicalGames(@PathParam("id") int id) {
-        return new HibernateTransactionHandler()
+    public Response getPhysicalGames(@PathParam("id") int id) {
+        List result = new HibernateTransactionHandler()
                 .openSession()
                 .createQuery(QueryHandler.Game.GET_PHYSICAL_GAMES)
                 .addParameter(QueryHandler.Game.ID_PARAMETER, id)
                 .getResultListAndClose();
+        return Response.status(Response.Status.OK).entity(result).build();
     }
 
     @POST
     @Consumes({MediaType.APPLICATION_FORM_URLENCODED})
     @Produces(/*TODO to define*/)
-    public void createGame(@FormParam("someFormParam") String someFormParam) {
+    public Response createGame(@FormParam("someFormParam") String someFormParam) {
         // TODO create game with params
+        return null;
     }
 
     @PUT
     @Consumes({MediaType.APPLICATION_FORM_URLENCODED})
     @Produces(/*TODO to define*/)
-    public void updateGame(@FormParam("someFormParam") String someFormParam) {
+    public Response updateGame(@FormParam("someFormParam") String someFormParam) {
         // TODO update game with params
+        return null;
     }
 }

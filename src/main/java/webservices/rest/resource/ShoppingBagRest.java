@@ -24,7 +24,7 @@ public class ShoppingBagRest extends PaginationService {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response shoppingBags() {
+    public Response getAll() {
         List result = new HibernateTransactionHandler()
                 .openSession()
                 .createQuery(QueryHandler.ShoppingBag.GET_ALL)
@@ -36,7 +36,7 @@ public class ShoppingBagRest extends PaginationService {
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getShoppingBagById(@PathParam("id") int id) {
+    public Response getById(@PathParam("id") int id) {
         ShoppingBag result = (ShoppingBag) new HibernateTransactionHandler()
                 .openSession()
                 .createQuery(QueryHandler.ShoppingBag.GET_BY_ID)

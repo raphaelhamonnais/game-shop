@@ -11,6 +11,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Response;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
@@ -28,32 +29,35 @@ public class CategoryRest extends PaginationService {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Category> getAllCategories() {
-        return new HibernateTransactionHandler()
+    public Response getAll() {
+        List result = new HibernateTransactionHandler()
                 .openSession()
                 .createQuery(QueryHandler.Category.GET_ALL)
                 .getResultListAndClose();
+        return Response.status(Response.Status.OK).entity(result).build();
     }
 
     @GET
     @Path("{name}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Category getCategoryByName(@PathParam("name") String name) {
-        return (Category) new HibernateTransactionHandler()
+    public Response getById(@PathParam("name") String name) {
+        Category result = (Category) new HibernateTransactionHandler()
                 .openSession()
                 .createQuery(QueryHandler.Category.GET_BY_ID)
                 .addParameter(QueryHandler.Category.ID_PARAMETER, name)
                 .getUniqueResultAndClose();
+        return Response.status(Response.Status.OK).entity(result).build();
     }
 
     @GET
     @Path("{name}/games")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Game> getGamesFromCategory(@PathParam("name") String name) {
-        return new HibernateTransactionHandler()
+    public Response getGames(@PathParam("name") String name) {
+        List result = new HibernateTransactionHandler()
                 .openSession()
                 .createQuery(QueryHandler.Category.GET_GAMES)
-                .addParameter(QueryHandler.Category.ID_PARAMETER,name)
+                .addParameter(QueryHandler.Category.ID_PARAMETER, name)
                 .getResultListAndClose();
+        return Response.status(Response.Status.OK).entity(result).build();
     }
 }

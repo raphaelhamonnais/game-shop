@@ -27,7 +27,7 @@ public class AddressRest extends PaginationService {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response address() {
+    public Response getAll() {
         List result = new HibernateTransactionHandler()
                 .openSession()
                 .createQuery(QueryHandler.Address.GET_ALL)
@@ -39,7 +39,7 @@ public class AddressRest extends PaginationService {
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAddressById(@PathParam("id") int id) {
+    public Response getById(@PathParam("id") int id) {
         Address result = (Address) new HibernateTransactionHandler()
                 .openSession()
                 .createQuery(QueryHandler.Address.GET_BY_ID)
@@ -51,7 +51,7 @@ public class AddressRest extends PaginationService {
     @GET
     @Path("{id}/users")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response users(@PathParam("id") int id) {
+    public Response getUsers(@PathParam("id") int id) {
         List result = new HibernateTransactionHandler()
                 .openSession()
                 .createQuery(QueryHandler.Address.GET_USERS)
@@ -63,7 +63,7 @@ public class AddressRest extends PaginationService {
     @GET
     @Path("{id}/orders")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response orders(@PathParam("id") int id) {
+    public Response getOrders(@PathParam("id") int id) {
         List result = new HibernateTransactionHandler()
                 .openSession()
                 .createQuery(QueryHandler.Address.GET_ORDERS)

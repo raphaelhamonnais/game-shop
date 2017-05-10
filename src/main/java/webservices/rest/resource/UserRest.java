@@ -27,7 +27,7 @@ public class UserRest extends PaginationService {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response users() {
+    public Response getAll() {
         List result = new HibernateTransactionHandler()
                 .openSession()
                 .createQuery(QueryHandler.Users.GET_ALL)
@@ -39,7 +39,7 @@ public class UserRest extends PaginationService {
     @GET
     @Path("{login}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getUserByLogin(@PathParam("login") String login) {
+    public Response getById(@PathParam("login") String login) {
         Users result = (Users) new HibernateTransactionHandler()
                 .openSession()
                 .createQuery(QueryHandler.Users.GET_BY_ID)
@@ -51,7 +51,7 @@ public class UserRest extends PaginationService {
     @GET
     @Path("{login}/shopping-bags")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response shoppingBags(@PathParam("login") String login) {
+    public Response getShoppingBags(@PathParam("login") String login) {
         List result = new HibernateTransactionHandler()
                 .openSession()
                 .createQuery(QueryHandler.Users.GET_SHOPPING_BAGS)
@@ -63,7 +63,7 @@ public class UserRest extends PaginationService {
     @GET
     @Path("{login}/orders")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response orders(@PathParam("login") String login) {
+    public Response getOrders(@PathParam("login") String login) {
         List result = new HibernateTransactionHandler()
                 .openSession()
                 .createQuery(QueryHandler.Users.GET_ORDERS)

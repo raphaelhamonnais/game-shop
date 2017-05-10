@@ -24,7 +24,7 @@ public class OrdersRest extends PaginationService {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response orders() {
+    public Response getAll() {
         List result = new HibernateTransactionHandler()
                 .openSession()
                 .createQuery(QueryHandler.Order.GET_ALL)
@@ -36,7 +36,7 @@ public class OrdersRest extends PaginationService {
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getOrderById(@PathParam("id") int id) {
+    public Response getById(@PathParam("id") int id) {
         Orders result = (Orders) new HibernateTransactionHandler()
                 .openSession()
                 .createQuery(QueryHandler.Order.GET_BY_ID)
@@ -47,7 +47,7 @@ public class OrdersRest extends PaginationService {
 
     @DELETE
     @Path("{id}")
-    public Response deleteOrder(@PathParam("id") int id) {
+    public Response deleteById(@PathParam("id") int id) {
         new HibernateTransactionHandler()
                 .openSession()
                 .beginTransaction()

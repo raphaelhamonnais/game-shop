@@ -27,7 +27,7 @@ public class PublisherRest extends PaginationService {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getPublishers() {
+    public Response getAll() {
         List result = new HibernateTransactionHandler()
                 .openSession()
                 .createQuery(QueryHandler.Publisher.GET_ALL)
@@ -39,7 +39,7 @@ public class PublisherRest extends PaginationService {
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getPublisherById(@PathParam("id") int id) {
+    public Response getById(@PathParam("id") int id) {
         Publisher result = (Publisher) new HibernateTransactionHandler()
                 .openSession()
                 .createQuery(QueryHandler.Publisher.GET_BY_ID)
