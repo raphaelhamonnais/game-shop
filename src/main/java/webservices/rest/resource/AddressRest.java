@@ -30,7 +30,6 @@ public class AddressRest extends PaginationService {
     public Response address() {
         List result = new HibernateTransactionHandler()
                 .openSession()
-//                .createQuery(AddressQueriesHandler.QUERY_GET_ALL_ADDRESSES)
                 .createQuery(QueryHandler.Address.GET_ALL)
                 .getResultListAndClose();
         return Response.status(Response.Status.OK).entity(result).build();
@@ -43,9 +42,7 @@ public class AddressRest extends PaginationService {
     public Response getAddressById(@PathParam("id") int id) {
         Address result = (Address) new HibernateTransactionHandler()
                 .openSession()
-//                .createQuery(AddressQueriesHandler.QUERY_GET_ADDRESS_BY_ID)
                 .createQuery(QueryHandler.Address.GET_BY_ID)
-//                .addParameter(AddressQueriesHandler.PARAM_ADDRESS_NAME, id)
                 .addParameter(QueryHandler.Address.ID_PARAMETER, id)
                 .getUniqueResultAndClose();
         return Response.status(Response.Status.OK).entity(result).build();
@@ -57,9 +54,7 @@ public class AddressRest extends PaginationService {
     public Response users(@PathParam("id") int id) {
         List result = new HibernateTransactionHandler()
                 .openSession()
-//                .createQuery(AddressQueriesHandler.QUERY_GET_ADDRESS_USERS)
                 .createQuery(QueryHandler.Address.GET_USERS)
-//                .addParameter(AddressQueriesHandler.PARAM_ADDRESS_NAME, id)
                 .addParameter(QueryHandler.Address.ID_PARAMETER, id)
                 .getResultListAndClose();
         return Response.status(Response.Status.OK).entity(result).build();
@@ -71,9 +66,7 @@ public class AddressRest extends PaginationService {
     public Response orders(@PathParam("id") int id) {
         List result = new HibernateTransactionHandler()
                 .openSession()
-//                .createQuery(AddressQueriesHandler.QUERY_GET_ADDRESS_ORDERS)
                 .createQuery(QueryHandler.Address.GET_ORDERS)
-//                .addParameter(AddressQueriesHandler.PARAM_ADDRESS_NAME, id)
                 .addParameter(QueryHandler.Address.ID_PARAMETER, id)
                 .getResultListAndClose();
         return Response.status(Response.Status.OK).entity(result).build();
