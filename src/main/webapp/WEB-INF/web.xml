@@ -84,10 +84,14 @@
 
   <!--==================================================-->
 
-  <!---->
-  <!---->
-  <!--&lt;!&ndash;games, categories, consoles&ndash;&gt;-->
-  <!--&lt;!&ndash;no security on GET method&ndash;&gt;-->
+  <!--<security-constraint>-->
+    <!--<web-resource-collection>-->
+      <!--<web-resource-name>/rest/*</web-resource-name>-->
+    <!--</web-resource-collection>-->
+  <!--</security-constraint>-->
+
+  <!--games, categories, consoles-->
+  <!--no security on GET method-->
   <!--<security-constraint>-->
     <!--<web-resource-collection>-->
       <!--<web-resource-name>/rest/games/*</web-resource-name>-->
