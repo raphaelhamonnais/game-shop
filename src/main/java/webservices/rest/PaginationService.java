@@ -2,10 +2,7 @@ package webservices.rest;
 
 import model.handler.HibernateTransactionHandler;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
@@ -30,7 +27,11 @@ public abstract class PaginationService {
     @GET
     @Path("pages/{pageNumber}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getPageResults(@PathParam("pageNumber") int pageNumber) {
+    public Response getPageResults(@PathParam("pageNumber") Integer pageNumber,
+                                   @QueryParam("pageSize") Integer pageSize) {
+
+        if (pageSize != null)
+            ph.setPageSize(pageSize);
 
         if (pageNumber <= 0)
             return Response.status(Response.Status.NOT_ACCEPTABLE).build();
