@@ -96,10 +96,10 @@ public class ShoppingBagRow implements Serializable {
     }
 
     private void checkConsistency() {
-        if (this.shoppingBag == null)
-            throw new ModelException(ERROR_BINDING_TO_SHOPPING_BAG_MESSAGE);
-
-        if (this.physicalGame == null)
-            throw new ModelException(ERROR_BINDING_TO_PHYSICAL_GAME_MESSAGE);
+//        if (this.shoppingBag == null)
+//            throw new ModelException(ERROR_BINDING_TO_SHOPPING_BAG_MESSAGE);
+//
+//        if (this.physicalGame == null)
+//            throw new ModelException(ERROR_BINDING_TO_PHYSICAL_GAME_MESSAGE);
     }
 }
