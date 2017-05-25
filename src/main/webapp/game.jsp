@@ -12,5 +12,6 @@
 </head>
 <body>
     <h1>Tis is the game page</h1>
+
 </body>
 </html>

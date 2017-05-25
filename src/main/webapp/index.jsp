@@ -9,6 +9,19 @@
     <%--import the file bootstrap.min.css--%>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link href="bootstrap/css/style.css" rel="stylesheet" type="text/css" media="all" />
+
+    <!-- js -->
+    <script type="text/javascript" src="bootstrap/js/jquery.min.js"></script>
+    <!-- //js -->
+    <!-- cart -->
+    <script src="bootstrap/js/simpleCart.min.js"></script>
+    <!-- cart -->
+    <!-- for bootstrap working -->
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <!-- //for bootstrap working -->
+    <link href='http://fonts.useso.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.useso.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,900,900italic,700italic' rel='stylesheet' type='text/css'>
+    <script src="bootstrap/js/jquery.easing.min.js"></script>
 </header>
 <body>
 <!-- //header -->
@@ -16,7 +29,7 @@
 <div class="header-bot">
     <div class="container">
         <div class="col-md-3 header-left">
-            <h1><a href="index.jsp"><img src="images/logo3.jpg"></a></h1>
+            <h1><a href="index.jsp"><img src="bootstrap/images/logo3.jpg"></a></h1>
         </div>
         <div class="col-md-6 header-middle">
             <form>
@@ -25,7 +38,7 @@
                 </div>
                 <div class="section_room">
                     <select id="country" onChange="change_country(this.value)" class="frm-field required">
-                        <option value="categorie">Categories</option>
+                        <option value="category">Categories</option>
                         <option value="game">Games</option>
                     </select>
                 </div>
@@ -70,11 +83,11 @@
                                 <ul class="dropdown-menu multi-column columns-3">
                                     <div class="row">
                                         <div class="col-sm-6 multi-gd-img1 multi-gd-text ">
-                                            <a href="categorie.jsp"><img src="images/woo1.jpg" alt=" "/></a>
+                                            <a href="category.jsp"><img src="bootstrap/images/woo1.jpg" alt=" "/></a>
                                         </div>
                                         <div class="col-sm-3 multi-gd-img">
                                             <ul class="multi-column-dropdown">
-                                                <li><a href="categorie.jsp">Categorie1</a></li>
+                                                <li><a href="category.jsp">Category1</a></li>
                                             </ul>
                                         </div>
                                         <div class="clearfix"></div>
@@ -91,7 +104,7 @@
                                             </ul>
                                         </div>
                                         <div class="col-sm-6 multi-gd-img multi-gd-text ">
-                                            <a href="game.jsp"><img src="images/woo.jpg" alt=" "/></a>
+                                            <a href="game.jsp"><img src="bootstrap/images/woo.jpg" alt=" "/></a>
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
@@ -118,34 +131,6 @@
         <div class="clearfix"></div>
     </div>
 </div>
-
-<!-- //banner-top -->
-<!-- banner -->
-<div class="banner-grid">
-    <div id="visual">
-        <div class="slide-visual">
-            <ul class="slide-group">
-                <li><img class="img-responsive" src="images/ba1.jpg" alt="Dummy Image" /></li>
-                <li><img class="img-responsive" src="images/ba2.jpg" alt="Dummy Image" /></li>
-                <li><img class="img-responsive" src="images/ba3.jpg" alt="Dummy Image" /></li>
-            </ul>
-            <div class="clearfix"></div>
-        </div>
-        <script type="text/javascript" src="bootstrap/js/pignose.layerslider.js"></script>
-        <script type="text/javascript">
-            //<![CDATA[
-            $(window).load(function() {
-                $('#visual').pignoseLayerSlider({
-                    play    : '.btn-play',
-                    pause   : '.btn-pause',
-                    next    : '.btn-next',
-                    prev    : '.btn-prev'
-                });
-            });
-            //]]>
-        </script>
-    </div>
-
     <!-- //content-bottom -->
     <!-- product-nav -->
     <div class="product-easy">
@@ -175,17 +160,17 @@
                             <div class="col-md-3 product-men">
                                 <div class="men-pro-item simpleCart_shelfItem">
                                     <div class="men-thumb-item">
-                                        <img src="images/a1.png" alt="" class="pro-image-front">
-                                        <img src="images/a1.png" alt="" class="pro-image-back">
+                                        <img src="bootstrap/images/a1.png" alt="" class="pro-image-front">
+                                        <img src="bootstrap/images/a1.png" alt="" class="pro-image-back">
                                         <div class="men-cart-pro">
                                             <div class="inner-men-cart-pro">
-                                                <a href="single.html" class="link-product-add-cart">Quick View</a>
+                                                <a href="single.jsp" class="link-product-add-cart">Quick View</a>
                                             </div>
                                         </div>
                                         <span class="product-new-top">On Sale</span>
                                     </div>
                                     <div class="item-info-product ">
-                                        <h4><a href="single.html">Game1</a></h4>
+                                        <h4><a href="single.jsp">Game1</a></h4>
                                         <div class="info-product-price">
                                             <span class="item_price">$5.99</span>
                                             <del>$9.71</del>
@@ -201,18 +186,18 @@
                             <div class="col-md-3 product-men">
                                 <div class="men-pro-item simpleCart_shelfItem">
                                     <div class="men-thumb-item">
-                                        <img src="images/w1.png" alt="" class="pro-image-front">
-                                        <img src="images/w1.png" alt="" class="pro-image-back">
+                                        <img src="bootstrap/images/w1.png" alt="" class="pro-image-front">
+                                        <img src="bootstrap/images/w1.png" alt="" class="pro-image-back">
                                         <div class="men-cart-pro">
                                             <div class="inner-men-cart-pro">
-                                                <a href="single.html" class="link-product-add-cart">Quick View</a>
+                                                <a href="single.jsp" class="link-product-add-cart">Quick View</a>
                                             </div>
                                         </div>
                                         <span class="product-new-top">New</span>
 
                                     </div>
                                     <div class="item-info-product ">
-                                        <h4><a href="single.html">Wedges</a></h4>
+                                        <h4><a href="single.jsp">Wedges</a></h4>
                                         <div class="info-product-price">
                                             <span class="item_price">$45.99</span>
                                             <del>$69.71</del>
@@ -229,18 +214,18 @@
                             <div class="col-md-3 product-men">
                                 <div class="men-pro-item simpleCart_shelfItem">
                                     <div class="men-thumb-item">
-                                        <img src="images/g1.png" alt="" class="pro-image-front">
-                                        <img src="images/g1.png" alt="" class="pro-image-back">
+                                        <img src="bootstrap/images/g1.png" alt="" class="pro-image-front">
+                                        <img src="bootstrap/images/g1.png" alt="" class="pro-image-back">
                                         <div class="men-cart-pro">
                                             <div class="inner-men-cart-pro">
-                                                <a href="single.html" class="link-product-add-cart">Quick View</a>
+                                                <a href="single.jsp" class="link-product-add-cart">Quick View</a>
                                             </div>
                                         </div>
                                         <span class="product-new-top">New</span>
 
                                     </div>
                                     <div class="item-info-product ">
-                                        <h4><a href="single.html">Dresses</a></h4>
+                                        <h4><a href="single.jsp">Dresses</a></h4>
                                         <div class="info-product-price">
                                             <span class="item_price">$45.99</span>
                                             <del>$69.71</del>
@@ -257,18 +242,18 @@
                             <div class="col-md-3 product-men">
                                 <div class="men-pro-item simpleCart_shelfItem">
                                     <div class="men-thumb-item">
-                                        <img src="images/g1.png" alt="" class="pro-image-front">
-                                        <img src="images/g1.png" alt="" class="pro-image-back">
+                                        <img src="bootstrap/images/g1.png" alt="" class="pro-image-front">
+                                        <img src="bootstrap/images/g1.png" alt="" class="pro-image-back">
                                         <div class="men-cart-pro">
                                             <div class="inner-men-cart-pro">
-                                                <a href="single.html" class="link-product-add-cart">Quick View</a>
+                                                <a href="single.jsp" class="link-product-add-cart">Quick View</a>
                                             </div>
                                         </div>
                                         <span class="product-new-top">New</span>
 
                                     </div>
                                     <div class="item-info-product ">
-                                        <h4><a href="single.html">Dresses</a></h4>
+                                        <h4><a href="single.jsp">Dresses</a></h4>
                                         <div class="info-product-price">
                                             <span class="item_price">$45.99</span>
                                             <del>$69.71</del>
@@ -291,7 +276,7 @@
     <div class="footer">
         <div class="container">
             <div class="col-md-3 footer-left">
-                <h2><a href="index.jsp"><img src="images/logo3.jpg" alt=" " /></a></h2>
+                <h2><a href="index.jsp"><img src="bootstrap/images/logo3.jpg" alt=" " /></a></h2>
                 <p>Neque porro quisquam est, qui dolorem ipsum quia dolor
                     sit amet, consectetur, adipisci velit, sed quia non
                     numquam eius modi tempora incidunt ut labore
@@ -303,7 +288,7 @@
                         <h4>Information</h4>
                         <ul>
                             <li><a href="index.jsp">Home</a></li>
-                            <li><a href="categorie.jsp">Categories</a></li>
+                            <li><a href="category.jsp">Categories</a></li>
                             <li><a href="game.jsp">Games</a></li>
                             <li><a href="contact.jsp">Contact</a></li>
                         </ul>
