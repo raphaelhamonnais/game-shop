@@ -70,11 +70,11 @@
                                 <ul class="dropdown-menu multi-column columns-3">
                                     <div class="row">
                                         <div class="col-sm-6 multi-gd-img1 multi-gd-text ">
-                                            <a href="mens.html"><img src="images/woo1.jpg" alt=" "/></a>
+                                            <a href="categorie.jsp"><img src="images/woo1.jpg" alt=" "/></a>
                                         </div>
                                         <div class="col-sm-3 multi-gd-img">
                                             <ul class="multi-column-dropdown">
-                                                <li><a href="mens.html">Categorie1</a></li>
+                                                <li><a href="categorie.jsp">Categorie1</a></li>
                                             </ul>
                                         </div>
                                         <div class="clearfix"></div>
@@ -87,17 +87,17 @@
                                     <div class="row">
                                         <div class="col-sm-3 multi-gd-img">
                                             <ul class="multi-column-dropdown">
-                                                <li><a href="womens.html">Game1</a></li>
+                                                <li><a href="game.jsp">Game1</a></li>
                                             </ul>
                                         </div>
                                         <div class="col-sm-6 multi-gd-img multi-gd-text ">
-                                            <a href="womens.html"><img src="images/woo.jpg" alt=" "/></a>
+                                            <a href="game.jsp"><img src="images/woo.jpg" alt=" "/></a>
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
                                 </ul>
                             </li>
-                            <li class=" menu__item"><a class="menu__link" href="contact.html">contact</a></li>
+                            <li class=" menu__item"><a class="menu__link" href="contact.jsp">contact</a></li>
                         </ul>
                     </div>
                 </div>
@@ -119,8 +119,6 @@
     </div>
 </div>
 
-
-
 <!-- //banner-top -->
 <!-- banner -->
 <div class="banner-grid">
@@ -133,7 +131,7 @@
             </ul>
             <div class="clearfix"></div>
         </div>
-        <script type="text/javascript" src="js/pignose.layerslider.js"></script>
+        <script type="text/javascript" src="bootstrap/js/pignose.layerslider.js"></script>
         <script type="text/javascript">
             //<![CDATA[
             $(window).load(function() {
@@ -153,7 +151,7 @@
     <div class="product-easy">
         <div class="container">
 
-            <script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
+            <script src="bootstrap/js/easyResponsiveTabs.js" type="text/javascript"></script>
             <script type="text/javascript">
                 $(document).ready(function () {
                     $('#horizontalTab').easyResponsiveTabs({
@@ -305,9 +303,9 @@
                         <h4>Information</h4>
                         <ul>
                             <li><a href="index.jsp">Home</a></li>
-                            <li><a href="mens.html">Categories</a></li>
-                            <li><a href="womens.html">Games</a></li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="categorie.jsp">Categories</a></li>
+                            <li><a href="game.jsp">Games</a></li>
+                            <li><a href="contact.jsp">Contact</a></li>
                         </ul>
                     </div>
 
