@@ -45,19 +45,19 @@ public class OrdersRest extends PaginationService {
         return Response.status(Response.Status.OK).entity(result).build();
     }
 
-    @DELETE
-    @Path("{id}")
-    public Response deleteById(@PathParam("id") int id) {
-        new HibernateTransactionHandler()
-                .openSession()
-                .beginTransaction()
-                .createQuery(QueryHandler.Order.DELETE_BY_ID)
-                .addParameter(QueryHandler.Order.ID_PARAMETER, id)
-                .executeUpdate()
-                .commit()
-                .closeSession();
-        return Response.status(Response.Status.OK)
-                .entity("Successful delete of order with id = " + id)
-                .build();
-    }
+//    @DELETE
+//    @Path("{id}")
+//    public Response deleteById(@PathParam("id") int id) {
+//        new HibernateTransactionHandler()
+//                .openSession()
+//                .beginTransaction()
+//                .createQuery(QueryHandler.Order.DELETE_BY_ID)
+//                .addParameter(QueryHandler.Order.ID_PARAMETER, id)
+//                .executeUpdate()
+//                .commit()
+//                .closeSession();
+//        return Response.status(Response.Status.OK)
+//                .entity("Successful delete of order with id = " + id)
+//                .build();
+//    }
 }
