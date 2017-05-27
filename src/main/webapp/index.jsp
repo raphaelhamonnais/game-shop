@@ -57,7 +57,6 @@
     </div>
 </div>
 
-
 <!-- //header-bot -->
 <!-- banner -->
 <div class="ban-top">
@@ -83,7 +82,7 @@
                                 <ul class="dropdown-menu multi-column columns-3">
                                     <div class="row">
                                         <div class="col-sm-6 multi-gd-img1 multi-gd-text ">
-                                            <a href="category.jsp"><img src="bootstrap/images/woo1.jpg" alt=" "/></a>
+                                            <a href="category.jsp"><img src="bootstrap/images/coming-soon.jpg" alt=" "/></a>
                                         </div>
                                         <div class="col-sm-3 multi-gd-img">
                                             <ul class="multi-column-dropdown">
@@ -104,7 +103,7 @@
                                             </ul>
                                         </div>
                                         <div class="col-sm-6 multi-gd-img multi-gd-text ">
-                                            <a href="game.jsp"><img src="bootstrap/images/woo.jpg" alt=" "/></a>
+                                            <a href="game.jsp"><img src="bootstrap/images/coming-soon.jpg" alt=" "/></a>
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
@@ -122,7 +121,6 @@
                     <h3> <div class="total">
                         <i class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></i>
                         <span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
-
                     </h3>
                 </a>
                 <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
@@ -135,7 +133,6 @@
     <!-- product-nav -->
     <div class="product-easy">
         <div class="container">
-
             <script src="bootstrap/js/easyResponsiveTabs.js" type="text/javascript"></script>
             <script type="text/javascript">
                 $(document).ready(function () {
@@ -145,7 +142,6 @@
                         fit: true   // 100% fit in a container
                     });
                 });
-
             </script>
             <div class="sap_tabs">
                 <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
@@ -160,11 +156,11 @@
                             <div class="col-md-3 product-men">
                                 <div class="men-pro-item simpleCart_shelfItem">
                                     <div class="men-thumb-item">
-                                        <img src="bootstrap/images/a1.png" alt="" class="pro-image-front">
-                                        <img src="bootstrap/images/a1.png" alt="" class="pro-image-back">
+                                        <img src="bootstrap/images/coming-soon.jpg" alt="" class="pro-image-front">
+                                        <img src="bootstrap/images/coming-soon.jpg" alt="" class="pro-image-back">
                                         <div class="men-cart-pro">
                                             <div class="inner-men-cart-pro">
-                                                <a href="single.jsp" class="link-product-add-cart">Quick View</a>
+                                                <a href="#" class="link-product-add-cart" data-toggle="modal" data-target="#myModal5">Quick View</a>
                                             </div>
                                         </div>
                                         <span class="product-new-top">On Sale</span>
@@ -186,15 +182,14 @@
                             <div class="col-md-3 product-men">
                                 <div class="men-pro-item simpleCart_shelfItem">
                                     <div class="men-thumb-item">
-                                        <img src="bootstrap/images/w1.png" alt="" class="pro-image-front">
-                                        <img src="bootstrap/images/w1.png" alt="" class="pro-image-back">
+                                        <img src="bootstrap/images/coming-soon.jpg" alt="" class="pro-image-front">
+                                        <img src="bootstrap/images/coming-soon.jpg" alt="" class="pro-image-back">
                                         <div class="men-cart-pro">
                                             <div class="inner-men-cart-pro">
-                                                <a href="single.jsp" class="link-product-add-cart">Quick View</a>
+                                                <a href="#" class="link-product-add-cart" data-toggle="modal" data-target="#myModal5">Quick View</a>
                                             </div>
                                         </div>
                                         <span class="product-new-top">New</span>
-
                                     </div>
                                     <div class="item-info-product ">
                                         <h4><a href="single.jsp">Wedges</a></h4>
@@ -206,7 +201,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="clearfix"></div>
                         </div>
 
@@ -214,11 +208,11 @@
                             <div class="col-md-3 product-men">
                                 <div class="men-pro-item simpleCart_shelfItem">
                                     <div class="men-thumb-item">
-                                        <img src="bootstrap/images/g1.png" alt="" class="pro-image-front">
-                                        <img src="bootstrap/images/g1.png" alt="" class="pro-image-back">
+                                        <img src="bootstrap/images/coming-soon.jpg" alt="" class="pro-image-front">
+                                        <img src="bootstrap/images/coming-soon.jpg" alt="" class="pro-image-back">
                                         <div class="men-cart-pro">
                                             <div class="inner-men-cart-pro">
-                                                <a href="single.jsp" class="link-product-add-cart">Quick View</a>
+                                                <a href="#" class="link-product-add-cart" data-toggle="modal" data-target="#myModal5">Quick View</a>
                                             </div>
                                         </div>
                                         <span class="product-new-top">New</span>
@@ -242,11 +236,11 @@
                             <div class="col-md-3 product-men">
                                 <div class="men-pro-item simpleCart_shelfItem">
                                     <div class="men-thumb-item">
-                                        <img src="bootstrap/images/g1.png" alt="" class="pro-image-front">
-                                        <img src="bootstrap/images/g1.png" alt="" class="pro-image-back">
+                                        <img src="bootstrap/images/coming-soon.jpg" alt="" class="pro-image-front">
+                                        <img src="bootstrap/images/coming-soon.jpg" alt="" class="pro-image-back">
                                         <div class="men-cart-pro">
                                             <div class="inner-men-cart-pro">
-                                                <a href="single.jsp" class="link-product-add-cart">Quick View</a>
+                                                <a href="#" class="link-product-add-cart" data-toggle="modal" data-target="#myModal5">Quick View</a>
                                             </div>
                                         </div>
                                         <span class="product-new-top">New</span>
@@ -308,6 +302,47 @@
             <div class="clearfix"></div>
         </div>
     </div>
+
+<%--Quick View--%>
+<div class="modal fade" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog">
+        <div class="content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="single">
+                    <div class="container">
+                        <div class="thumb-image"> <img src="bootstrap/images/coming-soon.jpg" data-imagezoom="true" class="img-responsive"> </div>
+                        <div class="col-md-6 single-right-left" data-wow-delay=".5s" style="visibility: visible;">
+                            <h3 style="margin: 5px">Game1</h3>
+                            <p><span class="item_price">Price: $55</span> <del>- $90</del></p>
+                            <div class="rating1">
+								<span class="starRating">
+								<input id="rating5" type="radio" name="rating" value="5">
+									<label for="rating5">5</label>
+								<input id="rating4" type="radio" name="rating" value="4">
+									<label for="rating4">4</label>
+								<input id="rating3" type="radio" name="rating" value="3" checked="">
+									<label for="rating3">3</label>
+								<input id="rating2" type="radio" name="rating" value="2">
+									<label for="rating2">2</label>
+								<input id="rating1" type="radio" name="rating" value="1">
+									<label for="rating1">1</label>
+								</span>
+                            </div>
+                            <div class="occasion-cart">
+                                <a href="#" class="item_add hvr-outline-out button2">Add to cart</a>
+                            </div>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
     <!-- login -->
     <div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
