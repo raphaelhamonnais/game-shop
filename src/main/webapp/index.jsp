@@ -8,9 +8,9 @@
     <meta name="keywords" content="" />
     <%--import the file bootstrap.min.css--%>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <link href="bootstrap/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="bootstrap/css/style1.css" rel="stylesheet" type="text/css" media="all" />
 
-<%--    <!-- js -->
+   <!-- js -->
     <script type="text/javascript" src="bootstrap/js/jquery.min.js"></script>
     <!-- //js -->
     <!-- cart -->
@@ -21,33 +21,29 @@
     <!-- //for bootstrap working -->
     <link href='http://fonts.useso.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.useso.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,900,900italic,700italic' rel='stylesheet' type='text/css'>
-    <script src="bootstrap/js/jquery.easing.min.js"></script>--%>
+    <script src="bootstrap/js/jquery.easing.min.js"></script>
 </header>
 <body>
-<!-- //header -->
+<!-- header of the site: include the logo of the site, the search bar and the login logo -->
 <!-- header-bot -->
 <div class="header-bot">
     <div class="container">
+       <%-- the logo of the site--%>
         <div class="col-md-3 header-left">
             <h1><a href="index.jsp"><img src="bootstrap/images/logo3.jpg"></a></h1>
         </div>
+           <%--the search bar--%>
         <div class="col-md-6 header-middle">
-            <form>
+            <form style="height: 30px" method="get" action="search.jsp">
                 <div class="search">
                     <input type="search" value="Search" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Search';}" required="">
-                </div>
-                <div class="section_room">
-                    <select id="country" onChange="change_country(this.value)" class="frm-field required">
-                        <option value="category">Categories</option>
-                        <option value="game">Games</option>
-                    </select>
                 </div>
                 <div class="sear-sub">
                     <input type="submit" value=" ">
                 </div>
-                <div class="clearfix"></div>
             </form>
         </div>
+           <%--the login logo--%>
         <div class="col-md-3 header-right footer-bottom">
             <a href="#" class="login" data-toggle="modal" data-target="#myModal4"><span>Login</span></a>
         </div>
@@ -55,8 +51,7 @@
     </div>
 </div>
 
-<!-- //header-bot -->
-<!-- banner -->
+<%--the navagation --%>
 <div class="ban-top">
     <div class="container">
         <div class="top_nav_left">
@@ -76,13 +71,10 @@
                         <ul class="nav navbar-nav menu__list">
                             <li class="active menu__item menu__item--current"><a class="menu__link" href="index.jsp">Home <span class="sr-only">(current)</span></a></li>
                             <li class="dropdown menu__item">
-                                <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
+                                <a href="#" class="dropdown-toggle menu__link" id="categories" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
                                 <ul class="dropdown-menu multi-column columns-3">
                                     <div class="row">
-                                        <div class="col-sm-6 multi-gd-img1 multi-gd-text ">
-                                            <a href="category.jsp"><img src="bootstrap/images/coming-soon.jpg" alt=" "/></a>
-                                        </div>
-                                        <div class="col-sm-3 multi-gd-img">
+                                        <div class="col-sm-3">
                                             <ul class="multi-column-dropdown">
                                                 <li><a href="category.jsp">Category1</a></li>
                                             </ul>
@@ -95,13 +87,10 @@
                                 <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Games<span class="caret"></span></a>
                                 <ul class="dropdown-menu multi-column columns-3">
                                     <div class="row">
-                                        <div class="col-sm-3 multi-gd-img">
+                                        <div class="col-sm-3">
                                             <ul class="multi-column-dropdown">
                                                 <li><a href="game.jsp">Game1</a></li>
                                             </ul>
-                                        </div>
-                                        <div class="col-sm-6 multi-gd-img multi-gd-text ">
-                                            <a href="game.jsp"><img src="bootstrap/images/coming-soon.jpg" alt=" "/></a>
                                         </div>
                                         <div class="clearfix"></div>
                                     </div>
@@ -115,13 +104,13 @@
         </div>
         <div class="top_nav_right">
             <div class="cart box_1">
-                <a href="checkout.html">
+                <a href="checkout.jsp">
                     <h3> <div class="total">
                         <i class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></i>
                         <span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</div>
                     </h3>
                 </a>
-                <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+                <p><a href="#" class="simpleCart_empty">Empty Cart</a></p>
             </div>
         </div>
         <div class="clearfix"></div>
@@ -151,13 +140,13 @@
                     </ul>
                     <div class="resp-tabs-container">
                         <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
-                            <div class="col-md-3 product-men">
-                                <div class="men-pro-item simpleCart_shelfItem">
-                                    <div class="men-thumb-item">
+                            <div class="col-md-3 product">
+                                <div class="pro-item simpleCart_shelfItem">
+                                    <div class="thumb-item">
                                         <img src="bootstrap/images/coming-soon.jpg" alt="" class="pro-image-front">
                                         <img src="bootstrap/images/coming-soon.jpg" alt="" class="pro-image-back">
-                                        <div class="men-cart-pro">
-                                            <div class="inner-men-cart-pro">
+                                        <div class="cart-pro">
+                                            <div class="inner-cart-pro">
                                                 <a href="#" class="link-product-add-cart" data-toggle="modal" data-target="#myModal5">Quick View</a>
                                             </div>
                                         </div>
@@ -177,20 +166,20 @@
                         </div>
 
                         <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-1">
-                            <div class="col-md-3 product-men">
-                                <div class="men-pro-item simpleCart_shelfItem">
-                                    <div class="men-thumb-item">
+                            <div class="col-md-3 product">
+                                <div class="pro-item simpleCart_shelfItem">
+                                    <div class="thumb-item">
                                         <img src="bootstrap/images/coming-soon.jpg" alt="" class="pro-image-front">
                                         <img src="bootstrap/images/coming-soon.jpg" alt="" class="pro-image-back">
-                                        <div class="men-cart-pro">
-                                            <div class="inner-men-cart-pro">
+                                        <div class="cart-pro">
+                                            <div class="inner-cart-pro">
                                                 <a href="#" class="link-product-add-cart" data-toggle="modal" data-target="#myModal5">Quick View</a>
                                             </div>
                                         </div>
                                         <span class="product-new-top">New</span>
                                     </div>
                                     <div class="item-info-product ">
-                                        <h4><a href="single.jsp">Wedges</a></h4>
+                                        <h4><a href="single.jsp">Game2</a></h4>
                                         <div class="info-product-price">
                                             <span class="item_price">$45.99</span>
                                             <del>$69.71</del>
@@ -203,13 +192,13 @@
                         </div>
 
                         <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-2">
-                            <div class="col-md-3 product-men">
-                                <div class="men-pro-item simpleCart_shelfItem">
-                                    <div class="men-thumb-item">
+                            <div class="col-md-3 product">
+                                <div class="pro-item simpleCart_shelfItem">
+                                    <div class="thumb-item">
                                         <img src="bootstrap/images/coming-soon.jpg" alt="" class="pro-image-front">
                                         <img src="bootstrap/images/coming-soon.jpg" alt="" class="pro-image-back">
-                                        <div class="men-cart-pro">
-                                            <div class="inner-men-cart-pro">
+                                        <div class="cart-pro">
+                                            <div class="inner-cart-pro">
                                                 <a href="#" class="link-product-add-cart" data-toggle="modal" data-target="#myModal5">Quick View</a>
                                             </div>
                                         </div>
@@ -217,7 +206,7 @@
 
                                     </div>
                                     <div class="item-info-product ">
-                                        <h4><a href="single.jsp">Dresses</a></h4>
+                                        <h4><a href="single.jsp">Game3</a></h4>
                                         <div class="info-product-price">
                                             <span class="item_price">$45.99</span>
                                             <del>$69.71</del>
@@ -226,18 +215,17 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="clearfix"></div>
                         </div>
 
                         <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-3">
-                            <div class="col-md-3 product-men">
-                                <div class="men-pro-item simpleCart_shelfItem">
-                                    <div class="men-thumb-item">
+                            <div class="col-md-3 product">
+                                <div class="pro-item simpleCart_shelfItem">
+                                    <div class="thumb-item">
                                         <img src="bootstrap/images/coming-soon.jpg" alt="" class="pro-image-front">
                                         <img src="bootstrap/images/coming-soon.jpg" alt="" class="pro-image-back">
-                                        <div class="men-cart-pro">
-                                            <div class="inner-men-cart-pro">
+                                        <div class="cart-pro">
+                                            <div class="inner-cart-pro">
                                                 <a href="#" class="link-product-add-cart" data-toggle="modal" data-target="#myModal5">Quick View</a>
                                             </div>
                                         </div>
@@ -245,7 +233,7 @@
 
                                     </div>
                                     <div class="item-info-product ">
-                                        <h4><a href="single.jsp">Dresses</a></h4>
+                                        <h4><a href="single.jsp">Game4</a></h4>
                                         <div class="info-product-price">
                                             <span class="item_price">$45.99</span>
                                             <del>$69.71</del>
@@ -256,7 +244,6 @@
                             </div>
                             <div class="clearfix"></div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -269,10 +256,7 @@
         <div class="container">
             <div class="col-md-3 footer-left">
                 <h2><a href="index.jsp"><img src="bootstrap/images/logo3.jpg" alt=" " /></a></h2>
-                <p>Neque porro quisquam est, qui dolorem ipsum quia dolor
-                    sit amet, consectetur, adipisci velit, sed quia non
-                    numquam eius modi tempora incidunt ut labore
-                    et dolore magnam aliquam quaerat voluptatem.</p>
+                <p>The foot of the home page.</p>
             </div>
             <div class="col-md-9 footer-right">
                 <div class="sign-grds">
@@ -405,6 +389,5 @@
         </div>
     </div>
 </div>
-<a href="./login.html">Login</a>
 </body>
 </html>
