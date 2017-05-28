@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link href="bootstrap/css/style.css" rel="stylesheet" type="text/css" media="all" />
 
-    <!-- js -->
+<%--    <!-- js -->
     <script type="text/javascript" src="bootstrap/js/jquery.min.js"></script>
     <!-- //js -->
     <!-- cart -->
@@ -21,7 +21,7 @@
     <!-- //for bootstrap working -->
     <link href='http://fonts.useso.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.useso.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,900,900italic,700italic' rel='stylesheet' type='text/css'>
-    <script src="bootstrap/js/jquery.easing.min.js"></script>
+    <script src="bootstrap/js/jquery.easing.min.js"></script>--%>
 </header>
 <body>
 <!-- //header -->
@@ -49,9 +49,7 @@
             </form>
         </div>
         <div class="col-md-3 header-right footer-bottom">
-            <ul>
-                <li><a href="#" class="use1" data-toggle="modal" data-target="#myModal4"><span>Login</span></a></li>
-            </ul>
+            <a href="#" class="login" data-toggle="modal" data-target="#myModal4"><span>Login</span></a>
         </div>
         <div class="clearfix"></div>
     </div>
