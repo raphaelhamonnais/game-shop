@@ -34,7 +34,7 @@
         </div>
            <%--the search bar--%>
         <div class="col-md-6 header-middle">
-            <form style="height: 30px" method="get" action="search.jsp">
+            <form style="height: 30px" method="get" action="game.jsp">
                 <div class="search">
                     <input type="search" value="Search" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Search';}" required="">
                 </div>
@@ -76,7 +76,7 @@
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <ul class="multi-column-dropdown">
-                                                <li><a href="category.jsp">Category1</a></li>
+                                                <li><a href="game.jsp">Category</a></li>
                                             </ul>
                                         </div>
                                         <div class="clearfix"></div>
@@ -153,7 +153,7 @@
                                         <span class="product-new-top">On Sale</span>
                                     </div>
                                     <div class="item-info-product ">
-                                        <h4><a href="single.jsp">Game1</a></h4>
+                                        <h4><a href="game.jsp">Game</a></h4>
                                         <div class="info-product-price">
                                             <span class="item_price">$5.99</span>
                                             <del>$9.71</del>
@@ -179,7 +179,7 @@
                                         <span class="product-new-top">New</span>
                                     </div>
                                     <div class="item-info-product ">
-                                        <h4><a href="single.jsp">Game2</a></h4>
+                                        <h4><a href="game.jsp">Game2</a></h4>
                                         <div class="info-product-price">
                                             <span class="item_price">$45.99</span>
                                             <del>$69.71</del>
@@ -206,7 +206,7 @@
 
                                     </div>
                                     <div class="item-info-product ">
-                                        <h4><a href="single.jsp">Game3</a></h4>
+                                        <h4><a href="game.jsp">Game3</a></h4>
                                         <div class="info-product-price">
                                             <span class="item_price">$45.99</span>
                                             <del>$69.71</del>
@@ -233,7 +233,7 @@
 
                                     </div>
                                     <div class="item-info-product ">
-                                        <h4><a href="single.jsp">Game4</a></h4>
+                                        <h4><a href="game.jsp">Game4</a></h4>
                                         <div class="info-product-price">
                                             <span class="item_price">$45.99</span>
                                             <del>$69.71</del>
@@ -264,7 +264,7 @@
                         <h4>Information</h4>
                         <ul>
                             <li><a href="index.jsp">Home</a></li>
-                            <li><a href="category.jsp">Categories</a></li>
+                            <li><a href="game.jsp">Categories</a></li>
                             <li><a href="game.jsp">Games</a></li>
                             <li><a href="contact.jsp">Contact</a></li>
                         </ul>
@@ -340,7 +340,7 @@
                                 <h3>Sign up for free</h3>
                                 <form>
                                     <div class="sign-up">
-                                        <h4>Email :</h4>
+                                        <h4>Login :</h4>
                                         <input type="text" value="Type here" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Type here';}" required="">
                                     </div>
                                     <div class="sign-up">
@@ -363,7 +363,7 @@
                                 <h3>Sign in with your account</h3>
                                 <form>
                                     <div class="sign-in">
-                                        <h4>Email :</h4>
+                                        <h4>Login :</h4>
                                         <input type="text" value="Type here" onFocus="this.value = '';" onBlur="if (this.value == '') {this.value = 'Type here';}" required="">
                                     </div>
                                     <div class="sign-in">

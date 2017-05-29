@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="java.util.*"%>
 <html>
 <head>
     <title>Game</title>
@@ -89,7 +90,7 @@
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <ul class="multi-column-dropdown">
-                                                <li><a href="category.jsp">Category1</a></li>
+                                                <li><a href="game.jsp">Category1</a></li>
                                             </ul>
                                         </div>
                                         <div class="clearfix"></div>
@@ -130,30 +131,9 @@
     </div>
 </div>
 
-<!-- //content-bottom -->
-<!-- product-nav -->
-<div class="product-easy">
+<div class="main" style="margin: 10px;">
     <div class="container">
-        <script src="bootstrap/js/easyResponsiveTabs.js" type="text/javascript"></script>
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $('#horizontalTab').easyResponsiveTabs({
-                    type: 'default', //Types: default, vertical, accordion
-                    width: 'auto', //auto or any width like 600px
-                    fit: true   // 100% fit in a container
-                });
-            });
-        </script>
-        <div class="sap_tabs">
-            <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
-                <ul class="resp-tabs-list">
-                    <li class="resp-tab-item" aria-controls="tab_item-0" role="tab"><span>On sale</span></li>
-                    <li class="resp-tab-item" aria-controls="tab_item-1" role="tab"><span>Best</span></li>
-                    <li class="resp-tab-item" aria-controls="tab_item-2" role="tab"><span>Hot</span></li>
-                    <li class="resp-tab-item" aria-controls="tab_item-3" role="tab"><span>New</span></li>
-                </ul>
-            </div>
-        </div>
+        <h3>Le list de jeux</h3>
     </div>
 </div>
 
