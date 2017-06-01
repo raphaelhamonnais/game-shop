@@ -49,6 +49,9 @@ public abstract class RestClient {
 
     protected abstract void setRessourceName();
 
+    protected String buildGelAllURI() {
+        return ROOT_ADDRESS + "/" + ressource;
+    }
 
     protected String buildNumberOfPagesURI() {
         return ROOT_ADDRESS + "/" + ressource + "/" + PAGES;
@@ -83,6 +86,12 @@ public abstract class RestClient {
     public HttpResponse<JsonNode> getPageItems(Integer pageNumber) throws UnirestException {
         return Unirest
                 .get(buildPageItemsURI(pageNumber))
+                .asJson();
+    }
+
+    public HttpResponse<JsonNode> getAll() throws UnirestException {
+        return Unirest
+                .get(buildGelAllURI())
                 .asJson();
     }
 
