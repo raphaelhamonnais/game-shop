@@ -15,7 +15,7 @@ import java.util.*;
 public class GamesInjection extends DataInjection {
 
     private static final Logger LOGGER = LogManager.getLogger(GamesInjection.class);
-    private static final String GAMES_FULL_DATA_SET = "data-sets/games_full_data_set.csv";
+    private static final String GAMES_FULL_DATA_SET = "data-sets/games_short_data_set.csv";
     private static final String GAMES_TEST_DATA_SET = "data-sets/games_test_data_set.csv";
 
 
