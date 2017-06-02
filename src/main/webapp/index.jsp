@@ -11,7 +11,7 @@
     <link href="bootstrap/css/style1.css" rel="stylesheet" type="text/css" media="all" />
 
    <!-- js -->
-    <script type="text/javascript" src="bootstrap/js/jquery.min.js"></script>
+    <%--<script type="text/javascript" src="bootstrap/js/jquery.min.js"></script>--%>
     <!-- //js -->
     <!-- cart -->
     <script src="bootstrap/js/simpleCart.min.js"></script>
@@ -143,22 +143,13 @@
                             <div class="col-md-3 product">
                                 <div class="pro-item simpleCart_shelfItem">
                                     <div class="thumb-item">
-                                        <img src="bootstrap/images/coming-soon.jpg" alt="" class="pro-image-front">
-                                        <img src="bootstrap/images/coming-soon.jpg" alt="" class="pro-image-back">
                                         <div class="cart-pro">
                                             <div class="inner-cart-pro">
-                                                <a href="#" class="link-product-add-cart" data-toggle="modal" data-target="#myModal5">Quick View</a>
+                                                <a href="#" class="link-product-add-cart" data-toggle="modal" data-target="#myModal5">
+                                                    <img src="bootstrap/images/coming-soon.jpg" alt="" class="pro-image-front">
+                                                </a>
                                             </div>
                                         </div>
-                                        <span class="product-new-top">On Sale</span>
-                                    </div>
-                                    <div class="item-info-product ">
-                                        <h4><a href="game.jsp">Game</a></h4>
-                                        <div class="info-product-price">
-                                            <span class="item_price">$5.99</span>
-                                            <del>$9.71</del>
-                                        </div>
-                                        <a href="#" class="item_add single-item hvr-outline-out button2">Add to cart</a>
                                     </div>
                                 </div>
                             </div>
@@ -169,22 +160,13 @@
                             <div class="col-md-3 product">
                                 <div class="pro-item simpleCart_shelfItem">
                                     <div class="thumb-item">
-                                        <img src="bootstrap/images/coming-soon.jpg" alt="" class="pro-image-front">
-                                        <img src="bootstrap/images/coming-soon.jpg" alt="" class="pro-image-back">
                                         <div class="cart-pro">
                                             <div class="inner-cart-pro">
-                                                <a href="#" class="link-product-add-cart" data-toggle="modal" data-target="#myModal5">Quick View</a>
+                                                <a href="#" class="link-product-add-cart" data-toggle="modal" data-target="#myModal5">
+                                                    <img src="bootstrap/images/coming-soon.jpg" alt="" class="pro-image-back">
+                                                </a>
                                             </div>
                                         </div>
-                                        <span class="product-new-top">New</span>
-                                    </div>
-                                    <div class="item-info-product ">
-                                        <h4><a href="game.jsp">Game2</a></h4>
-                                        <div class="info-product-price">
-                                            <span class="item_price">$45.99</span>
-                                            <del>$69.71</del>
-                                        </div>
-                                        <a href="#" class="item_add single-item hvr-outline-out button2">Add to cart</a>
                                     </div>
                                 </div>
                             </div>
@@ -195,23 +177,13 @@
                             <div class="col-md-3 product">
                                 <div class="pro-item simpleCart_shelfItem">
                                     <div class="thumb-item">
-                                        <img src="bootstrap/images/coming-soon.jpg" alt="" class="pro-image-front">
-                                        <img src="bootstrap/images/coming-soon.jpg" alt="" class="pro-image-back">
                                         <div class="cart-pro">
                                             <div class="inner-cart-pro">
-                                                <a href="#" class="link-product-add-cart" data-toggle="modal" data-target="#myModal5">Quick View</a>
+                                                <a href="#" class="link-product-add-cart" data-toggle="modal" data-target="#myModal5">
+                                                    <img src="bootstrap/images/coming-soon.jpg" alt="" class="pro-image-back">
+                                                </a>
                                             </div>
                                         </div>
-                                        <span class="product-new-top">New</span>
-
-                                    </div>
-                                    <div class="item-info-product ">
-                                        <h4><a href="game.jsp">Game3</a></h4>
-                                        <div class="info-product-price">
-                                            <span class="item_price">$45.99</span>
-                                            <del>$69.71</del>
-                                        </div>
-                                        <a href="#" class="item_add single-item hvr-outline-out button2">Add to cart</a>
                                     </div>
                                 </div>
                             </div>
@@ -222,23 +194,13 @@
                             <div class="col-md-3 product">
                                 <div class="pro-item simpleCart_shelfItem">
                                     <div class="thumb-item">
-                                        <img src="bootstrap/images/coming-soon.jpg" alt="" class="pro-image-front">
-                                        <img src="bootstrap/images/coming-soon.jpg" alt="" class="pro-image-back">
                                         <div class="cart-pro">
                                             <div class="inner-cart-pro">
-                                                <a href="#" class="link-product-add-cart" data-toggle="modal" data-target="#myModal5">Quick View</a>
+                                                <a href="#" class="link-product-add-cart" data-toggle="modal" data-target="#myModal5">
+                                                    <img src="bootstrap/images/coming-soon.jpg" alt="" class="pro-image-back">
+                                                </a>
                                             </div>
                                         </div>
-                                        <span class="product-new-top">New</span>
-
-                                    </div>
-                                    <div class="item-info-product ">
-                                        <h4><a href="game.jsp">Game4</a></h4>
-                                        <div class="info-product-price">
-                                            <span class="item_price">$45.99</span>
-                                            <del>$69.71</del>
-                                        </div>
-                                        <a href="#" class="item_add single-item hvr-outline-out button2">Add to cart</a>
                                     </div>
                                 </div>
                             </div>
@@ -389,5 +351,7 @@
         </div>
     </div>
 </div>
+
+
 </body>
 </html>

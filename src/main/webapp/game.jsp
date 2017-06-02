@@ -18,20 +18,26 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="bootstrap/css/jquery-ui.css">
     <link href="bootstrap/css/style1.css" rel="stylesheet" type="text/css" media="all" />
-    <!-- js -->
-    <script type="text/javascript" src="bootstrap/js/jquery.min.js"></script>
-    <!-- //js -->
-    <!-- cart -->
-    <script src="bootstrap/js/simpleCart.min.js"></script>
-    <!-- cart -->
-    <!-- for bootstrap working -->
-    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-    <!-- //for bootstrap working -->
-    <link href='http://fonts.useso.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.useso.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,900,900italic,700italic' rel='stylesheet' type='text/css'>
-    <script src="bootstrap/js/jquery.easing.min.js"></script>
 </head>
-<body>
+<script>
+    function traitementAjax() {
+        var xhr = null;
+        xhr = new XMLHttpRequest();
+        console.log("iciiiii");
+        xhr.onreadystatechange = function () {
+            console.log("iciiiii");
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                console.log("iciiiii");
+                var resultat = xhr.responseText;
+                console.log(resultat);
+            }
+            xhr.open("GET", "http://localhost:8080/sr03-game-shop/rest/physical-games", true);
+            xhr.send();
+            xhr.responseType = 'json';
+        }
+    }
+</script>
+<body  onload="traitementAjax()">
 <!-- header of the site: include the logo of the site, the search bar and the login logo -->
 <!-- header-bot -->
 <div class="header-bot">
@@ -133,13 +139,7 @@
 
 <div class="main" style="margin: 10px;">
     <div class="container">
-        <h3>Le list de jeux</h3>
-        <p>
-        <%
-            String gameList = (String) request.getAttribute("gameList");
-            out.println(gameList);
-        %>
-        </p>
+
     </div>
 </div>
 

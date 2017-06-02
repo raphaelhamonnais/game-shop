@@ -402,6 +402,7 @@ a.simpleCart_empty {
 }
 .product-easy {
     padding: 90px 0;
+    height: 700px;
 }
 /*-- effect --*/
 .pro-item {
@@ -1657,6 +1658,7 @@ a.single-item{
 	}
 	.product-easy {
 		padding: 70px 0;
+        height: 700px;
 	}
 	.men-thumb-item:hover .inner-men-cart-pro .link-product-add-cart {
 		top: 80.5%;
@@ -2809,6 +2811,7 @@ td.invert-image a img {
 	}
 	.product-easy {
 		padding: 32px 0;
+        height:700px;
 	}
 	.men-thumb-item:hover .inner-men-cart-pro .link-product-add-cart {
 		top: 86.5%;

@@ -24,14 +24,12 @@ import java.util.List;
 public class GameServlet extends HttpServlet{
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         try {
-            HttpResponse<JsonNode> games = new GameClient().getPageItems(1); //TODO remplacer par get games, sans faire de pagination
+            HttpResponse<JsonNode> games = new GameClient().getAll(); //TODO remplacer par get games, sans faire de pagination
             List<Game> gamesList = new JsonParser().parseJsonListOfObjects(games.getBody().toString(), Game[].class);
             request.setAttribute("gameList", gamesList);
             this.getServletContext().getRequestDispatcher("game.jsp").forward(request, response);
         } catch (UnirestException e) {
             e.printStackTrace();
         }
-
-
     }
 }
