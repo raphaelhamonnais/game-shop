@@ -37,6 +37,11 @@ public abstract class RestClientTest<T extends RestClient> {
             assertNotNull(pageItems);
             assertNotNull(pageItems.getHeaders());
             assertNotNull(pageItems.getBody());
+
+            HttpResponse<JsonNode> all = classUnderTest.getAll();
+            assertNotNull(all);
+            assertNotNull(all.getHeaders());
+            assertNotNull(all.getBody());
         }
         catch (Exception e) {
             fail("Exception during client calls to the REST API");

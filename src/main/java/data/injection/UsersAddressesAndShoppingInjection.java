@@ -13,7 +13,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class UsersAddressesAndShoppingInjection extends DataInjection {
 
     private static final Logger LOGGER = LogManager.getLogger(UsersAddressesAndShoppingInjection.class);
-    private static final String USERS_AND_ADDRESS_FULL_DATA_SET = "data-sets/users-data-set.csv";
+    private static final String USERS_AND_ADDRESS_FULL_DATA_SET = "data-sets/users-short-data-set.csv";
 
 
     private static final String USERNAME_CSV_HEADER = "Username";
@@ -27,9 +27,9 @@ public class UsersAddressesAndShoppingInjection extends DataInjection {
     private static final String CITY_CSV_HEADER = "City";
     private static final String COUNTRY_FULL_NEW_CSV_HEADER = "Country";
 
-    private static final int MAX_ORDERS = 4;
-    private static final int MAX_ITEMS = 15;
-    private static final int MAX_UNITS_BY_ITEM = 4;
+    private static final int MAX_ORDERS = 2;
+    private static final int MAX_ITEMS = 4;
+    private static final int MAX_UNITS_BY_ITEM = 2;
     private static final int MAX_SHOPPING_BAG = 1;
 
 
