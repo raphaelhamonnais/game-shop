@@ -19,25 +19,8 @@
     <link rel="stylesheet" type="text/css" href="bootstrap/css/jquery-ui.css">
     <link href="bootstrap/css/style1.css" rel="stylesheet" type="text/css" media="all" />
 </head>
-<script>
-    function traitementAjax() {
-        var xhr = null;
-        xhr = new XMLHttpRequest();
-        console.log("iciiiii");
-        xhr.onreadystatechange = function () {
-            console.log("iciiiii");
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                console.log("iciiiii");
-                var resultat = xhr.responseText;
-                console.log(resultat);
-            }
-            xhr.open("GET", "http://localhost:8080/sr03-game-shop/rest/physical-games", true);
-            xhr.send();
-            xhr.responseType = 'json';
-        }
-    }
-</script>
-<body  onload="traitementAjax()">
+
+<body>
 <!-- header of the site: include the logo of the site, the search bar and the login logo -->
 <!-- header-bot -->
 <div class="header-bot">
@@ -144,4 +127,37 @@
 </div>
 
 </body>
+<script>
+    function getXhr()
+    {
+        var xhr = null;
+        if(window.XMLHttpRequest)
+            xhr = new XMLHttpRequest();
+        else if(window.ActiveXObject){
+            try {
+                xhr = new ActiveXObject("Msxml2.XMLHTTP");
+            } catch (e) {
+                xhr = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+        }
+        else {
+            alert("Votre navigateur ne supporte pas les objets XMLHTTPRequest...");
+            xhr = false;
+        }
+        return xhr
+    }
+    function traitementAjax() {
+        var xhr = null;
+        xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                var resultat = xhr.responseText;
+            }
+            xhr.open("GET", "http://localhost:8080/sr03-game-shop/rest/physical-games", true);
+            xhr.send();
+            xhr.responseType = 'json';
+        }
+    }
+
+</script>
 </html>
