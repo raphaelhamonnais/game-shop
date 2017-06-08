@@ -55,10 +55,29 @@
     <!--==================================================-->
     <load-on-startup>1</load-on-startup>
   </servlet>
+
+  <servlet>
+    <servlet-name>games</servlet-name>
+    <servlet-class>controller.GameServlet</servlet-class>
+  </servlet>
+
+
+
+
+
+
+
+
   <servlet-mapping>
     <servlet-name>Jersey REST Service</servlet-name>
     <url-pattern>/rest/*</url-pattern>
   </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>games</servlet-name>
+    <url-pattern>/games</url-pattern>
+  </servlet-mapping>
+
   <!--==================================================-->
 
 
@@ -74,7 +93,6 @@
     <session-timeout>1</session-timeout>
   </session-config>
   <!--==================================================-->
-
 
 
 
@@ -282,5 +300,9 @@
     <!--<role-name>guest</role-name>-->
   <!--</security-role>-->
   <!--==================================================-->
+
+
+
+
 
 </web-app>

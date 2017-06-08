@@ -19,10 +19,21 @@ import java.util.List;
 public class GameServlet extends HttpServlet{
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         try {
-            HttpResponse<JsonNode> games = new GameClient().getAll(); //TODO remplacer par get games, sans faire de pagination
+//            HttpResponse<JsonNode> games = new GameClient().getAll();
+            HttpResponse<JsonNode> games = new GameClient().search(
+                    request.getParameter("name"),
+                    request.getParameter("console"),
+                    request.getParameter("category"),
+                    request.getParameter("isBest"),
+                    request.getParameter("isNew"),
+                    request.getParameter("isHot"),
+                    request.getParameter("isOnSale")
+            );
+
+
             List<Game> gamesList = new JsonParser().parseJsonListOfObjects(games.getBody().toString(), Game[].class);
             request.setAttribute("gamesList", gamesList);
-            this.getServletContext().getRequestDispatcher("game.jsp").forward(request, response);
+            this.getServletContext().getRequestDispatcher("/game.jsp").forward(request, response);
         } catch (UnirestException e) {
             e.printStackTrace();
         }
