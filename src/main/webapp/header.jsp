@@ -22,7 +22,17 @@
                         <a href="game.jsp" class="dropdown-toggle" data-toggle="dropdown">Categories <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="games?category=Action">Action</a></li>
-                            <li><a href="games?category=Aventure">Aventure</a></li>
+                            <li><a href="games?category=Adventure">Adventure</a></li>
+                            <li><a href="games?category=Fighting">Fighting</a></li>
+                            <li><a href="games?category=Misc">Misc</a></li>
+                            <li><a href="games?category=Platform">Platform</a></li>
+                            <li><a href="games?category=Puzzle">Puzzle</a></li>
+                            <li><a href="games?category=Racing">Racing</a></li>
+                            <li><a href="games?category=Role-Playing">Role-Playing</a></li>
+                            <li><a href="games?category=Shooter">Shooter</a></li>
+                            <li><a href="games?category=Simulation">Simulation</a></li>
+                            <li><a href="games?category=Sports">Sports</a></li>
+                            <li><a href="games?category=Strategy">Strategy</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">

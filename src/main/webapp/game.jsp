@@ -23,8 +23,15 @@
          <link rel="apple-touch-icon" sizes="72x72" href="/bootstrap/img/apple-touch-icon-72x72.png">
          <link rel="apple-touch-icon" sizes="114x114" href="/bootstrap/img/apple-touch-icon-114x114.png"> -->
     </head>
-
     <!-- HTML code from Bootply.com editor -->
+    <style>
+       tr {
+            border: black 3px solid;
+        }
+        td {
+            border:black 3px solid;
+        }
+    </style>
 <body>
 <%@include file="header.jsp" %>
 
@@ -34,12 +41,28 @@
     <%
         List<Game> gameList = (List<Game>) request.getAttribute("gamesList");
     %>
-    <% for (Game game : gameList) { %>
-    <tr>
-        <td><%=game.getGameName()%></td>
-        <br/>
-    </tr>
-    <% } %>
+    <%--<% for (Game game : gameList) { %>--%>
+    <table class="table table-bordered">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Publisher</th>
+            <th>Release Year</th>
+            <th>sale Rate</th>
+        </tr>
+        <% for (Game game : gameList) { %>
+        <tr>
+            <td><%=game.getGameId()%></td>
+            <td><%=game.getGameName()%></td>
+            <td><%=game.getCategories()%></td>
+            <td><%=game.getPublisher()%></td>
+            <td><%=game.getGameReleaseYear()%></td>
+            <td><%=game.getGameSaleRate()%></td>
+        </tr>
+        <% } %>
+    </table>
+    <%--<% } %>--%>
 </div>
 
 </body>
