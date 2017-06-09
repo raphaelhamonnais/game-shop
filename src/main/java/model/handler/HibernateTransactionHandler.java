@@ -94,10 +94,6 @@ public class HibernateTransactionHandler {
         return this;
     }
 
-    public Stream<?> stream() {
-        return query.stream();
-    }
-
     public ScrollableResults scrollForward() {
         return query.scroll(ScrollMode.FORWARD_ONLY);
     }
@@ -107,6 +103,12 @@ public class HibernateTransactionHandler {
         if (query == null)
             throw new ModelException("Query must be created before adding any parameter");
     }
+
+
+    public void setDistinctCriteria() {
+        query.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+    }
+
 
 
 //    @Override

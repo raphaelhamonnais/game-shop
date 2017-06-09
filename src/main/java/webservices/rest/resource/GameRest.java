@@ -128,6 +128,7 @@ public class GameRest extends PaginationService {
         HibernateTransactionHandler tx = new HibernateTransactionHandler()
                 .openSession()
                 .createQuery(query.toString());
+        tx.setDistinctCriteria();
         if (params.get("name") != null)
             tx = tx.addParameter("name", "%" + name + "%");
         if (params.get("console") != null)
