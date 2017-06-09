@@ -37,11 +37,11 @@
 
 <div class="container">
 
+    <%@include file="genre.jsp" %>
     <h1>This is the game page.</h1>
     <%
         List<Game> gameList = (List<Game>) request.getAttribute("gamesList");
     %>
-    <%--<% for (Game game : gameList) { %>--%>
     <table class="table table-bordered">
         <tr>
             <th>Id</th>
@@ -50,20 +50,29 @@
             <th>Publisher</th>
             <th>Release Year</th>
             <th>sale Rate</th>
+            <th>IsOnSale</th>
+            <th>IsBest</th>
+            <th>IsHot</th>
+            <th>IsNew</th>
         </tr>
         <% for (Game game : gameList) { %>
         <tr>
             <td><%=game.getGameId()%></td>
-            <td><%=game.getGameName()%></td>
+            <td><a href="#" data-toggle="modal" data-target="#myModal2"><%=game.getGameName()%></a></td>
             <td><%=game.getCategories()%></td>
             <td><%=game.getPublisher()%></td>
             <td><%=game.getGameReleaseYear()%></td>
             <td><%=game.getGameSaleRate()%></td>
+            <td><%=game.isGameIsOnSale()%></td>
+            <td><%=game.isGameIsBest()%></td>
+            <td><%=game.isGameIsHot()%></td>
+            <td><%=game.isGameIsNew()%></td>
         </tr>
         <% } %>
     </table>
-    <%--<% } %>--%>
 </div>
+
+<%@include file="game_modal.jsp" %>
 <%@include file="footer.jsp" %>
 </body>
 <script>
