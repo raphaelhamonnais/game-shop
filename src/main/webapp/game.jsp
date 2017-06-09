@@ -24,14 +24,14 @@
          <link rel="apple-touch-icon" sizes="114x114" href="/bootstrap/img/apple-touch-icon-114x114.png"> -->
     </head>
     <!-- HTML code from Bootply.com editor -->
-    <style>
-       tr {
-            border: black 3px solid;
-        }
-        td {
-            border:black 3px solid;
-        }
-    </style>
+    <%--<style>--%>
+       <%--tr {--%>
+            <%--border: black 3px solid;--%>
+        <%--}--%>
+        <%--td {--%>
+            <%--border:black 3px solid;--%>
+        <%--}--%>
+    <%--</style>--%>
 <body>
 <%@include file="header.jsp" %>
 
@@ -64,7 +64,7 @@
     </table>
     <%--<% } %>--%>
 </div>
-
+<%@include file="footer.jsp" %>
 </body>
 <script>
     function getXhr()
