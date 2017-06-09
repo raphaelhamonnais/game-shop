@@ -7,13 +7,12 @@
     <meta name="generator" content="Bootply">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="Bootstrap">
-    <link href="bootstrap/css/bootstrap-combined.min.css" rel="stylesheet">
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="http://www.bootply.com/bootply/themes/metroid/theme.css" type="text/css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap-theme.css" rel="stylesheet">
     <!-- CSS code from Bootply.com editor -->
     <link href="bootstrap/css/style.css" rel="stylesheet" type="text/css" media="all" />
     <!--[if lt IE 9]>
-    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <!--  <link rel="apple-touch-icon" href="/bootstrap/img/apple-touch-icon.png">
      <link rel="apple-touch-icon" sizes="72x72" href="/bootstrap/img/apple-touch-icon-72x72.png">
@@ -62,8 +61,8 @@
 
 <script async="" src="//www.google-analytics.com/analytics.js"></script>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 
 <!-- JavaScript jQuery code from Bootply.com editor  -->
 
