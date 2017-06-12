@@ -143,7 +143,7 @@ h1,h2,h3,h4,h5,h6{
 		}
 
 	.col-md-6 {
-		width: 556px;
+		width: 530px;
 	}
 .content {
 	height: 497px;
@@ -200,7 +200,7 @@ h1,h2,h3,h4,h5,h6{
 
 
 .modal-dialog {
-	height: 495px;
+	height: 550px;
 }
 .modal-header {
     border-bottom: none;
@@ -208,7 +208,7 @@ h1,h2,h3,h4,h5,h6{
 
 
 .modal-content{
-	height: 500px;
+	height: 550px;
 	position:relative;
 	background-color:#fff;
 	-webkit-background-clip:padding-box;
