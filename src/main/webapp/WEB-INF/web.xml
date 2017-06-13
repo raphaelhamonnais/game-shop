@@ -60,6 +60,10 @@
     <servlet-name>games</servlet-name>
     <servlet-class>controller.GameServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>index</servlet-name>
+    <servlet-class>controller.IndexServlet</servlet-class>
+  </servlet>
 
 
 
@@ -76,6 +80,11 @@
   <servlet-mapping>
     <servlet-name>games</servlet-name>
     <url-pattern>/games</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>index</servlet-name>
+    <url-pattern>/index</url-pattern>
   </servlet-mapping>
 
   <!--==================================================-->

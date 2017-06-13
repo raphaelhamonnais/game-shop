@@ -21,7 +21,7 @@ public class GameServlet extends HttpServlet{
         try {
 //            HttpResponse<JsonNode> games = new GameClient().getAll();
             HttpResponse<JsonNode> games = new GameClient().search(
-                    request.getParameter("name"),
+                    request.getParameter("gameName"),
                     request.getParameter("console"),
                     request.getParameter("category"),
                     request.getParameter("isBest"),

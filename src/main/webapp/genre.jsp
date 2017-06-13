@@ -10,22 +10,22 @@
 <div class="row-fluid">
     <div class="span3">
         <div class="well text-center">
-            <a href="games?isOnSale=false">On Sale</a>
+            <a href="games?isOnSale=True">On Sale</a>
         </div>
     </div>
     <div class="span3 hidden-phone">
         <div class="well text-center">
-            <a href="games?isBest=false">Best</a>
+            <a href="games?isBest=True">Best</a>
         </div>
     </div>
     <div class="span3 hidden-phone">
         <div class="well text-center">
-            <a href="games?isHot=false">Hot</a>
+            <a href="games?isHot=True">Hot</a>
         </div>
     </div>
     <div class="span3 hidden-phone">
         <div class="well text-center">
-            <a href="games?isNew=false">New</a>
+            <a href="games?isNew=True">New</a>
         </div>
     </div>
 </div>

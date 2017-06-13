@@ -7,7 +7,7 @@
     <meta name="generator" content="Bootply">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="Bootstrap">
-    <%--<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">--%>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="bootstrap/css/bootstrap-combined.min.css" rel="stylesheet">
     <link href="bootstrap/css/bootstrap-theme.css" rel="stylesheet">
     <link href="bootstrap/css/style.css" rel="stylesheet" type="text/css" media="all" />
@@ -16,8 +16,9 @@
 <!-- HTML code from Bootply.com editor -->
 <body>
 
-<%@include file="header.jsp" %>
-
+<div class="container-fluid">
+<%@include file="navbar.jsp" %>
+</div>
 
 <!-- MAIN CONTAINER-->
 <div class="container">
@@ -30,27 +31,17 @@
             <%@include file="game_picture.jsp" %>
             <%@include file="game_picture.jsp" %>
             <%@include file="game_picture.jsp" %>
-
         </div>
     </div>
 </div>
 
-<%@include file="game_modal.jsp" %>
-
-<!-- PAGINATION-->
-<div class="pagination pull-right">
-    <ul>
-        <li><a href="#">Prev</a></li>
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">Next</a></li>
-    </ul>
-</div>
-<!-- /PAGINATION-->
 
 <!-- FOOTER-->
 <%@include file="footer.jsp" %>
+
+
+<%@include file="game_modal.jsp" %>
+<%@include file="sign-in.jsp"%>
 
 
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
