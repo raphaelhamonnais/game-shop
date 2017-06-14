@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <nav class="navbar navbar-inverse pagination-centered">
     <div class="container-fluid">
-        <div class="nav-collapse in collapse" style="height: auto;">
+        <p class="nav-collapse in collapse" style="height: auto;">
             <ul class="nav">
                 <li class="active"><a href="index">HOME</a></li>
                 <li class="dropdown">
@@ -65,11 +65,20 @@
                 <%--</li>--%>
             <%--</ul>--%>
             <ul class="nav navbar-nav navbar-right">
-                <li class="nav">
-                    <div class="">
-                        <a class="btn" href="#" data-toggle="modal" data-target="#myModal1">Login</a>
-                        <%--<a class="btn" href="login.html">Login</a>--%>
-                    </div>
+                <li>
+                    <p class="navbar-btn">
+                        <a href="shopping-bag" class="btn btn-default">Shopping Cart</a>
+                    </p>
+                </li>
+                <li>
+                    <p class="navbar-btn">
+                        <%if (request.getUserPrincipal() == null) { %>
+                            <a class="btn" href="login.html">Sign In</a>
+                        <%}
+                        else { %>
+                            <a class="btn" href="signout">Sign Out</a>
+                        <%}%>
+                    </p>
                 </li>
             </ul>
 

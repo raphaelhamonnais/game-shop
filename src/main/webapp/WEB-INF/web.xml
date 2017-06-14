@@ -64,6 +64,18 @@
     <servlet-name>index</servlet-name>
     <servlet-class>controller.IndexServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>shopping-bag</servlet-name>
+    <servlet-class>controller.ShoppingBagServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>test</servlet-name>
+    <servlet-class>controller.TestServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>signout</servlet-name>
+    <servlet-class>controller.SignOutServlet</servlet-class>
+  </servlet>
 
 
 
@@ -87,192 +99,38 @@
     <url-pattern>/index</url-pattern>
   </servlet-mapping>
 
-  <!--==================================================-->
+  <servlet-mapping>
+    <servlet-name>shopping-bag</servlet-name>
+    <url-pattern>/shopping-bag</url-pattern>
+  </servlet-mapping>
 
+  <servlet-mapping>
+    <servlet-name>test</servlet-name>
+    <url-pattern>/test</url-pattern>
+  </servlet-mapping>
 
-
-
-
-
-
-
-  <!--==================================================-->
-  <!-- Session timeout configuration -->
-  <!--<session-config>-->
-    <!--<session-timeout>1</session-timeout>-->
-  <!--</session-config>-->
-  <!--==================================================-->
-
-
-
-
-
-
+  <servlet-mapping>
+    <servlet-name>signout</servlet-name>
+    <url-pattern>/signout</url-pattern>
+  </servlet-mapping>
 
   <!--==================================================-->
 
-  <!--<security-constraint>-->
-    <!--<web-resource-collection>-->
-      <!--<web-resource-name>/rest/*</web-resource-name>-->
-    <!--</web-resource-collection>-->
-  <!--</security-constraint>-->
-
-  <!--games, categories, consoles-->
-  <!--no security on GET method-->
-  <!--<security-constraint>-->
-    <!--<web-resource-collection>-->
-      <!--<web-resource-name>/rest/games/*</web-resource-name>-->
-      <!--<http-method>POST</http-method>-->
-      <!--<http-method>PUT</http-method>-->
-      <!--<http-method>DELETE</http-method>-->
-    <!--</web-resource-collection>-->
-    <!--<web-resource-collection>-->
-      <!--<web-resource-name>/rest/categories/*</web-resource-name>-->
-      <!--<http-method>POST</http-method>-->
-      <!--<http-method>PUT</http-method>-->
-      <!--<http-method>DELETE</http-method>-->
-    <!--</web-resource-collection>-->
-    <!--<web-resource-collection>-->
-      <!--<web-resource-name>/rest/consoles/*</web-resource-name>-->
-      <!--<http-method>POST</http-method>-->
-      <!--<http-method>PUT</http-method>-->
-      <!--<http-method>DELETE</http-method>-->
-    <!--</web-resource-collection>-->
-    <!--<auth-constraint>-->
-      <!--<role-name>admin</role-name>-->
-    <!--</auth-constraint>-->
-  <!--</security-constraint>-->
 
 
-  <!--&lt;!&ndash;addresses&ndash;&gt;-->
-  <!--<security-constraint>-->
-    <!--<web-resource-collection>-->
-      <!--<web-resource-name>/rest/addresses/*</web-resource-name>-->
-      <!--<http-method>DELETE</http-method>-->
-    <!--</web-resource-collection>-->
-    <!--<auth-constraint>-->
-      <!--<role-name>admin</role-name>-->
-    <!--</auth-constraint>-->
-  <!--</security-constraint>-->
-  <!--<security-constraint>-->
-    <!--<web-resource-collection>-->
-      <!--<web-resource-name>/rest/addresses/*</web-resource-name>-->
-      <!--<http-method>GET</http-method>-->
-      <!--<http-method>POST</http-method>-->
-      <!--<http-method>PUT</http-method>-->
-    <!--</web-resource-collection>-->
-    <!--<auth-constraint>-->
-      <!--<role-name>admin</role-name>-->
-      <!--<role-name>customer</role-name>-->
-    <!--</auth-constraint>-->
-  <!--</security-constraint>-->
 
-  <!--&lt;!&ndash;orders&ndash;&gt;-->
-  <!--<security-constraint>-->
-    <!--<web-resource-collection>-->
-      <!--<web-resource-name>/rest/orders/*</web-resource-name>-->
-      <!--<http-method>DELETE</http-method>-->
-    <!--</web-resource-collection>-->
-    <!--<auth-constraint>-->
-      <!--<role-name>admin</role-name>-->
-    <!--</auth-constraint>-->
-  <!--</security-constraint>-->
-  <!--<security-constraint>-->
-    <!--<web-resource-collection>-->
-      <!--<web-resource-name>/rest/orders/*</web-resource-name>-->
-      <!--<http-method>GET</http-method>-->
-      <!--<http-method>POST</http-method>-->
-      <!--<http-method>PUT</http-method>-->
-    <!--</web-resource-collection>-->
-    <!--<auth-constraint>-->
-      <!--<role-name>admin</role-name>-->
-      <!--<role-name>customer</role-name>-->
-    <!--</auth-constraint>-->
-  <!--</security-constraint>-->
-
-  <!--&lt;!&ndash;physical-games&ndash;&gt;-->
-  <!--<security-constraint>-->
-    <!--<web-resource-collection>-->
-      <!--<web-resource-name>/rest/physical-games/*</web-resource-name>-->
-      <!--<http-method>DELETE</http-method>-->
-      <!--<http-method>POST</http-method>-->
-    <!--</web-resource-collection>-->
-    <!--<auth-constraint>-->
-      <!--<role-name>admin</role-name>-->
-    <!--</auth-constraint>-->
-  <!--</security-constraint>-->
-  <!--<security-constraint>-->
-    <!--<web-resource-collection>-->
-      <!--<web-resource-name>/rest/physical-games/*</web-resource-name>-->
-      <!--<http-method>GET</http-method>-->
-      <!--<http-method>PUT</http-method>-->
-    <!--</web-resource-collection>-->
-    <!--<auth-constraint>-->
-      <!--<role-name>admin</role-name>-->
-      <!--<role-name>customer</role-name>-->
-    <!--</auth-constraint>-->
-  <!--</security-constraint>-->
-
-
-  <!--&lt;!&ndash;roles&ndash;&gt;-->
-  <!--<security-constraint>-->
-    <!--<web-resource-collection>-->
-      <!--<web-resource-name>/rest/roles/*</web-resource-name>-->
-    <!--</web-resource-collection>-->
-    <!--<auth-constraint>-->
-      <!--<role-name>admin</role-name>-->
-    <!--</auth-constraint>-->
-  <!--</security-constraint>-->
-
-
-  <!--&lt;!&ndash;shopping-bag-rows&ndash;&gt;-->
-  <!--<security-constraint>-->
-    <!--<web-resource-collection>-->
-      <!--<web-resource-name>/rest/shopping-bag-rows/*</web-resource-name>-->
-      <!--<http-method>GET</http-method>-->
-      <!--<http-method>POST</http-method>-->
-      <!--<http-method>PUT</http-method>-->
-      <!--<http-method>DELETE</http-method>-->
-    <!--</web-resource-collection>-->
-    <!--<auth-constraint>-->
-      <!--<role-name>admin</role-name>-->
-      <!--<role-name>customer</role-name>-->
-    <!--</auth-constraint>-->
-  <!--</security-constraint>-->
-
-
-  <!--&lt;!&ndash;users&ndash;&gt;-->
-  <!--<security-constraint>-->
-    <!--<web-resource-collection>-->
-      <!--<web-resource-name>/rest/users/*</web-resource-name>-->
-      <!--<http-method>DELETE</http-method>-->
-      <!--<http-method>POST</http-method>-->
-    <!--</web-resource-collection>-->
-    <!--<auth-constraint>-->
-      <!--<role-name>admin</role-name>-->
-    <!--</auth-constraint>-->
-  <!--</security-constraint>-->
-  <!--<security-constraint>-->
-    <!--<web-resource-collection>-->
-      <!--<web-resource-name>/rest/users/*</web-resource-name>-->
-      <!--<http-method>GET</http-method>-->
-      <!--<http-method>PUT</http-method>-->
-    <!--</web-resource-collection>-->
-    <!--<auth-constraint>-->
-      <!--<role-name>admin</role-name>-->
-      <!--<role-name>customer</role-name>-->
-    <!--</auth-constraint>-->
-  <!--</security-constraint>-->
-
-
-  <!---->
   <!--==================================================-->
 
-
-
-
-
-
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>Shopping bag</web-resource-name>
+      <url-pattern>/shopping-bag/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>customer</role-name>
+      <role-name>admin</role-name>
+    </auth-constraint>
+  </security-constraint>
 
 
 
@@ -280,19 +138,15 @@
   <!--==================================================-->
   <!-- Login method for authentication -->
   <!---->
-  <!--<login-config>-->
-    <!--<auth-method>FORM</auth-method>-->
-    <!--<realm-name>sr03-game-shop-database-security</realm-name>-->
-    <!--<form-login-config>-->
-      <!--<form-login-page>/login.html</form-login-page>-->
-      <!--<form-error-page>/error.html</form-error-page>-->
-    <!--</form-login-config>-->
-  <!--</login-config>-->
+  <login-config>
+    <auth-method>FORM</auth-method>
+    <realm-name>sr03-game-shop-database-security</realm-name>
+    <form-login-config>
+      <form-login-page>/login.html</form-login-page>
+      <form-error-page>/error.html</form-error-page>
+    </form-login-config>
+  </login-config>
   <!--==================================================-->
-
-
-
-
 
 
 
