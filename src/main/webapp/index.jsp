@@ -25,12 +25,41 @@
     <!-- CONTENT SIDE-->
     <!-- MAIN PRODUCTS GRID-->
     <div class="row-fluid container-folio">
-        <%@include file="genre.jsp" %>
-
         <div class="container-body">
-            <%@include file="game_picture.jsp" %>
-            <%@include file="game_picture.jsp" %>
-            <%@include file="game_picture.jsp" %>
+            <a href="games?isOnSale=True">
+                <div>
+                    <div class="col-xs-5">
+                        <img src="bootstrap/images/sales.png" alt="Games on sale">
+                        <div class="well text-center h5">Games on sale</div>
+                    </div>
+                </div>
+            </a>
+            <a href="games?isHot=True">
+                <div>
+                    <div class="col-xs-5">
+                        <img src="bootstrap/images/fire.png" alt="Hot games">
+                        <div class="well text-center h5">Hot games</div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="container-body">
+            <a href="games?isNew=True">
+                <div>
+                    <div class="col-xs-5">
+                        <img src="bootstrap/images/new.png" alt="New games">
+                        <div class="well text-center h5">New games</div>
+                    </div>
+                </div>
+            </a>
+            <a href="games?isBest=True">
+                <div>
+                    <div class="col-xs-5">
+                        <img src="bootstrap/images/podium.png" alt="Best games">
+                        <div class="well text-center h5">Best games</div>
+                    </div>
+                </div>
+            </a>
         </div>
     </div>
 </div>

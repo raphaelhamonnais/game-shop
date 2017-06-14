@@ -8,24 +8,38 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <div class="row-fluid">
-    <div class="span3">
-        <div class="well text-center">
-            <a href="games?isOnSale=True">On Sale</a>
+    <a href="games?isOnSale=True">
+        <div>
+            <div class="col-xs-3">
+                <img src="bootstrap/images/sales.png" alt="Games on sale" title="Games on sale">
+                <%--<div class="well text-center h5">Games on sale</div>--%>
+            </div>
         </div>
-    </div>
-    <div class="span3 hidden-phone">
-        <div class="well text-center">
-            <a href="games?isBest=True">Best</a>
+    </a>
+    <a href="games?isHot=True">
+        <div>
+            <div class="col-xs-3">
+                <img src="bootstrap/images/fire.png" alt="Hot games" title="Hot games">
+                <%--<div class="well text-center h5">Hot games</div>--%>
+            </div>
         </div>
-    </div>
-    <div class="span3 hidden-phone">
-        <div class="well text-center">
-            <a href="games?isHot=True">Hot</a>
+    </a>
+    <a href="games?isNew=True">
+        <div>
+            <div class="col-xs-3">
+                <img src="bootstrap/images/new.png" alt="New games" title="New games">
+                <%--<div class="well text-center h5">New games</div>--%>
+            </div>
         </div>
-    </div>
-    <div class="span3 hidden-phone">
-        <div class="well text-center">
-            <a href="games?isNew=True">New</a>
+    </a>
+    <a href="games?isBest=True">
+        <div>
+            <div class="col-xs-3">
+                <img src="bootstrap/images/podium.png" alt="Best games" title="Best games">
+                <%--<div class="well text-center h5">Best games</div>--%>
+            </div>
         </div>
-    </div>
+    </a>
 </div>
+<div class="row-fluid"><p></p></div>
+<div class="row-fluid"><p></p></div>

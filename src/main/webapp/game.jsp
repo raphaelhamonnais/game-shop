@@ -24,61 +24,103 @@
     <%@include file="navbar.jsp" %>
 </div>
 
+<div class="container">
+    <%@include file="genre.jsp" %>
+</div>
 
 <div class="container">
 
-    <%@include file="genre.jsp" %>
-    <%
-        List<Game> gameList = (List<Game>) request.getAttribute("gamesList");
-    %>
-    <table class="table table-bordered">
-        <tr>
-            <th>Name</th>
-            <th>Categories</th>
-            <th>Publisher</th>
-            <th>Release Year</th>
-        </tr>
+
+    <%List<Game> gameList = (List<Game>) request.getAttribute("gamesList");%>
+
+    <div class="collapse-custom">
+        <%if (gameList.isEmpty()) { %>
+            <h3>Aucun jeu disponible...</h3>
+        <%}%>
+
         <% for (Game game : gameList) { %>
-        <tr>
-            <td>
-                <a href="#" id="<%=game.getGameId()%>" data-toggle="modal" data-target="#myModal2" onclick="getGameInfos(<%=game.getGameId()%>)"><%=game.getGameName()%></a>
-            </td>
-            <td>
-                <%
-                    String categoriesString = "";
-                    Iterator<Category> it = game.getCategories().iterator();
-                    while (it.hasNext()) {
-                        Category cat = it.next();
-                        categoriesString += cat.getCatName();
-                        if (it.hasNext())
-                            categoriesString += ", ";
-                %>
-                <%=categoriesString%>
-                <%}%>
-            </td>
-            <td><%=game.getPublisher().getPublisherName()%></td>
-            <td><%=game.getGameReleaseYear()%></td>
-        </tr>
-        <% } %>
-    </table>
+        <nav class="navbar navbar-default" role="navigation">
+            <%--GAME BASIC INFORMATIONS--%>
+            <div class="collapse navbar-collapse"
+                 data-toggle="collapse"
+                 id="game-header-collapse-<%=game.getGameId()%>"
+                 href="#game-details-collapse-<%=game.getGameId()%>"
+                 onclick="getGameInfos(<%=game.getGameId()%>)">
+                <ul class="nav navbar-nav">
+                    <li><a><%=game.getGameName()%></a></li>
+                </ul>
+            </div>
+
+            <%--HIDDEN CONTENT : GAME DETAILLED INFORMATIONS--%>
+            <div id="game-details-collapse-<%=game.getGameId()%>" class="collapse" data-parent="game-header-collapse-<%=game.getGameId()%>">
+                <div class="panel-body">
+                    <!-- LISTE-->
+                    <div class="row-fluid">
+                        <div class="col-xs-12">
+                            <ul class="list-group">
+                                <li class="list-group-item"> Categories:
+                                    <%
+                                        StringBuilder categoriesString = new StringBuilder();
+                                        Iterator<Category> it = game.getCategories().iterator();
+                                        while (it.hasNext()) {
+                                            Category cat = it.next();
+                                            categoriesString.append(cat.getCatName());
+                                            if (it.hasNext())
+                                                categoriesString.append(", ");
+                                        }
+                                    %>
+                                    <%=categoriesString.toString()%>
+                                </li>
+                                <li class="list-group-item">Publisher: <%=game.getPublisher().getPublisherName()%></li>
+                                <li class="list-group-item">Release year: <%=game.getGameReleaseYear()%></li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-12">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <td>Console</td>
+                                        <td>Quantité disponible</td>
+                                        <td>Prix</td>
+                                        <td class="hidden"></td>
+                                    </tr>
+                                </thead>
+                                <tbody id="game-detailled-table-<%=game.getGameId()%>">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <%}%>
+    </div>
 </div>
 
-<%@include file="game_modal.jsp" %>
 <%@include file="footer.jsp" %>
 <%@include file="sign-in.jsp"%>
 </body>
 <script>
     function getGameInfos(gameId) {
         var xhttp = null;
+        var gameTable = "";
+        document.getElementById("game-detailled-table-" + gameId).innerHTML = gameTable;
         xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (xhttp.readyState == 4 && xhttp.status == 200) {
-                document.getElementById(gameId).innerHTML = this.responseText;
+                var jsonResponse = JSON.parse(this.responseText);
+                jsonResponse.forEach(function(physicalGame) {
+                    gameTable += "<tr>";
+                    gameTable += "<td>" + physicalGame.console.consoleName + "</td>";
+                    gameTable += "<td>" + physicalGame.gameStock + "</td>";
+                    gameTable += "<td>" + physicalGame.gamePrice + " € </td>";
+                    gameTable += "<td>";
+                });
+                document.getElementById("game-detailled-table-" + gameId).innerHTML = gameTable;
             }
         };
         xhttp.open("GET", "http://localhost:8080/sr03-game-shop/rest/games/" + gameId + "/physical-games", true);
         xhttp.send();
-//        xhttp.responseType = 'json';
     }
 </script>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
