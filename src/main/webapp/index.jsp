@@ -69,7 +69,6 @@
 <%@include file="footer.jsp" %>
 
 
-<%@include file="game_modal.jsp" %>
 <%@include file="sign-in.jsp"%>
 
 
