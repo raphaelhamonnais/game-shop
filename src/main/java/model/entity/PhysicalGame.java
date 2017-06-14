@@ -62,7 +62,7 @@ public class PhysicalGame implements Serializable {
     @Basic
     @Column(name = "game_price", nullable = false, precision = 2)
     public BigDecimal getGamePrice() {
-        return gamePrice;
+        return gamePrice.multiply(this.getGame().getGameSaleRate());
     }
 
     public void setGamePrice(BigDecimal gamePrice) {

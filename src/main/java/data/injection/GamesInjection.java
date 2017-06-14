@@ -78,6 +78,19 @@ public class GamesInjection extends DataInjection {
                 game.setGameReleaseYear(Integer.parseInt(record.get(YEAR_CSV_HEADER)));
             } catch (NumberFormatException ignored) {}
 
+            if (random() < 5) {
+                int random = random();
+                if (random <= 25)
+                    game.setGameIsHot(true);
+                else if (random <= 50)
+                    game.setGameIsNew(true);
+                else if (random <= 75)
+                    game.setGameIsBest(true);
+                else {
+                    game.setGameIsOnSale(true);
+                    game.setGameSaleRate(new BigDecimal(0.8));
+                }
+            }
 
             if (! categoriesMap.containsKey(catName))
                 categoriesMap.put(catName, new Category(catName));
@@ -166,6 +179,10 @@ public class GamesInjection extends DataInjection {
         }
 
         return false;
+    }
+
+    private int random() {
+        return new Random().nextInt(100)+1;
     }
 
 }
