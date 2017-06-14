@@ -114,7 +114,8 @@
                     gameTable += "<td>" + physicalGame.console.consoleName + "</td>";
                     gameTable += "<td>" + physicalGame.gameStock + "</td>";
                     gameTable += "<td>" + physicalGame.gamePrice + " € </td>";
-                    gameTable += "<td>";
+                    gameTable += "<td><button class='btn btn-default'><span class='glyphicon glyphicon-shopping-cart' aria-hidden='true'></span></button></td>";
+                    gameTable += "</tr>";
                 });
                 document.getElementById("game-detailled-table-" + gameId).innerHTML = gameTable;
             }
