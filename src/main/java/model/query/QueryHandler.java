@@ -168,6 +168,15 @@ public class QueryHandler {
                 + that.fetchRequiredProperties()
                 + that.filterById();
 
+        public static final String GET_OPENED_SHOPPING_BAG = shoppingBagQH.from()
+                + shoppingBagQH.fetchRequiredProperties()
+                + shoppingBagRowQH.fetchRequiredProperties()
+                + physicalGameQH.fetchRequiredProperties()
+                + gameQH.fetchRequiredProperties()
+                + that.fetchRequiredProperties()
+                + that.filterById()
+                + shoppingBagQH.getOpenedShoppingBag(true);
+
         public static final String GET_ORDERS = ordersQH.from()
                 + ordersQH.fetchRequiredProperties()
                 + shoppingBagQH.fetchRequiredProperties()

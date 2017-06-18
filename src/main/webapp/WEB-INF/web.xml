@@ -76,7 +76,10 @@
     <servlet-name>signout</servlet-name>
     <servlet-class>controller.SignOutServlet</servlet-class>
   </servlet>
-
+  <servlet>
+    <servlet-name>signin</servlet-name>
+    <servlet-class>controller.SignInServlet</servlet-class>
+  </servlet>
 
 
 
@@ -114,6 +117,11 @@
     <url-pattern>/signout</url-pattern>
   </servlet-mapping>
 
+  <servlet-mapping>
+    <servlet-name>signin</servlet-name>
+    <url-pattern>/signin</url-pattern>
+  </servlet-mapping>
+
   <!--==================================================-->
 
 
@@ -125,6 +133,10 @@
     <web-resource-collection>
       <web-resource-name>Shopping bag</web-resource-name>
       <url-pattern>/shopping-bag/*</url-pattern>
+    </web-resource-collection>
+    <web-resource-collection>
+      <web-resource-name>Sign in</web-resource-name>
+      <url-pattern>/signin/*</url-pattern>
     </web-resource-collection>
     <auth-constraint>
       <role-name>customer</role-name>

@@ -19,7 +19,6 @@ import java.util.List;
 public class GameServlet extends HttpServlet{
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         try {
-//            HttpResponse<JsonNode> games = new GameClient().getAll();
             HttpResponse<JsonNode> games = new GameClient().search(
                     request.getParameter("gameName"),
                     request.getParameter("console"),
@@ -30,7 +29,6 @@ public class GameServlet extends HttpServlet{
                     request.getParameter("isOnSale")
             );
 
-
             List<Game> gamesList = new JsonParser().parseJsonListOfObjects(games.getBody().toString(), Game[].class);
             request.setAttribute("gamesList", gamesList);
             this.getServletContext().getRequestDispatcher("/game.jsp").forward(request, response);
@@ -39,5 +37,3 @@ public class GameServlet extends HttpServlet{
         }
     }
 }
-
-

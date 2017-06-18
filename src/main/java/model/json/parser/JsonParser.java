@@ -1,11 +1,13 @@
 package model.json.parser;
 
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+
 
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class JsonParser {
 
@@ -18,7 +20,4 @@ public class JsonParser {
     public <T> List<T> parseJsonListOfObjects(String input, Class<T[]> targetClass) throws IOException {
         return Arrays.asList(objectMapper.readValue(input, targetClass));
     }
-
-
-
 }

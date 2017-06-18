@@ -61,6 +61,18 @@ public class UserRest extends PaginationService {
     }
 
     @GET
+    @Path("{login}/shopping-bag")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getShoppingBag(@PathParam("login") String login) {
+        List result = new HibernateTransactionHandler()
+                .openSession()
+                .createQuery(QueryHandler.Users.GET_OPENED_SHOPPING_BAG)
+                .addParameter(QueryHandler.Users.ID_PARAMETER, login)
+                .getResultListAndClose();
+        return Response.status(Response.Status.OK).entity(result).build();
+    }
+
+    @GET
     @Path("{login}/orders")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getOrders(@PathParam("login") String login) {

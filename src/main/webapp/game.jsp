@@ -98,7 +98,6 @@
 </div>
 
 <%@include file="footer.jsp" %>
-<%@include file="sign-in.jsp"%>
 </body>
 <script>
     function getGameInfos(gameId) {

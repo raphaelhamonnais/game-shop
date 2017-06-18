@@ -29,6 +29,12 @@ public class UsersClient extends RestClient {
                 .asJson();
     }
 
+    public HttpResponse<JsonNode> getShoppingBag(String itemId) throws UnirestException {
+        return Unirest
+                .get(buildItemURI(itemId) + "/shopping-bag")
+                .asJson();
+    }
+
     public HttpResponse<JsonNode> getOrders(String itemId) throws UnirestException {
         return Unirest
                 .get(buildItemURI(itemId) + "/orders")

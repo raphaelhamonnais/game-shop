@@ -71,9 +71,12 @@
                     </p>
                 </li>
                 <li>
+                    <div class="col-xs-1"></div>
+                </li>
+                <li>
                     <p class="navbar-btn">
                         <%if (request.getUserPrincipal() == null) { %>
-                            <a class="btn" href="login.html">Sign In</a>
+                            <a class="btn" href="signin">Sign In</a>
                         <%}
                         else { %>
                             <a class="btn" href="signout">Sign Out</a>
