@@ -80,8 +80,8 @@
                                 <thead>
                                     <tr>
                                         <td>Console</td>
-                                        <td>Quantité disponible</td>
-                                        <td>Prix</td>
+                                        <td>Available quantity</td>
+                                        <td>Price</td>
                                         <td class="hidden"></td>
                                     </tr>
                                 </thead>

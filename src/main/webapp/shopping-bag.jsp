@@ -24,7 +24,10 @@
 </div>
 
 <div class="container">
-    <%@include file="genre.jsp" %>
+    <h1>Shopping Cart</h1>
+    <p></p>
+    <p></p>
+    <p></p>
 </div>
 
 <div class="container">
@@ -85,8 +88,8 @@
                                     <thead>
                                     <tr>
                                         <td>Console</td>
-                                        <td>Quantité disponible</td>
-                                        <td>Prix</td>
+                                        <td>Available quantity</td>
+                                        <td>Price</td>
                                         <td class="hidden"></td>
                                     </tr>
                                     </thead>
